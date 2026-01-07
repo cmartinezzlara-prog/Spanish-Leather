@@ -1,0 +1,583 @@
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    box-sizing: border-box;
+}
+
+li {
+    list-style: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-size: inherit;
+    font-weight: inherit;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+    display: block;
+}
+
+p a {
+    display: inline;
+}
+
+img,
+picture,
+video,
+iframe,
+svg {
+    display: block;
+    width: 100%;
+    /* height: initial; */
+}
+
+svg {
+    fill: currentColor;
+}
+
+:root {
+    font-size: 100%;
+
+    /* Tamaños de tipos */
+    --f-s-h3: 2.4rem;
+    --f-s-h4: 1.6rem;
+
+    /* Colores */
+    --c-primary: lightgreen;
+
+    /* Animation Intro */
+    --anim-intro: 7s cubic-bezier(.4, -0.46, .52, 1.57) 1 both;
+
+}
+
+body {
+    font-family: Arial, sans-serif;
+    min-height: 100vh;
+    background-color: #efefef;
+
+}
+
+
+/* .Splash{
+    width:100vw;
+    min-height: 100vh;
+    background-color: black;
+
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+}
+.SplashSpark{
+    color: red;
+}
+.SplashStar{
+    color: white;
+} */
+
+body {
+    font-family: 'Euclid Circular A', sans-serif;
+    position: relative;
+    min-height: 100vh;
+}
+
+
+.Cover {
+    width: 100%;
+    min-height: 100vh;
+    background-color: black;
+    position: relative;
+}
+
+.CoverStars {
+    width: 100%;
+    min-height: 100vh;
+
+    display: flex;
+    flex-flow: column;
+    justify-content: space-between;
+    align-items: center;
+
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 0;
+}
+
+.CoverStar {
+    width: 100%;
+    min-height: 1.25rem;
+    /* background-color: blue; */
+
+}
+
+.CoverStar-img {
+    max-width: 1.875rem;
+    /* background-color: red; */
+}
+
+.CoverStar-top {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+
+    margin: 1.25rem 0 0 0;
+}
+
+.CoverStar-bottom {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+
+    margin: 0 0 1.25rem 0;
+}
+
+.CoverStar-lateral {
+    display: flex;
+    flex-flow: row nowrap;
+}
+
+.CoverStar-right {
+    width: 100%;
+    /* background-color: violet; */
+
+    display: flex;
+    flex-flow: row;
+    justify-content: end;
+    align-items: center;
+
+    padding: 0 3.125rem 0 0;
+}
+
+.CoverStar-left {
+    width: 100%;
+    /* background-color: blue; */
+
+    display: flex;
+    flex-flow: row;
+    justify-content: start;
+    align-items: center;
+
+    padding: 0 0 0 3.125rem;
+}
+
+/* ************ COVER LAYOUT ********** */
+.CoverLayout {
+    width: 100%;
+    min-height: 100vh;
+    background-color: black;
+
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: space-between;
+    align-items: center;
+    padding: 3.75rem 0 3.75rem 0;
+}
+
+.CoverCont-top {
+    width: 100%;
+
+    display: flex;
+    flex-flow: row;
+    justify-content: start;
+    align-items: center;
+}
+
+.CoverTop-script {
+    width: 18.75rem;
+    margin: 2.5rem 0 0 4.375rem;
+}
+
+.CoverMiddle {
+    width: 100%;
+
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+    gap: 3.125rem;
+}
+
+.CoverMiddle-img {
+    width: 40%;
+}
+
+.CoverMiddle-author {
+    color: white;
+    font-size: 1.25rem;
+}
+
+.CoverBottom {
+    width: 100%;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+.CoverBottom-release {
+    width: 100%;
+
+    grid-column: 2;
+    grid-row: 1;
+
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.CoverBottom-label {
+    min-height: 3.75rem;
+    max-width: 3.75rem;
+    /* background-color: blue; */
+    margin: 0.5rem;
+}
+
+.CoverBottom-date {
+    max-width: 3.75rem;
+    min-height: 3.75rem;
+    /* background-color: red; */
+
+    display: flex;
+    flex-flow: column;
+    border-left: 0.1rem solid white;
+    padding: 0 0 0 0.5rem;
+}
+
+.CoverBottom-num,
+.CoverBottom-mth {
+    width: 100%;
+
+    font-size: 1.5rem;
+    font-weight: 700;
+    text-transform: lowercase;
+    color: white;
+}
+
+.CoverBottom-mth {
+    /* background-color: blue; */
+    margin: -0.5rem 0 0 0;
+}
+
+
+.CoverBottom-script {
+    width: 100%;
+    grid-column: 3;
+    grid-row: 1;
+    /* background-color: red; */
+
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: start;
+}
+
+.CoverBottom-img {
+    width: 12.5rem;
+}
+
+
+/* ************* MENU ************ */
+.Menu {
+    width: 100%;
+    min-height: 100vh;
+    background-color: black;
+
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: start;
+    align-items: start;
+
+    color: white;
+
+    position: relative;
+    z-index: 5;
+
+    opacity: 1;
+    transition: opacity 0.5s linear;
+}
+
+.Menu.isListening {
+    opacity: 0;
+    pointer-events: none;
+    transition-delay: 1s;
+}
+
+.PageHeader {
+    /* background-color: aqua; */
+    width: 100%;
+    min-height: 3.125rem;
+
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2.5rem;
+    padding: 0 2rem 0 2rem;
+}
+
+
+.PageHeader-item {
+    width: 50%;
+    /* background-color: red; */
+
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+    gap: .625rem;
+}
+
+.PageHeader-item--actions {
+    max-width: 18.75rem;
+    /* background-color: blue; */
+    display: flex;
+    flex-flow: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.PageHeader-star {
+    max-height: 1.25rem;
+    width: 1.875rem;
+}
+
+.PageHeader-item--author {
+    max-width: 18.75rem;
+}
+
+/* TOP MENU */
+.MenuTop {
+    width: 100%;
+    min-height: 35vh;
+    /* background-color: darkred; */
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: start;
+    align-items: center;
+    padding: 3.125rem 0 0 5rem;
+}
+
+.MenuTop-text {
+    max-width: 6.875rem;
+    /* background-color: red; */
+    padding: .625rem;
+}
+
+.MenuTop-p {
+    width: 100%;
+    /* background-color: black; */
+
+    text-transform: capitalize;
+}
+
+.MenuTop-wheel {
+    width: 10.625rem;
+    min-height: 10.625rem;
+
+    display: flex;
+    flex-flow: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.MenuTop-circle {
+    max-width: 10.625rem;
+    position: relative;
+}
+
+.MenuTop-polo {
+    max-width: 4.375rem;
+    position: absolute;
+    padding: 0 0 .625rem .3125rem;
+}
+
+.MenuTitles {
+    width: 100%;
+    /* background-color: red; */
+
+    display: flex;
+    flex-flow: row;
+    justify-content: center;
+    align-items: center;
+    padding: 3.125rem;
+}
+
+.MenuTitles-ps {
+    max-width: 35.625rem;
+    /* background-color: black; */
+
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    align-items: center;
+
+    line-height: 3.3rem;
+    font-size: 1rem;
+    text-transform: capitalize;
+}
+
+.MenuTitles-p {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: start;
+    align-items: center;
+}
+
+.MenuTitles-p::after {
+    content: " / ";
+    margin: 0 1.4rem 0 0rem;
+}
+
+.MenuTitles-p:last-child::after {
+    content: "";
+}
+
+
+.MenuListen {
+    width: 100%;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.MenuListen-btn {
+    border-radius: 1.25rem;
+    background-color: transparent;
+    border: .0625rem solid white;
+    padding: 0.5rem 1rem;
+
+    color: white;
+    font-family: 'Euclid Circular A', sans-serif;
+    font-size: .9375rem;
+    text-transform: capitalize;
+
+}
+
+
+/* TRANSITION */
+.Transition {
+    width: 100vw;
+    min-height: 100vh;
+
+    position: fixed;
+    top: 0;
+    right: 0;
+
+    z-index: 10;
+    pointer-events: none;
+    /* no visible aún */
+    /* overfolow: hidden???? */
+    transform: translateX(100vw);
+}
+
+.Transition.isListening {
+    animation: babiecaCurtain 2.4s linear ;
+}
+
+
+/* entra/ se cruza / sale */
+
+.TransitionText {
+    height: 110vh;
+    width: auto;
+    /* un poco mas para que sobresalga de arriba y abajo 
+    para ello exagero el vh y le aplico position absolute
+    top:-x vh / left:0*/
+
+    position: absolute;
+    top: -10vh;
+    left: 0;
+
+}
+
+/* PLAYER */
+.Player {
+    width: 100vw;
+    min-height: 100vh;
+
+    background-color: red;
+
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    z-index: 0;
+    opacity: 0;
+
+    transition: opacity 0.5s linear;
+}
+
+.Player.isListening {
+    opacity: 1;
+    z-index: 5;
+    transition-delay: 1s;
+    /* era el delay */
+}
+
+@keyframes babiecaCurtain {
+    0% {
+        transform: translateX(100vw);
+    }
+
+
+    100% {
+        transform: translateX(-300vw);
+    }
+
+}
+
+/*
+FLUJO DE CAPAS (z-index): 
+
+1. .Transition (Babieca)
+   → z-index: 10
+   Siempre por encima de todo mientras anima.
+
+2. .Menu
+   → z-index: 5
+   Visible al inicio y mientras Babieca entra.
+
+3. .Player
+   → z-index: 1
+   Permanece por debajo y solo se revela al final.
+
+   DE ESTA MANERA EL CAMBIO DE CONTENIDO SUCEDE EN MEDIO DE LA TRANSICION 
+   Y NO AL PRINCIPIO COMO HE HECHO ANTES (ARREGLADO) 
+
+   vamos a hacerlo con keyframes: 
+   0% {transform: transalateX(100%);} *50%/0 *100%/-100% ERRROORR (no va fluido y se queda a la mitad por salir
+
+   despues tenemos que hacer que desaparezca fluido el menu 
+   con OPACITY se puede hacer bien---->
+   PLAYER tiene que estar debajo de babieca
+   tiene que ser visible solo cuando babieca esta pasando 
+   pero cuando ¡ya tiene la b fuera!
+
+!! BABIECA----> me encuentro con problemas para la transicion:
+1. babieca entra por la derecha pero se va tambien para la derecha
+voy a probar con vw en lugar de % (SI FUNCIONA PERO NO SE DESLIZA HASTA EL FINAL
+2. va a trompicones: (SOLUCION: TENGO QUE PONER SOLO 2 TRANSICIONES DE % O VW)
+   con clases --> cuando hago 'click' en escuchar estoy "escuchando" ('isListening')
+
+!! SECCIONES DE DETRÁS -----> no cambian en medio de la trnsicion sino al comenzar
+(SOLUCION: APLICAR DELAY)
+   */
+
+.PageHeader {}
+
+
+
+Transition TransitionText Player PageHeader PageHeader-item PlayerScreen PlayerScreen-video PlayerScreen-video--babieca PlayerSlider PlayerSlider-item PlayerTitle PlayerName PlayerLenght PlayerBtn PlayerBtn-shape PlayerBtn-text PlayerBtn-text--mute
