@@ -61,8 +61,10 @@ svg {
 body {
     font-family: Arial, sans-serif;
     min-height: 100vh;
-    background-color: #efefef;
-
+    background-color: #000000;
+ font-family: 'Euclid Circular A', sans-serif;
+    position: relative;
+    min-height: 100vh;
 }
 
 
@@ -83,17 +85,10 @@ body {
     color: white;
 } */
 
-body {
-    font-family: 'Euclid Circular A', sans-serif;
-    position: relative;
-    min-height: 100vh;
-}
-
-
 .Cover {
     width: 100%;
     min-height: 100vh;
-    background-color: black;
+    background-color: rgb(0, 0, 0);
     position: relative;
 }
 
@@ -330,7 +325,6 @@ body {
 
 .PageHeader-item {
     width: 50%;
-    /* background-color: red; */
 
     display: flex;
     flex-flow: row nowrap;
@@ -508,8 +502,6 @@ body {
     width: 100vw;
     min-height: 100vh;
 
-    background-color: red;
-
     position: fixed;
     top: 0;
     left: 0;
@@ -539,6 +531,46 @@ body {
 
 }
 
+.PageHeader-link{
+    color: white;
+}
+.PlayerScreen{
+    width: 100vw;
+    background-color: transparent;
+    
+}
+.PlayerScreen-videos{
+    
+}
+
+.PageHeader {
+    /* background-color: aqua; */
+    width: 100%;
+    min-height: 3.125rem;
+
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: center;
+
+    gap: 2.5rem;
+    padding: 0 2rem 0 2rem;
+
+    position: absolute;
+}
+
+.PlayerSlider{
+    width: 100vw;
+    position: absolute;
+}
+
+.PlayerTitle{
+
+}
+
+.PlayerBtn{
+
+}
 /*
 FLUJO DE CAPAS (z-index): 
 
