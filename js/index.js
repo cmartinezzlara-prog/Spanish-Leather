@@ -23,22 +23,23 @@
 
 
 
-// const listenBtn = document.querySelector('.MenuListen-btn')
-// const transition = document.querySelector('.Transition')
-// const player = document.querySelector('.Player')
-// const menu = document.querySelector('.Menu')
+const listenBtn = document.querySelector('.MenuListen-btn')
+const transition = document.querySelector('.Transition')
+const player = document.querySelector('.Player')
+const menu = document.querySelector('.Menu')
 
-// console.log(listenBtn)
-// console.log(transition)
-// console.log(player)
-// console.log(menu)
+console.log(listenBtn)
+console.log(transition)
+console.log(player)
+console.log(menu)
 
-// listenBtn.addEventListener('click', () => {
-//     transition.classList.add('isListening')
-//     menu.classList.add('isListening')
-//     player.classList.add('isListening')
-// })
+listenBtn.addEventListener('click', () => {
+    transition.classList.add('isListening')
+    menu.classList.add('isListening')
+    player.classList.add('isListening')
+})
 
+//Splash  ->  Cover
 const splash = document.querySelector('.Splash')
 const cover = document.querySelector('.Cover')
 const flash = document.querySelector('.Splash-flash')
@@ -51,15 +52,36 @@ console.log(flash)
 const showCover = () => {
     console.log('Show cover')
 
-    splash.style.opacity = '0'
-    cover.style.opacity = '1'
-    cover.style.transform = 'scale(1)'
+    splash.classList.add("isHidden")
+    cover.classList.add("isVisible")
 }
 
 flash.addEventListener('animationend', () => {
     console.log('Animación acabada')
     showCover()
+
+    splash.addEventListener('transitionend', () => {
+        splash.style.display = 'none'
+    })
 })
 //animacion 4s acabada = "animationend"
 
 
+//cuando cover lleva 3s = translateY 2s (arriba completo) + Cover-stars/layout opcity 0 1.2s 
+// const showMenu = () =>{
+//     console.log('Show menu')
+
+//     cover.style.opacity
+// }
+
+let coverActivo = true
+
+window.addEventListener('wheel', () => {
+    if (!coverActivo) return
+    cover.classList.add("isHidden")
+    menu.classList.add("isVisible")
+
+    document.body.style.overflow = "auto"
+    coverActivo = false
+
+})

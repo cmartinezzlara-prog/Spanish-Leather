@@ -65,6 +65,7 @@ body {
     font-family: 'Euclid Circular A', sans-serif;
     position: relative;
     min-height: 100vh;
+    overflow: hidden;
 }
 
 /* SPLASH */
@@ -76,23 +77,27 @@ body {
     justify-content: center;
     align-items: center;
 
-    opacity: 1;
-    transition: opacity 1.3s ease;
-
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    z-index: 1;
+    z-index: 10;
+
+    opacity: 1;
+    transition: opacity 1.3s ease;
 }
 
 .Splash-flash {
     width: 5.625rem;
     min-height: 5.625rem;
-    
+
     animation: flashPulse 2s ease-in-out 2;
     /* si dura 2s x 2veces = dura 4s ____ a los 4s oculto splash/ muestro cover */
+}
+
+.Splash.isHidden {
+    opacity: 0;
 }
 
 @keyframes flashPulse {
@@ -115,12 +120,25 @@ body {
     min-height: 100vh;
     background-color: rgb(0, 0, 0);
 
-    position: relative;
-    z-index: 0;
+    position: fixed;
+    inset: 0;
+    z-index: 1;
 
     opacity: 0;
-    transform: scale(1.05);
-    transition: opacity 1.3s ease, transform 1.3s ease;
+    transform: translateY(0);
+
+    transition: opacity 1.3s linear, transform 1.3s linear;
+}
+
+.Cover.isVisible {
+    opacity: 1;
+}
+
+.Cover.isHidden {
+    opacity: 0;
+    transform: translateY(-70vh);
+
+    transition: transform 1.6s ease, opacity 0.8s ease 1s;
 }
 
 .CoverStars {
@@ -328,10 +346,16 @@ body {
     color: white;
 
     position: relative;
-    z-index: 5;
+    z-index: 1;
 
+    opacity: 0;
+    transition: opacity 1s ease;
+    pointer-events: none;
+}
+
+.Menu.isVisible {
     opacity: 1;
-    transition: opacity 0.5s linear;
+    pointer-events: auto;
 }
 
 .Menu.isListening {
@@ -350,48 +374,45 @@ body {
     justify-content: space-between;
     align-items: center;
     gap: 2.5rem;
-    padding: 0 2rem 0 2rem;
+    color: white
 }
 
 
-.PageHeader-item {
-    width: 50%;
+.PageHeader-texto {
+    /* background-color: red; */
+    padding: 0 0 0 2rem;
+}
+
+.PageHeader-author {}
+
+.PageHeader-nav {
+    /* background-color: blue; */
+    padding: 0 2rem 0 0;
 
     display: flex;
     flex-flow: row nowrap;
-    justify-content: center;
+    justify-content: start;
     align-items: center;
-    gap: .625rem;
 }
 
-.PageHeader-item--actions {
-    max-width: 18.75rem;
-    /* background-color: blue; */
-    display: flex;
-    flex-flow: row;
-    justify-content: center;
-    align-items: center;
-}
 
 .PageHeader-star {
     max-height: 1.25rem;
     width: 1.875rem;
 }
 
-.PageHeader-item--author {
-    max-width: 18.75rem;
-}
+.PageHeader-link {}
 
 /* TOP MENU */
 .MenuTop {
     width: 100%;
-    min-height: 35vh;
+    min-height: 40vh;
     /* background-color: darkred; */
     display: flex;
     flex-flow: row nowrap;
     justify-content: start;
     align-items: center;
-    padding: 3.125rem 0 0 5rem;
+    padding: 4rem 0 0 5rem;
 }
 
 .MenuTop-text {
@@ -420,6 +441,17 @@ body {
 .MenuTop-circle {
     max-width: 10.625rem;
     position: relative;
+    animation: spin 20s linear infinite;
+}
+
+@keyframes spin {
+    from {
+        tranform: rotate(0deg)
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
 }
 
 .MenuTop-polo {
@@ -495,7 +527,7 @@ body {
 /* TRANSITION */
 .Transition {
     position: fixed;
-   inset: 0;
+    inset: 0;
 
     z-index: 10;
     pointer-events: none;
@@ -524,26 +556,6 @@ body {
 
 }
 
-/* PLAYER */
-.Player {
-    width: 100%;
-
-    position: fixed;
-   inset: 0;
-
-    z-index: 0;
-    opacity: 0;
-
-    transition: opacity 0.5s linear;
-}
-
-.Player.isListening {
-    opacity: 1;
-    z-index: 5;
-    transition-delay: 1s;
-    /* era el delay */
-}
-
 @keyframes babiecaCurtain {
     0% {
         transform: translateX(100%);
@@ -556,23 +568,54 @@ body {
 
 }
 
-.PageHeader-link {
-    color: white;
+/* PLAYER */
+.Player {
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    inset: 0;
+
+    z-index: 0;
+    opacity: 0;
+    pointer-events: none;
+
+    transition: opacity 0.6s linear;
+}
+
+.Player.isListening {
+    opacity: 1;
+    z-index: 5;
+    transition-delay: 1s;
+    pointer-events: auto;
+    /* era el delay */
 }
 
 .PlayerScreen {
     width: 100%;
+    height: 100vh;
     background-color: transparent;
 
+    overflow: hidden;
+    position: relative;
 }
 
 .PlayerScreen-video {
     width: 100%;
     min-height: 100vh;
+
     object-fit: cover;
+    position: absolute;
+    inset: 0;
+    z-index: 1;
 }
 
-.PageHeader {
+.PlayerAudio {
+    display: none;
+}
+
+
+/* ************  SOBRE EL VIDEO  ********** */
+.Player .PageHeader {
     /* background-color: aqua; */
     width: 100%;
     min-height: 3.125rem;
@@ -586,16 +629,57 @@ body {
     padding: 0 2rem 0 2rem;
 
     position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 5;
+}
+
+.PlayerArrows {
+    display: flex;
+    flex-flow: column;
+    gap: 2rem;
+
+    position: absolute;
+    z-index: 5;
+}
+
+.PlayerArrow {
+    width: 2.5rem;
+    min-height: 2.5rem;
+    background-color: red;
+    border: 1px solid white;
+    border-radius: 50%;
+
+    font-size: 1rem;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.PlayerArrow:hover {
+    background-color: white;
+    color: black;
 }
 
 .PlayerSlider {
     width: 100%;
+
+    display: flex;
+    gap: 0.5rem;
+
     position: absolute;
+    z-index: 5;
 }
 
-.PlayerTitle {}
+.PlayerTitle {
+    position: absolute;
+    z-index: 5;
+    color: white;
+}
 
-.PlayerBtn {}
+.PlayerBtn {
+    position: absolute;
+    z-index: 5;
+}
 
 /*
 FLUJO DE CAPAS (z-index): 
@@ -633,9 +717,3 @@ voy a probar con vw en lugar de % (SI FUNCIONA PERO NO SE DESLIZA HASTA EL FINAL
 !! SECCIONES DE DETRÁS -----> no cambian en medio de la trnsicion sino al comenzar
 (SOLUCION: APLICAR DELAY)
    */
-
-.PageHeader {}
-
-
-
-Transition TransitionText Player PageHeader PageHeader-item PlayerScreen PlayerScreen-video PlayerScreen-video--babieca PlayerSlider PlayerSlider-item PlayerTitle PlayerName PlayerLenght PlayerBtn PlayerBtn-shape PlayerBtn-text PlayerBtn-text--mute

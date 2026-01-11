@@ -100,16 +100,16 @@
         <ul class="PageHeader">
 
             <!-- IZQUIERDA -->
-            <li class="PageHeader-item PageHeader-item--author">
+            <li class="PageHeader-texto">
                 <span class="PageHeader-author">guitarricadelafuente</span>
             </li>
 
             <!-- DERECHA -->
-            <li class="PageHeader-item PageHeader-item--actions">
+            <li class="PageHeader-nav">
                 <img src="ASSETS/Cover/IregularStar.svg" class="PageHeader-star" alt="">
-                <a href="" class="PageHeader-link">presave</a>
-                <a href="" class="PageHeader-link">tour</a>
-                <a href="" class="PageHeader-link">credits</a>
+                <a href="" class="PageHeader-link">Tour</a>
+                <!-- <a href="" class="PageHeader-link"></a> -->
+                <!-- <a href="" class="PageHeader-link"></a> -->
             </li>
         </ul>
 
@@ -160,24 +160,24 @@
         <ul class="PageHeader">
 
             <!-- IZQUIERDA -->
-            <li class="PageHeader-item PageHeader-item--author">
+            <li class="PageHeader-texto">
                 <span class="PageHeader-author">guitarricadelafuente</span>
             </li>
 
             <!-- DERECHA -->
-            <li class="PageHeader-item PageHeader-item--actions">
+            <li class="PageHeader-nav">
                 <img src="ASSETS/Cover/IregularStar.svg" class="PageHeader-star" alt="">
-                <a href="" class="PageHeader-link">presave</a>
-                <a href="" class="PageHeader-link">tour</a>
-                <a href="" class="PageHeader-link">credits</a>
+                <a href="" class="PageHeader-link">Tour</a>
+                <!-- <a href="" class="PageHeader-link"></a> -->
+                <!-- <a href="" class="PageHeader-link"></a> -->
             </li>
         </ul>
 
         <!-- PANTALLA DEL REPRODUCTOR -->
         <div class="PlayerScreen">
             <div class="PlayerScreen-videos">
-                <video class="PlayerScreen-video PlayerScreen-video--babieca" src="ASSETS/a_BABIECA/BABIECA.mp4"
-                    autoplay loop muted></video>
+                <video class="PlayerScreen-video PlayerScreen-video--babieca" id="playervideo"
+                    src="ASSETS/a_BABIECA/BABIECA.mp4" autoplay loop muted></video>
                 <!-- <video class="PlayerScreen-video PlayerScreen-video--futuros" src=""></video>
             <video class="PlayerScreen-video PlayerScreen-video--full" src=""></video>
             <video class="PlayerScreen-video PlayerScreen-video--puerta" src=""></video>
@@ -191,33 +191,44 @@
             <video class="PlayerScreen-video PlayerScreen-video--tramuntana" src=""></video> -->
             </div>
 
+            <!-- AUDIO -->
+            <audio src="ASSETS/a_BABIECA/Guitarricadelafuente_-_BABIECA_Video_Oficial_256KBPS.webm"></audio>
+
+<!-- CONTENT -->
+ <div  class="PlayerContent">
+    
+ </div>
+
+            <!-- FLECHAS -->
+            <div class="PlayerArrows">
+                <button class="PlayerArrow PlayerArrow--prev">↑</button>
+                <button class="PlayerArrow PlayerArrow--next">↓</button>
+            </div>
+
             <!-- SLIDER DE PUNTOS -->
             <div class="PlayerSlider">
-                <item class="PlayerSLider-item">o</item>
-                <item class="PlayerSLider-item">o</item>
-                <item class="PlayerSLider-item">o</item>
-                <item class="PlayerSLider-item">o</item>
-                <item class="PlayerSLider-item">o</item>
-                <item class="PlayerSLider-item">o</item>
-                <item class="PlayerSLider-item">o</item>
-                <item class="PlayerSLider-item">o</item>
-                <item class="PlayerSLider-item">o</item>
-                <item class="PlayerSLider-item">o</item>
-                <item class="PlayerSLider-item">o</item>
-                <item class="PlayerSLider-item">o</item>
+                <button class="PlayerSlider-dot isActive"  data-index="1"></button>
+                <button class="PlayerSlider-dot" data-index="2"></button>
+                <button class="PlayerSlider-dot" data-index="3"></button>
+                <button class="PlayerSlider-dot" data-index="4"></button>
+                <button class="PlayerSlider-dot" data-index="5"></button>
+                <button class="PlayerSlider-dot" data-index="6"></button>
+                <button class="PlayerSlider-dot" data-index="7"></button>
+                <button class="PlayerSlider-dot" data-index="8"></button>
+                <button class="PlayerSlider-dot" data-index="9"></button>
+                <button class="PlayerSlider-dot" data-index="10"></button>
+                <button class="PlayerSlider-dot" data-index="11"></button>
+                <button class="PlayerSlider-dot" data-index="12"></button>
             </div>
 
             <div class="PlayerTitle">
-                <p class="PlayerName">babieca</p>
+                <p class="PlayerName">babieca!</p>
                 <p class="PlayerLenght">2:48</p>
             </div>
 
             <!-- BOTON DE MUTE Y UNMUTE -->
             <div class="PlayerBtn">
-                <div class="PlayerBtn-shape">
-                    <!-- <div class="PlayerBtn-text PlayerBtn-text--unmute">unmute</div> -->
-                    <div class="PlayerBtn-text PlayerBtn-text--mute">mute</div>
-                </div>
+                <button class="PlayerBtn-text" id="muteToggle">mute</button>
             </div>
         </div>
     </section>
