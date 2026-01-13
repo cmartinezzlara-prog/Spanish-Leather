@@ -839,25 +839,3 @@ FLUJO DE CAPAS (z-index):
 3. .Player
    → z-index: 1
    Permanece por debajo y solo se revela al final.
-
-   DE ESTA MANERA EL CAMBIO DE CONTENIDO SUCEDE EN MEDIO DE LA TRANSICION 
-   Y NO AL PRINCIPIO COMO HE HECHO ANTES (ARREGLADO) 
-
-   vamos a hacerlo con keyframes: 
-   0% {transform: transalateX(100%);} *50%/0 *100%/-100% ERRROORR (no va fluido y se queda a la mitad por salir
-
-   despues tenemos que hacer que desaparezca fluido el menu 
-   con OPACITY se puede hacer bien---->
-   PLAYER tiene que estar debajo de babieca
-   tiene que ser visible solo cuando babieca esta pasando 
-   pero cuando ¡ya tiene la b fuera!
-
-!! BABIECA----> me encuentro con problemas para la transicion:
-1. babieca entra por la derecha pero se va tambien para la derecha
-voy a probar con vw en lugar de % (SI FUNCIONA PERO NO SE DESLIZA HASTA EL FINAL
-2. va a trompicones: (SOLUCION: TENGO QUE PONER SOLO 2 TRANSICIONES DE % O VW)
-   con clases --> cuando hago 'click' en escuchar estoy "escuchando" ('isListening')
-
-!! SECCIONES DE DETRÁS -----> no cambian en medio de la trnsicion sino al comenzar
-(SOLUCION: APLICAR DELAY)
-   */
