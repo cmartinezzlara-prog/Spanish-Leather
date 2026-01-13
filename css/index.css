@@ -92,7 +92,7 @@ body {
     width: 5.625rem;
     min-height: 5.625rem;
 
-    animation: flashPulse 2s ease-in-out 2;
+    animation: flashPulse 1.5s ease-in-out 2;
     /* si dura 2s x 2veces = dura 4s ____ a los 4s oculto splash/ muestro cover */
 }
 
@@ -278,7 +278,6 @@ body {
     flex-flow: row nowrap;
     justify-content: center;
     align-items: center;
-
 }
 
 .CoverBottom-label {
@@ -313,7 +312,6 @@ body {
     /* background-color: blue; */
     margin: -0.5rem 0 0 0;
 }
-
 
 .CoverBottom-script {
     width: 100%;
@@ -377,13 +375,10 @@ body {
     color: white
 }
 
-
 .PageHeader-texto {
     /* background-color: red; */
     padding: 0 0 0 2rem;
 }
-
-.PageHeader-author {}
 
 .PageHeader-nav {
     /* background-color: blue; */
@@ -395,13 +390,24 @@ body {
     align-items: center;
 }
 
-
 .PageHeader-star {
     max-height: 1.25rem;
     width: 1.875rem;
 }
 
-.PageHeader-link {}
+.PageHeader-nav:hover .PageHeader-star {
+    animation: spin 5s linear infinite;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg)
+    }
+
+    to {
+        transform: rotate(360deg)
+    }
+}
 
 /* TOP MENU */
 .MenuTop {
@@ -436,21 +442,32 @@ body {
     flex-flow: row;
     justify-content: center;
     align-items: center;
+
+    transition: 0.8s ease;
+}
+
+.MenuTop-wheel:hover {
+    transition: 0.8s ease;
+    transform: scale(1.1);
 }
 
 .MenuTop-circle {
     max-width: 10.625rem;
     position: relative;
-    animation: spin 20s linear infinite;
+    animation: spin 15s linear infinite;
 }
 
-@keyframes spin {
+.MenuTop-wheel:hover .MenuTop-circle {
+    animation: circleSpin 4s linear infinite;
+}
+
+@keyframes circleSpin {
     from {
-        tranform: rotate(0deg)
+        transform: rotate(0deg)
     }
 
     to {
-        transform: rotate(360deg);
+        transform: rotate(360deg)
     }
 }
 
@@ -501,7 +518,6 @@ body {
     content: "";
 }
 
-
 .MenuListen {
     width: 100%;
     display: flex;
@@ -521,6 +537,14 @@ body {
     font-size: .9375rem;
     text-transform: capitalize;
 
+    transition: 0.5s ease;
+}
+
+.MenuListen-btn:hover {
+    color: black;
+    background-color: white;
+    font-weight: 700;
+    transition: 0.5s ease;
 }
 
 
@@ -568,14 +592,14 @@ body {
 
 }
 
-/* PLAYER */
+/* ********* PLAYER ******** */
 .Player {
     width: 100%;
     height: 100vh;
     position: fixed;
     inset: 0;
 
-    z-index: 0;
+    z-index: 5;
     opacity: 0;
     pointer-events: none;
 
@@ -588,12 +612,21 @@ body {
     transition-delay: 1s;
     pointer-events: auto;
     /* era el delay */
+
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
 }
 
 .PlayerScreen {
     width: 100%;
     height: 100vh;
-    background-color: transparent;
+
+    display: flex;
+    flex-flow: column;
+    justify-content: end;
+    align-items: center;
 
     overflow: hidden;
     position: relative;
@@ -615,7 +648,23 @@ body {
 
 
 /* ************  SOBRE EL VIDEO  ********** */
-.Player .PageHeader {
+.PlayerContent {
+    width: 100%;
+    min-height: 100%;
+
+    display: flex;
+    flex-flow: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem 4rem 1rem 4rem;
+
+    position: relative;
+    z-index: 5;
+
+    color: white;
+}
+
+.PageHeader {
     /* background-color: aqua; */
     width: 100%;
     min-height: 3.125rem;
@@ -624,61 +673,156 @@ body {
     flex-flow: row nowrap;
     justify-content: space-between;
     align-items: center;
-
-    gap: 2.5rem;
     padding: 0 2rem 0 2rem;
 
     position: absolute;
     top: 0;
     left: 0;
-    z-index: 5;
 }
 
+.PlayerCenter {
+    width: 100%;
+    /* background-color: red; */
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* BOTONES (FLECHAS Y MUTE) */
 .PlayerArrows {
+    min-height: 100vh;
+    /* background-color: red; */
+
     display: flex;
     flex-flow: column;
-    gap: 2rem;
+    justify-content: space-between;
+    align-items: center;
+    padding: 4rem 0 4rem 0;
 
     position: absolute;
-    z-index: 5;
+    z-index: 20;
+    pointer-events: auto;
 }
 
 .PlayerArrow {
     width: 2.5rem;
     min-height: 2.5rem;
-    background-color: red;
+
+    background-color: transparent;
     border: 1px solid white;
     border-radius: 50%;
 
+    display: flex;
+    flex-flow: row;
+    justify-content: center;
+    align-items: center;
+
     font-size: 1rem;
+    color: white;
+
     cursor: pointer;
     transition: 0.2s ease;
 }
 
 .PlayerArrow:hover {
-    background-color: white;
-    color: black;
+    border: 1px solid black;
+    background-color: black;
 }
 
-.PlayerSlider {
+.PlayerArrow--prev {
+    width: 1.5rem;
+}
+
+.PlayerArrow--next {
+    width: 1.5rem;
+}
+
+/* TITULO + DURACIÓN */
+/* .PlayerTitle {
+    background-color: blue;
+} */
+
+.PlayerName {
+    font-size: 3rem;
+    transition: 0.4s ease;
+}
+
+.PlayerName:hover {
+    letter-spacing: 0.3rem;
+    transition: 0.4s ease;
+}
+
+.PlayerLenght {
     width: 100%;
+    /* background-color: red; */
 
     display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: baseline;
+
+    font-size: 1.2rem;
+}
+
+/* CARRUSEL */
+.PlayerSlider {
+    /* background-color: blue; */
+
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+
     gap: 0.5rem;
-
-    position: absolute;
-    z-index: 5;
 }
 
-.PlayerTitle {
+.PlayerSlider-dot {
+    width: 0.6rem;
+    min-height: 0.6rem;
+    background-color: transparent;
+
+    border-radius: 50%;
+    border: 1px solid white;
+    cursor: pointer;
+}
+
+.PlayerSlider-dot.isActive {
+    background-color: white;
+}
+
+.PlayerMute {
+    width: 100%;
+    /* background-color: rebeccapurple; */
+
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: start;
+    align-items: end;
+    padding: 0 0 4.5rem 4rem;
+
     position: absolute;
-    z-index: 5;
+    z-index: 20;
+}
+
+.PlayerBtn-text {
+    background-color: transparent;
+
+    font-family: 'Euclid Circular A', sans-serif;
+    font-size: 1rem;
+    font-weight: 500;
     color: white;
+    letter-spacing: 0.08rem;
+
+    cursor: pointer;
+    transition: 0.2s ease;
 }
 
-.PlayerBtn {
-    position: absolute;
-    z-index: 5;
+.PlayerBtn-text:hover {
+    color: white;
+    letter-spacing: 0.35rem;
+    transition: 0.2s ease;
 }
 
 /*
