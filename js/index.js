@@ -85,3 +85,54 @@ window.addEventListener('wheel', () => {
     coverActivo = false
 
 })
+
+
+// GALERIA 
+const videos = document.querySelectorAll('.PlayerScreen-video')
+const dots = document.querySelectorAll('.PlayerSlider-dot')
+const prevBtn = document.querySelector('.PlayerArrow--prev')
+const nextBtn = document.querySelector('.PlayerArrow--next')
+
+let index = 0
+//declaramos el video que esta activo ahora (0=primer video)
+
+function showVideo(i) {
+
+    if (i < 0) i = videos.length - 1
+    if (i >= videos.length) i = 0
+
+    //si i es menor de 0 esta por detras del video activo o primer video
+    // si i es mayor o = a 0 esta por denlante (si es 12 es el ultimo)
+
+    videos.forEach(v => v.classList.remove('isActive'))
+
+    //antes de activar el correcto tengo que ponerlo a 0
+    videos[i].currentTime = 0
+    videos[i].play()
+
+    //activar el correcto
+    videos[i].classList.add('isActive')
+
+    //quitar isActive de los puntos
+    dots.forEach(dots => dots.classList.remove('isActive'))
+
+    //activo el correcto
+    dots[i].classList.add('isActive')
+
+    //sirve para guardar el indice actual
+    index = i
+}
+
+nextBtn.addEventListener('click', () => {
+    showVideo(index + 1)
+})
+
+prevBtn.addEventListener('click', () => {
+    showVideo(index - 1)
+})
+
+showVideo(0)
+
+
+
+

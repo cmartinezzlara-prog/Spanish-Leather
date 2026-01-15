@@ -82,7 +82,7 @@ body {
     left: 0;
     right: 0;
     bottom: 0;
-    z-index: 10;
+    z-index: 9;
 
     opacity: 1;
     transition: opacity 1.3s ease;
@@ -122,7 +122,7 @@ body {
 
     position: fixed;
     inset: 0;
-    z-index: 1;
+    z-index: 6;
 
     opacity: 0;
     transform: translateY(0);
@@ -153,7 +153,7 @@ body {
     position: absolute;
     top: 0;
     left: 0;
-    z-index: 0;
+    z-index: 5;
 }
 
 .CoverStar {
@@ -344,7 +344,7 @@ body {
     color: white;
 
     position: relative;
-    z-index: 1;
+    z-index: 8;
 
     opacity: 0;
     transition: opacity 1s ease;
@@ -599,7 +599,7 @@ body {
     position: fixed;
     inset: 0;
 
-    z-index: 5;
+    z-index: 7;
     opacity: 0;
     pointer-events: none;
 
@@ -608,7 +608,7 @@ body {
 
 .Player.isListening {
     opacity: 1;
-    z-index: 5;
+    z-index: 7;
     transition-delay: 1s;
     pointer-events: auto;
     /* era el delay */
@@ -632,6 +632,12 @@ body {
     position: relative;
 }
 
+.PlayerScreen-videos {
+    width: 100%;
+    height: 100vh;
+    position: relative;
+}
+
 .PlayerScreen-video {
     width: 100%;
     min-height: 100vh;
@@ -640,12 +646,17 @@ body {
     position: absolute;
     inset: 0;
     z-index: 1;
+
+    opacity: 0;
+    pointer-events: none;
+
+    filter: brightness(0.7); 
 }
 
-.PlayerAudio {
-    display: none;
+.PlayerScreen-video.isActive{
+    opacity: 1;
+    pointer-events: auto;
 }
-
 
 /* ************  SOBRE EL VIDEO  ********** */
 .PlayerContent {
@@ -659,7 +670,7 @@ body {
     padding: 2rem 4rem 1rem 4rem;
 
     position: relative;
-    z-index: 5;
+    z-index: 7;
 
     color: white;
 }
@@ -702,7 +713,7 @@ body {
     padding: 4rem 0 4rem 0;
 
     position: absolute;
-    z-index: 20;
+    z-index: 8;
     pointer-events: auto;
 }
 
@@ -731,13 +742,20 @@ body {
     background-color: black;
 }
 
-.PlayerArrow--prev {
-    width: 1.5rem;
+.PlayerUp {
+     width: 1.5rem;
+     cursor: pointer;
+    opacity: 0.7;
+    transition: opacity 0.3s ease;
 }
 
-.PlayerArrow--next {
+.PlayerDown{
     width: 1.5rem;
+    cursor: pointer;
+    opacity: 0.7;
+    transition: opacity 0.3s ease;
 }
+
 
 /* TITULO + DURACIÓN */
 /* .PlayerTitle {
@@ -786,6 +804,9 @@ body {
     border-radius: 50%;
     border: 1px solid white;
     cursor: pointer;
+
+    opacity: 0.7;
+    transition: opacity 0.3s ease;
 }
 
 .PlayerSlider-dot.isActive {
@@ -803,7 +824,7 @@ body {
     padding: 0 0 4.5rem 4rem;
 
     position: absolute;
-    z-index: 20;
+    z-index: 8;
 }
 
 .PlayerBtn-text {
