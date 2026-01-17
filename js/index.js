@@ -92,9 +92,12 @@ const videos = document.querySelectorAll('.PlayerScreen-video')
 const dots = document.querySelectorAll('.PlayerSlider-dot')
 const prevBtn = document.querySelector('.PlayerArrow--prev')
 const nextBtn = document.querySelector('.PlayerArrow--next')
+const transitionText = document.querySelector('.TransitionText')
 
 let index = 0
 //declaramos el video que esta activo ahora (0=primer video)
+
+videos.forEach(v => v.muted = true)
 
 function showVideo(i) {
 
@@ -104,18 +107,21 @@ function showVideo(i) {
     //si i es menor de 0 esta por detras del video activo o primer video
     // si i es mayor o = a 0 esta por denlante (si es 12 es el ultimo)
 
-    videos.forEach(v => v.classList.remove('isActive'))
+    videos.forEach(v => {
+        v.classList.remove('isActive')
+        v.muted = true
+    })
 
-    //antes de activar el correcto tengo que ponerlo a 0
+    //antes de activar el correcto tengo que ponerlo a 0 = reiniciarlo
     videos[i].currentTime = 0
     videos[i].play()
-
     //activar el correcto
     videos[i].classList.add('isActive')
+    //desmutear el activo
+    videos[i].muted = false
 
     //quitar isActive de los puntos
     dots.forEach(dots => dots.classList.remove('isActive'))
-
     //activo el correcto
     dots[i].classList.add('isActive')
 
@@ -131,7 +137,17 @@ prevBtn.addEventListener('click', () => {
     showVideo(index - 1)
 })
 
-showVideo(0)
+
+transition.addEventListener('animationend', () => {
+    console.log("animation end en .Transition")
+
+    setTimeout(() => {
+        showVideo(0)
+    })
+})
+
+
+
 
 
 
