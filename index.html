@@ -15,8 +15,7 @@
 
     <!-- ************  SPLASH  *************-->
     <div class="Splash">
-        <img src="ASSETS/m_CONTENT/Destello.svg" class="Splash-flash" alt="">
-
+        <img src="assets/content/destello.svg" class="Splash-flash" alt="Animación de destello">
     </div>
 
 
@@ -26,28 +25,24 @@
 
         <!-- ESTRELLAS ABSOLUT -->
         <div class="CoverStars">
-            <!-- <img src="" alt="" class="CoverStar">
-            <img src="" alt="" class="CoverStar">
-            <img src="" alt="" class="CoverStar">
-            <img src="" alt="" class="CoverStar"> -->
-            <!-- <img  class="CoverStar-img" src="ASSETS/Cover/Recurso 1.svg" alt=""> -->
+
             <div class="CoverStar CoverStar-top">
-                <img class="CoverStar-img" src="ASSETS/n_CONTENT1/Star.svg" alt="">
+                <img class="CoverStar-img" src="assets/content/star.svg" loading="lazy" alt="Estrella superior">
             </div>
 
             <div class="CoverStar CoverStar-lateral">
                 <div class="CoverStar-left">
-                    <img class="CoverStar-img" src="ASSETS/n_CONTENT1/Star.svg" alt="">
+                    <img class="CoverStar-img" src="assets/content/star.svg" loading="lazy" alt="Estrella izquierda">
                 </div>
 
                 <div class="CoverStar-right">
-                    <img class="CoverStar-img" src="ASSETS/n_CONTENT1/Star.svg" alt="">
+                    <img class="CoverStar-img" src="assets/content/star.svg" loading="lazy" alt="Estrellas derecha">
                 </div>
 
             </div>
 
             <div class="CoverStar CoverStar-bottom">
-                <img class="CoverStar-img" src="ASSETS/n_CONTENT1/Star.svg" alt="">
+                <img class="CoverStar-img" src="assets/content/star.svg" loading="lazy" alt="Estrella inferior">
             </div>
 
         </div>
@@ -57,14 +52,15 @@
 
             <div class="CoverCont-top">
                 <!-- IMG CALIGRÁFICA -->
-                <img src="ASSETS/n_CONTENT1/Text Top.svg" class="CoverTop-script" alt="">
+                <img src="assets/content/textop.svg" class="CoverTop-script" loading="lazy"
+                    alt="Texto decorativo superior">
             </div>
 
             <!-- GRID DEL MEDIO / TITULO + FECHA + AUTOR-->
             <div class="CoverMiddle">
                 <!-- TÍTULO -->
 
-                <img src="ASSETS/n_CONTENT1/Title.svg" class="CoverMiddle-img" alt="">
+                <img src="assets/content/title.svg" class="CoverMiddle-img" loading="lazy" alt="Título del álbum">
 
 
                 <!-- AUTOR -->
@@ -75,20 +71,19 @@
             <div class="CoverBottom">
                 <!-- FECHA + LABEL -->
                 <div class="CoverBottom-release">
-                    <img src="ASSETS/n_CONTENT1/Label.svg" class="CoverBottom-label" alt="">
+                    <img src="assets/content/label.svg" class="CoverBottom-label" loading="lazy"
+                        alt="Sello discográfico">
+
                     <div class="CoverBottom-date">
                         <p class="CoverBottom-num">16</p>
                         <p class="CoverBottom-mth">may</p>
                     </div>
-
                 </div>
 
                 <!-- IMG CALIGRÁFICA -->
                 <div class="CoverBottom-script">
-                    <img src="ASSETS/n_CONTENT1/Text Bottom.svg" class="CoverBottom-img" alt="">
+                    <img src="assets/content/textbottom.svg" class="CoverBottom-img" alt="Texto decorativo inferior">
                 </div>
-
-
             </div>
         </article>
     </section>
@@ -96,8 +91,8 @@
 
 
     <!--**************** MENÚ PRINCIPAL ************** -->
-    <section class="Menu">
-        <ul class="PageHeader">
+    <section class="Menu" aria-labelledby="menu-heading">
+        <ul class="PageHeader" aria-label="Navegación principal">
 
             <!-- IZQUIERDA -->
             <li class="PageHeader-texto">
@@ -106,8 +101,9 @@
 
             <!-- DERECHA -->
             <li class="PageHeader-nav">
-                <img src="ASSETS/n_CONTENT1/IregularStar.svg" class="PageHeader-star" alt="">
-                <a href="" class="PageHeader-link">Tour</a>
+                <img src="assets/content/iregularstar.svg" class="PageHeader-star" loading="lazy" alt="Icono">
+
+                <a href="" class="PageHeader-link" title="Ver fechas del tour" target="_blank" rel="noreferrer">Tour</a>
                 <!-- <a href="" class="PageHeader-link"></a> -->
                 <!-- <a href="" class="PageHeader-link"></a> -->
             </li>
@@ -119,8 +115,8 @@
             </div>
 
             <div class="MenuTop-wheel">
-                <img src="ASSETS/n_CONTENT1/StarCircle.svg" class="MenuTop-circle" alt="">
-                <img src="ASSETS/n_CONTENT1/PoloLogo.svg" class="MenuTop-polo" alt="">
+                <img src="assets/content/starsircle.svg" class="MenuTop-circle" loading="lazy" alt="Rueda de estrellas">
+                <img src="assets/content/polologo.svg" class="MenuTop-polo" alt="Logo de Polo">
             </div>
         </div>
 
@@ -142,7 +138,7 @@
         </div>
 
         <div class="MenuListen">
-            <button class="MenuListen-btn">escuchar</button>
+            <button class="MenuListen-btn" title="Escuchar álbum">escuchar</button>
         </div>
     </section>
 
@@ -150,42 +146,78 @@
 
     <!-- **********  PANTALLA DE TRANSICIÓN!!!  ************* -->
     <section class="Transition">
-        <img src="ASSETS/n_CONTENT1/Babieca.svg" class="TransitionText" alt="">
+        <img src="assets/content/babiecaimg.svg" class="TransitionText" loading="lazy" alt="Animación Babieca">
     </section>
 
 
 
     <!-- SECCION ESCUCHAR ALBUM -->
-    <section class="Player">
+    <section class="Player" aria-labelledby="player-heading">
 
         <!-- PANTALLA DEL REPRODUCTOR -->
         <div class="PlayerScreen">
 
             <!-- VIDEOS -->
             <div class="PlayerScreen-videos">
-                <video class="PlayerScreen-video" id="playervideo" src="ASSETS/a_BABIECA/BABIECA.mp4" autoplay loop muted></video>
-                
-                <video class="PlayerScreen-video" src="ASSETS/b_FUTUROS AMANTES/FUTUROS AMANTES.mp4" autoplay loop muted></video>
-                
-                <video class="PlayerScreen-video" src="ASSETS/c_FULL TIME PAPI/FULL TIME PAPI.mp4" autoplay loop muted></video>
+                <video class="PlayerScreen-video" id="playervideo" preload="none" autoplay loop muted>
+                    <source src="assets/babieca/babieca.webm" type="video/webm">
+                    <source src="assets/babieca/babieca.mp4" type="video/mp4">
+                </video>
 
-                <video class="PlayerScreen-video" src="ASSETS/d_PUERTA DEL SOL/PUERTA DEL SOL.mp4" autoplay loop muted></video>
-    
-                <video class="PlayerScreen-video" src="ASSETS/e_MIDSUMMER PIPEDREAM/PIPE DREAM_2.mp4" autoplay loop muted></video>
+                <video class="PlayerScreen-video" id="playervideo" preload="none" autoplay loop muted>
+                    <source src="assets/futurosamantes/futurosamantes.webm" type="video/webm">
+                    <source src="assets/futurosamantes/futurosamantes.mp4" type="video/mp4">
+                </video>
 
-                <video class="PlayerScreen-video" src="ASSETS/f_POSES/POSES.mp4" autoplay loop muted></video>
+                <video class="PlayerScreen-video" id="playervideo" preload="none" autoplay loop muted>
+                    <source src="assets/fulltimepapi/fulltimepapi.webm" type="video/webm">
+                    <source src="assets/fulltimepapi/fulltimepapi.mp4" type="video/mp4">
+                </video>
 
-                <video class="PlayerScreen-video" src="ASSETS/g_LOS CHICOS DEL CLUB/LOS CHICOS DEL CLUB.mp4" autoplay loop muted></video>
+                <video class="PlayerScreen-video" id="playervideo" preload="none" autoplay loop muted>
+                    <source src="assets/puertadelsol/puertadelsol.webm" type="video/webm">
+                    <source src="assets/puertadelsol/puertadelsol.mp4" type="video/mp4">
+                </video>
 
-                <video class="PlayerScreen-video" src="ASSETS/h_POST PELEGRI/POST PELEGRI.mp4" autoplay loop muted></video>
+                <video class="PlayerScreen-video" id="playervideo" preload="none" autoplay loop muted>
+                    <source src="assets/midsummerpipedream/midsummerpipedream.webm" type="video/webm">
+                    <source src="assets/midsummerpipedream/midsummerpipedream.mp4" type="video/mp4">
+                </video>
 
-                <video class="PlayerScreen-video" src="ASSETS/i_MATALEÓN/MATALEON.mp4" autoplay loop muted></video>
+                <video class="PlayerScreen-video" id="playervideo" preload="none" autoplay loop muted>
+                    <source src="assets/poses/poses.webm" type="video/webm">
+                    <source src="assets/poses/poses.mp4" type="video/mp4">
+                </video>
 
-                <video class="PlayerScreen-video" src="ASSETS/j_QTALM/QUIEN TEME A LA MAQUINA_1.mp4" autoplay loop muted></video>
+                <video class="PlayerScreen-video" id="playervideo" preload="none" autoplay loop muted>
+                    <source src="assets/loschicosdelclub/loschicosdelclub.webm" type="video/webm">
+                    <source src="assets/loschicosdelclub/loschicosdelclub.mp4" type="video/mp4">
+                </video>
 
-                <video class="PlayerScreen-video" src="ASSETS/k_SONATA Nº9 LHDGV/SONATA N9.mp4" autoplay loop muted></video>
+                <video class="PlayerScreen-video" id="playervideo" preload="none" autoplay loop muted>
+                    <source src="assets/postpelegri/postpelegri.webm" type="video/webm">
+                    <source src="assets/postpelegri/postperegri.mp4" type="video/mp4">
+                </video>
 
-                <video class="PlayerScreen-video" src="ASSETS/l_TRAMUNTANA/TRAMUNTANA.mp4" autoplay loop muted></video>
+                <video class="PlayerScreen-video" id="playervideo" preload="none" autoplay loop muted>
+                    <source src="assets/mataleon/mataleon.webm" type="video/webm">
+                    <source src="assets/mataleon/mataleon.mp4" type="video/mp4">
+                </video>
+
+                <video class="PlayerScreen-video" id="playervideo" preload="none" autoplay loop muted>
+                    <source src="assets/qtalm/qtalm.webm" type="video/webm">
+                    <source src="assets/qtalm/qtalm.mp4" type="video/mp4">
+                </video>
+
+                <video class="PlayerScreen-video" id="playervideo" preload="none" autoplay loop muted>
+                    <source src="assets/sonatanueve/sonatanueve.webm" type="video/webm">
+                    <source src="assets/sonatanueve/sonatanueve.mp4" type="video/mp4">
+                </video>
+
+                <video class="PlayerScreen-video" id="playervideo" preload="none" autoplay loop muted>
+                    <source src="assets/tramuntana/tramuntana.webm" type="video/webm">
+                    <source src="assets/tramuntana/tramuntana.mp4" type="video/mp4">
+                </video>
             </div>
 
             <!-- CONTENT -->
@@ -200,8 +232,11 @@
 
                     <!-- DERECHA -->
                     <li class="PageHeader-nav">
-                        <img src="ASSETS/n_CONTENT1/IregularStar.svg" class="PageHeader-star" alt="">
-                        <a href="" class="PageHeader-link">Tour</a>
+                        <img src="assets/content/iregularstar.svg" class="PageHeader-star" loading="lazy"
+                            alt="Estrella irregular">
+
+                        <a href="" class="PageHeader-link" title="Ver fechas del tour" target="_blank"
+                            rel="noreferrer">Tour</a>
                         <!-- <a href="" class="PageHeader-link"></a> -->
                         <!-- <a href="" class="PageHeader-link"></a> -->
                     </li>
@@ -221,45 +256,40 @@
 
                     <!-- SLIDER DE PUNTOS -->
                     <div class="PlayerSlider">
-                        <button class="PlayerSlider-dot isActive" data-index="1"></button>
-                        <button class="PlayerSlider-dot" data-index="2"></button>
-                        <button class="PlayerSlider-dot" data-index="3"></button>
-                        <button class="PlayerSlider-dot" data-index="4"></button>
-                        <button class="PlayerSlider-dot" data-index="5"></button>
-                        <button class="PlayerSlider-dot" data-index="6"></button>
-                        <button class="PlayerSlider-dot" data-index="7"></button>
-                        <button class="PlayerSlider-dot" data-index="8"></button>
-                        <button class="PlayerSlider-dot" data-index="9"></button>
-                        <button class="PlayerSlider-dot" data-index="10"></button>
-                        <button class="PlayerSlider-dot" data-index="11"></button>
-                        <button class="PlayerSlider-dot" data-index="12"></button>
+                        <button class="PlayerSlider-dot isActive" data-index="1" title="Ir al video 1"></button>
+                        <button class="PlayerSlider-dot" data-index="2" title="Ir al video 2"></button>
+                        <button class="PlayerSlider-dot" data-index="3" title="Ir al video 3"></button>
+                        <button class="PlayerSlider-dot" data-index="4" title="Ir al video 4"></button>
+                        <button class="PlayerSlider-dot" data-index="5" title="Ir al video 5"></button>
+                        <button class="PlayerSlider-dot" data-index="6" title="Ir al video 6"></button>
+                        <button class="PlayerSlider-dot" data-index="7" title="Ir al video 7"></button>
+                        <button class="PlayerSlider-dot" data-index="8" title="Ir al video 8"></button>
+                        <button class="PlayerSlider-dot" data-index="9" title="Ir al video 9"></button>
+                        <button class="PlayerSlider-dot" data-index="10" title="Ir al video 10"></button>
+                        <button class="PlayerSlider-dot" data-index="11" title="Ir al video 11"></button>
+                        <button class="PlayerSlider-dot" data-index="12" title="Ir al video 12"></button>
                     </div>
                 </div>
             </div>
 
             <!-- BOTON DE MUTE Y UNMUTE -->
             <div class="PlayerMute">
-                <button class="PlayerBtn-text" id="muteToggle">mute</button>
+                <button class="PlayerBtn-text" id="muteToggle" title="Activar o desactivar sonido">mute</button>
             </div>
 
             <!-- FLECHAS -->
             <div class="PlayerArrows">
-                <button class="PlayerArrow PlayerArrow--prev">
-                    <img src="ASSETS/m_CONTENT/ArrowUp.svg" class="PlayerUp" alt="">
+                <button class="PlayerArrow PlayerArrow--prev" title="Vídeo anterior">
+                    <img src="assets/content/arrowup.svg" class="PlayerUp" loading="lazy" alt="Flecha arriba">
                 </button>
 
                 <button class="PlayerArrow PlayerArrow--next">
-                    <img src="ASSETS/m_CONTENT/ArrowDown.svg" class="PlayerDown" alt="">
+                    <img src="assets/content/arrowdown.svg" class="PlayerDown" loading="lazy" alt="Flecha abajo">
                 </button>
             </div>
 
         </div>
     </section>
-
-
-
-
-
 
 </body>
 
