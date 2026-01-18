@@ -147,18 +147,21 @@ body {
     /* background-color: red; */
 }
 
-.CoverStar-top .CoverStar-bottom {
+.CoverStar-top {
     display: flex;
     flex-flow: row nowrap;
     justify-content: center;
     align-items: center;
-}
 
-.CoverStar-top {
     margin: 1.25rem 0 0 0;
 }
 
 .CoverStar-bottom {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+
     margin: 0 0 1.25rem 0;
 }
 
@@ -167,23 +170,26 @@ body {
     flex-flow: row nowrap;
 }
 
-.CoverStar-right .CoverStar-left{
+.CoverStar-right {
     width: 100%;
+    /* background-color: violet; */
 
     display: flex;
     flex-flow: row;
     align-items: center;
-}
 
-.CoverStar-right {
-    /* background-color: violet; */
     justify-content: end;
     padding: 0 3.125rem 0 0;
 }
 
-
 .CoverStar-left {
+    width: 100%;
     /* background-color: blue; */
+
+    display: flex;
+    flex-flow: row;
+    align-items: center;
+
     justify-content: start;
     padding: 0 0 0 3.125rem;
 }
@@ -596,7 +602,7 @@ body {
     opacity: 0;
     pointer-events: none;
 
-    filter: brightness(0.8);
+    filter: brightness(0.9);
     transition: opacity 0.5s ease;
 }
 
@@ -645,7 +651,8 @@ body {
     /* background-color: red; */
 
     display: flex;
-    flex-direction: row;
+    flex-direction: row wrap;
+    /* PERMITE QUE PASE A SUEGUNDA LIENA ********************* */
     justify-content: space-between;
     align-items: center;
 }
@@ -659,7 +666,7 @@ body {
     flex-flow: column;
     justify-content: space-between;
     align-items: center;
-    
+
     padding: 4rem 0 4rem 0;
 
     position: absolute;
@@ -692,14 +699,14 @@ body {
     background-color: black;
 }
 
-.PlayerUp{
+.PlayerUp {
     width: 1.5rem;
     cursor: pointer;
     opacity: 0.7;
     transition: opacity 0.3s ease;
 }
 
- .PlayerDown{
+.PlayerDown {
     width: 1.5rem;
     cursor: pointer;
     opacity: 0.7;
@@ -707,9 +714,17 @@ body {
 }
 
 /* TITULO + DURACIÓN */
+.PlayerTitle {
+    max-width: 500px;
+    /* background-color: black; */
+}
+
 .PlayerName {
+    width: 100%;
+
     font-size: 3rem;
     transition: 0.4s ease;
+    white-space: normal;
 }
 
 .PlayerName:hover {
@@ -718,9 +733,8 @@ body {
 }
 
 .PlayerLenght {
-    width: 100%;
     /* background-color: red; */
-
+    max-width: 450px;
     display: flex;
     flex-flow: row nowrap;
     justify-content: space-between;
@@ -748,7 +762,7 @@ body {
 
     border-radius: 50%;
     border: 1px solid white;
-    
+
     cursor: pointer;
     opacity: 0.7;
     transition: opacity 0.3s ease;
@@ -792,7 +806,9 @@ body {
     transition: 0.2s ease;
 }
 
-
+.h-hidden{
+   display: none;
+}
 
 @keyframes flashPulse {
     0% {
@@ -839,21 +855,7 @@ body {
 
 }
 
-/*
-FLUJO DE CAPAS (z-index): 
-
-1. .Transition (Babieca)
-   → z-index: 10
-   Siempre por encima de todo mientras anima.
-
-2. .Menu
-   → z-index: 5
-   Visible al inicio y mientras Babieca entra.
-
-3. .Player
-   → z-index: 1
-   Permanece por debajo y solo se revela al final.
-
-
-
+@media screen {
+    
+}
 
