@@ -96,22 +96,25 @@
     <section class="Menu">
         <h2 class="h-hidden">Menú principal</h2>
 
-        <ul class="PageHeader" aria-label="Navegación principal">
+        <header class="MenuHeader" aria-label="Navegación principal">
 
             <!-- IZQUIERDA -->
-            <li class="PageHeader-texto">
-                <h1 class="PageHeader-author">guitarricadelafuente</h1>
-            </li>
+            <div class="MenuHeader-texto">
+                <a href="index.html" class="MenuHeader-author">guitarricadelafuente</a>
+            </div>
 
             <!-- DERECHA -->
-            <li class="PageHeader-nav">
-                <img src="assets/content/iregularstar.svg" class="PageHeader-star" loading="lazy" alt="Icono">
+            <nav class="MenuHeader-nav">
+                <img src="assets/content/iregularstar.svg" class="MenuHeader-star" loading="lazy" alt="Icono">
 
-                <a href="" class="PageHeader-link" title="Ver fechas del tour" target="_blank" rel="noreferrer">Tour</a>
-                <!-- <a href="" class="PageHeader-link"></a> -->
-                <!-- <a href="" class="PageHeader-link"></a> -->
-            </li>
-        </ul>
+                <a href="#" class="MenuHeader-link" title="Ver fechas del tour" data-section="tour" target="_blank"
+                    rel="noreferrer">Tour</a>
+                <a href="#" class="MenuHeader-link" title="Ir al menu principal" data-section="menu" target="_blank"
+                    rel="noreferrer">Menú</a>
+                <a href="#" class="MenuHeader-link" title="Hacer presave del album" data-section="presave"
+                    target="_blank" rel="noreferrer">Presave</a>
+            </nav>
+        </header>
 
         <div class="MenuTop">
             <div class="MenuTop-text">
@@ -231,25 +234,32 @@
             <!-- CONTENT -->
             <div class="PlayerContent">
 
-                <ul class="PageHeader">
+                <header class="PlayerHeader" aria-label="Navegación principal">
 
                     <!-- IZQUIERDA -->
-                    <li class="PageHeader-texto">
-                       <h1 class="PageHeader-author">guitarricadelafuente</h1>
-                    </li>
+                    <div class="PlayerHeader-texto">
+                        <a href="index.html" class="PlayerHeader-author">guitarricadelafuente</a>
+                    </div>
 
                     <!-- DERECHA -->
-                    <li class="PageHeader-nav">
-                        <img src="assets/content/iregularstar.svg" class="PageHeader-star" loading="lazy"
-                            alt="Estrella irregular">
+                    <nav class="PlayerHeader-nav">
+                        <img src="assets/content/iregularstar.svg" class="PlayerHeader-star" loading="lazy" alt="Icono">
 
-                        <a href="" class="PageHeader-link" title="Ver fechas del tour" target="_blank"
-                            rel="noreferrer">Tour</a>
-                        <!-- <a href="" class="PageHeader-link"></a> -->
-                        <!-- <a href="" class="PageHeader-link"></a> -->
-                    </li>
-                </ul>
+                        <a href="#" class="PlayerHeader-link" title="Ver fechas del tour" data-section="tour"
+                            target="_blank" rel="noreferrer">Tour</a>
+                        <a href="#" class="PlayerHeader-link" title="Ir al menu principal" data-section="menu"
+                            target="_blank" rel="noreferrer">Menú</a>
+                        <a href="#" class="PlayerHeader-link" title="Hacer presave del album" data-section="presave"
+                            target="_blank" rel="noreferrer">Presave</a>
+                    </nav>
+                </header>
 
+                <!-- BOTÓN VOVLER AL MENU -->
+                <div class="PlayerBack">
+                    <button class="PlayerBack-btn">volver</button>
+                </div>
+
+                <!-- PANTALLA PLAYER -->
                 <div class="PlayerCenter">
                     <div class="PlayerTitle">
                         <p class="PlayerName"></p>

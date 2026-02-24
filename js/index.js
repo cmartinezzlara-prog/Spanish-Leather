@@ -39,9 +39,17 @@ console.log(menu)
 // EVENTO
 // Añadir clases. Cuando hago click en escuchar se les aplica isListening -> transition entra / menu desaparece / player aparece
 listenBtn.addEventListener('click', () => {
+    // Muestro la transicion y preparo el Player
     transition.classList.add('isListening')
     menu.classList.add('isListening')
     player.classList.add('isListening')
+
+    // RE-ACTIVAR eventos del PLAYER
+    player.style.pointerEvents = "auto"
+
+    // RESETEO EL MUTE AL ENTRAR
+    isMuted = false
+    muteBtn.textContent = "mute"
 })
 
 // VARIABLES
@@ -232,6 +240,55 @@ muteBtn.addEventListener('click', () => {
     else {
         muteBtn.textContent = "mute"
     }
+})
+
+//BOTON PARA VOLVER AL MENU PRINCIPAL 
+const btnVolver = document.querySelector('.PlayerBack-btn')
+
+btnVolver.addEventListener('click', () => {
+
+    // Oculto el Player
+    player.classList.remove('isListening')
+    // DESACTIVAR eventos del PLAYER
+    player.style.pointerEvents = "none"
+
+    // Muestro el Menu
+    menu.classList.add('isVisible')
+    menu.classList.remove('isListening')
+
+    // Paramos los videos
+    videos.forEach(video => {
+        video.pause()
+        video.currentTime = 0
+        video.muted = true
+    })
+
+    // Reseteo el estado del Player
+    index = 0
+    isMuted = false
+    muteBtn.textContent = "mute"
+
+    // Reseteo BABIECA
+    transition.classList.remove("isListening")
+    void transition.offsetWidth // reinicia la animación
+
+    // PROBLEMA: CUANDO VOY AL MENU LOS BOTONES DEL PALYER SIGUEN ACTIVOS
+    // Esto hace que al darle a Escuchar, al estasr en la misma posicion que la flecha de abajo
+    // se clicka y cuando vamos al player, vemos que se esta reproduciendo la segunda cancion...
+
+    // SOLUCION: 
+    // ACTIVAR eventos del Player >  player.style.pointerEvents = "auto"; (en ListenBtn.addEventListener...)
+    // DESACTIVAR eventos del Player >  player.style.pointerEvents = "none"; (en btnVolver.addEventListener...)
+
+
+    // PROBLEMA: cuando le doy a volver, luego a escuchar, el primer video no se reproduce ni pasa el babieca
+    // Lo que ocurre es que: cuando pulso escuchar por primera vez, añado transition.clasList.add("isListening")
+    // la animacion de babieca corre / cuando termina (animationend) se ejecuta showvideo(0) /
+    // peeero cuando pulso VOLVER estoy quitando player.isListening pero NO quito transition.isListening...
+    // Esto SIGNIFICA QUE: la transición se queda en su estado final / cuando pusle Ecuchar la clase is Listening YA ESTABA PUESTA
+    // POR TANTO: NO SE VUELVE A ACTIVAR LA ANIMACION YYY NO SE EJECUTA EL PRIMER VIDEO!!
+
+    // SOLCIÓN: Pues que pase babieca :) no se como se reinicia la animacion asi que lo buscaré..
 })
 
 

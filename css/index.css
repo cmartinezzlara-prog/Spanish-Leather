@@ -58,7 +58,8 @@ svg {
 
 }
 
-html, body {
+html,
+body {
     overscroll-behavior: none;
 }
 
@@ -348,9 +349,8 @@ body {
     transition-delay: 1s;
 }
 
-.PageHeader {
+.MenuHeader {
     /* background-color: aqua; */
-    width: 100%;
     min-height: 3.125rem;
 
     display: flex;
@@ -359,15 +359,20 @@ body {
     align-items: center;
     gap: 2.5rem;
 
-    color: white
+    color: white;
+
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    right: 10px;
 }
 
-.PageHeader-texto {
+.MenuHeader-texto {
     /* background-color: red; */
     padding: 0 0 0 2rem;
 }
 
-.PageHeader-nav {
+.MenuHeader-nav {
     /* background-color: blue; */
     padding: 0 2rem 0 0;
 
@@ -377,12 +382,12 @@ body {
     align-items: center;
 }
 
-.PageHeader-star {
+.MenuHeader-star {
     max-height: 1.25rem;
     width: 1.875rem;
 }
 
-.PageHeader-nav:hover .PageHeader-star {
+.MenuHeader-nav:hover .MenuHeader-star {
     animation: spin 5s linear infinite;
 }
 
@@ -564,6 +569,61 @@ body {
     transition: opacity 0.6s linear;
 }
 
+.PlayerHeader {
+    /* background-color: aqua; */
+    width: auto;
+    min-height: 3.125rem;
+
+    /* background: rgba(255, 255, 255, 0.097);
+    border-radius: 50px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px); */
+
+    background: rgba(255, 255, 255, 0.185);
+    box-shadow: 0 8px 10px 0 rgba(48, 48, 48, 0.04);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border-radius: 50px;
+
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2.5rem;
+
+    color: white;
+
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    right: 10px;
+}
+
+.PlayerHeader-texto {
+    /* background-color: red; */
+    padding: 0 0 0 2rem;
+}
+
+.PlayerHeader-nav {
+    /* background-color: blue; */
+    padding: 0 2rem 0 0;
+
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: start;
+    align-items: center;
+}
+
+.PlayerHeader-star {
+    max-height: 1.25rem;
+    width: 1.875rem;
+}
+
+.PlayerHeader-nav:hover .PlayerHeader-star {
+    animation: spin 5s linear infinite;
+}
+
 .Player.isListening {
     opacity: 1;
     z-index: 7;
@@ -635,30 +695,13 @@ body {
     color: white;
 }
 
-.PageHeader {
-    /* background-color: aqua; */
-    width: 100%;
-    min-height: 3.125rem;
-
-    display: flex;
-    flex-flow: row nowrap;
-    justify-content: space-between;
-    align-items: center;
-
-    padding: 0 2rem 0 2rem;
-
-    position: absolute;
-    top: 0;
-    left: 0;
-}
-
 .PlayerCenter {
     width: 100%;
     /* background-color: red; */
 
     display: flex;
-    flex-direction: row wrap;
-    /* PERMITE QUE PASE A SUEGUNDA LIENA ********************* */
+    flex-flow: row wrap;
+    /* PERMITE QUE PASE A SUEGUNDA LINEA ********************* */
     justify-content: space-between;
     align-items: center;
 }
@@ -673,11 +716,12 @@ body {
     justify-content: space-between;
     align-items: center;
 
-    padding: 4rem 0 4rem 0;
+    padding: 6.5rem 0 4rem 0;
 
     position: absolute;
     z-index: 8;
     pointer-events: auto;
+    overflow: hidden;
 }
 
 .PlayerArrow {
@@ -778,9 +822,45 @@ body {
     background-color: white;
 }
 
+.PlayerBack {
+    width: auto;
+    /* background-color: red; */
+
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: start;
+    align-items: center;
+
+    position: absolute;
+    top: 7rem;
+    left: 4rem;
+
+    z-index: 8;
+    pointer-events: auto;
+}
+
+.PlayerBack-btn {
+    background-color: transparent;
+
+    font-family: 'Euclid Circular A', sans-serif;
+    font-size: 1rem;
+    font-weight: 500;
+    color: white;
+    letter-spacing: 0.08rem;
+
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.PlayerBack-btn:hover {
+    color: white;
+    letter-spacing: 0.35rem;
+    transition: 0.2s ease;
+}
+
 .PlayerMute {
     width: 100%;
-    /* background-color: rebeccapurple; */
+    background-color: transparent;
 
     display: flex;
     flex-flow: row nowrap;
@@ -812,8 +892,8 @@ body {
     transition: 0.2s ease;
 }
 
-.h-hidden{
-   display: none;
+.h-hidden {
+    display: none;
 }
 
 /* Solo bloquear gestos del navegador dentro del Player */
@@ -823,11 +903,12 @@ body {
 }
 
 /* PERMITIR QUE EL SWIPE LLEGUE AL PLAYERSCREEN */
-.PlayerContent .PlayerMute .PlayerArrows{
+.PlayerContent .PlayerMute .PlayerArrows {
     pointer-events: none;
 }
+
 /* PERO LUEGO PERMITIR QUE LOS BOTONES FUNCIONEN */
-.PlayerMute button .PlayerArrows button{
+.PlayerMute button .PlayerArrows button {
     pointer-events: auto;
 }
 
@@ -876,6 +957,3 @@ body {
     }
 
 }
-
-
-
