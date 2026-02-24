@@ -812,6 +812,15 @@ body {
    display: none;
 }
 
+/* PERMITIR QUE EL SWIPE LLEGUE AL PLAYERSCREEN */
+.PlayerContent .PlayerMute .PlayerArrows{
+    pointer-events: none;
+}
+/* PERO LUEGO PERMITIR QUE LOS BOTONES FUNCIONEN */
+.PlayerMute button .PlayerArrows button{
+    pointer-events: auto;
+}
+
 @keyframes flashPulse {
     0% {
         transform: scale(1);
