@@ -58,6 +58,8 @@ svg {
 
 }
 
+html, body { touch-action: pan-y; overscroll-behavior: none; }
+
 body {
     min-height: 100vh;
     font-family: 'Euclid Circular A', sans-serif;
@@ -855,7 +857,5 @@ body {
 
 }
 
-@media screen {
-    
-}
+
 

@@ -235,9 +235,61 @@ muteBtn.addEventListener('click', () => {
 })
 
 
+// SWIPE PARA IPAD Y MÓVIL - QUITAR COVER / PASAR DE VÍDEO
+// Hay que detectar el swipe desde que se detecta el toque con el el dedo >toqueInicial  
+// hasta donde deja de tocar la pantalla para considerarlo un deslizamiento >toqueFinal
+// lo consideramos evento >(e)= touchStart / touchEnd
+
+// TOUCHSTART
+// - GUARDO POSICION INICIAL
+// TOUCHEND
+// - BUSCA DONDE TERMINA
+// - - SI SUBE -> ACCIÓN ARRIBA (correcto)
+// - - SI BAJA -> ACCIÓN ABAJO (incorrecta)
+
+//FUNCIÓN
+function addVerticalSwipe (elemento, actionSwipeUp, actionSwipeDown) {
+
+    let startY = 0;
+//cuando el dedo toca
+    elemento.addEventListener("touchstart", (e) => {
+        const touchStart = e.touches[0]
+        startY = touchStart.clientY 
+        //guardamos que el dedo empezó aquí y este es su posicionameinto vertical (Y)
+    })
+//cuando el dedo deja de tocar
+    elemento.addEventListener("touchend", (e) => {
+        const touchEnd = e.changedTouches[0]
+        //el dedo se levanta y guardamos posicion final
+
+        //hacemos una constante (diferenciaY) que determina que:
+        const diferenciaY = startY - touchEnd.clientY
+        console.log("TOUCHEND detectado. diferenciaY =", diferenciaY)
+        //1.si el toque es pequeño (menos 50px) no se considera swipe (umbral de movimiento)
+        if (Math.abs(diferenciaY) < 50) return
+
+        //2.si fue hacia arriba el resultado es positivo
+       if (diferenciaY > 0) {
+        if (actionSwipeUp) actionSwipeUp()
+       }
+
+        //3.si fue hacia abajo el resultado es negativo
+        else {
+            if (actionSwipeDown) actionSwipeDown()
+        }
+
+    })
+}
+
+//AHORA LLAMAMOS A LOS ELEMENTOS
+addVerticalSwipe (cover, function() {
+
+    if (!coverActivo) return
+    cover.classList.add("isHidden")
+    menu.classList.add("isVisible")
+
+    document.body.style.overflow = "auto"
+    coverActivo = false
 
 
-
-
-
-
+})
