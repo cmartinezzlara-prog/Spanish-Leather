@@ -58,7 +58,11 @@ svg {
 
 }
 
-html, body { touch-action: pan-y; overscroll-behavior: none; }
+html, body {
+    overscroll-behavior: none;
+}
+
+
 
 body {
     min-height: 100vh;
@@ -812,6 +816,12 @@ body {
    display: none;
 }
 
+/* Solo bloquear gestos del navegador dentro del Player */
+.Player {
+    touch-action: none;
+    overscroll-behavior-y: contain;
+}
+
 /* PERMITIR QUE EL SWIPE LLEGUE AL PLAYERSCREEN */
 .PlayerContent .PlayerMute .PlayerArrows{
     pointer-events: none;
@@ -820,6 +830,7 @@ body {
 .PlayerMute button .PlayerArrows button{
     pointer-events: auto;
 }
+
 
 @keyframes flashPulse {
     0% {

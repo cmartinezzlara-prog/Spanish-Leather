@@ -264,7 +264,9 @@ function addVerticalSwipe(elemento, actionSwipeUp, actionSwipeDown) {
 
         //hacemos una constante (diferenciaY) que determina que:
         const diferenciaY = startY - touchEnd.clientY
+
         console.log("TOUCHEND detectado. diferenciaY =", diferenciaY)
+
         //1.si el toque es pequeño (menos 50px) no se considera swipe (umbral de movimiento)
         if (Math.abs(diferenciaY) < 50) return
 
@@ -295,8 +297,5 @@ addVerticalSwipe(cover, function () {
 //por la que busque un div llamado .PlayerScreen, donde quiero detectar el swipe
 const pantallaPlayer = document.querySelector(".PlayerScreen")
 
-addVerticalSwipe(
-    pantallaPlayer,
-    function () { showVideo(index + 1) },
-    function () { showVideo(index - 1) }
+addVerticalSwipe(pantallaPlayer, function () { showVideo(index + 1) }, function () { showVideo(index - 1) }
 )
