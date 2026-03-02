@@ -356,3 +356,27 @@ const pantallaPlayer = document.querySelector(".PlayerScreen")
 
 addVerticalSwipe(pantallaPlayer, function () { showVideo(index + 1) }, function () { showVideo(index - 1) }
 )
+
+//ACTIVAMOS PRESAVE DESDE BOTON FIXED LATERAL
+const presave = document.querySelector('.Presave')
+const presaveBtn = document.querySelector('.FixedPresave-btn')
+//no se como haré lo de que se accione con el header
+const presaveBack = document.querySelector('.PresaveBack')
+
+console.log(presave)
+console.log(presaveBtn)
+console.log(presaveBack)
+
+//EVENTOS
+// ABRIR desde el BOTON LATERAL
+presaveBtn.addEventListener('click', () => {
+    presave.classList.add('isVisible')
+})
+
+// CERRAR desde el PRESAVE con BOTON BACK
+presaveBack.addEventListener('click', () => {
+    presave.classList.remove('isVisible')
+})
+
+
+

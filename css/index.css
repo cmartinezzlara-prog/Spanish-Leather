@@ -321,7 +321,7 @@ body {
 .Menu {
     width: 100%;
     min-height: 100vh;
-    background-color: black;
+    background-color: rgb(0, 0, 0);
 
     display: flex;
     flex-flow: column nowrap;
@@ -362,14 +362,16 @@ body {
     color: white;
 
     position: absolute;
-    top: 10px;
-    left: 10px;
-    right: 10px;
+    top: .625rem;
+    left: .625rem;
+    right: .625rem;
 }
 
 .MenuHeader-texto {
     /* background-color: red; */
     padding: 0 0 0 2rem;
+
+    letter-spacing: 0.08rem;
 }
 
 .MenuHeader-nav {
@@ -380,6 +382,19 @@ body {
     flex-flow: row nowrap;
     justify-content: start;
     align-items: center;
+
+    gap: 1.875rem;
+}
+
+.MenuHeader-link {
+    letter-spacing: 0.08rem;
+     transition: 0.2s ease;
+}
+
+.MenuHeader-link:hover {
+    color: white;
+    letter-spacing: 0.35rem;
+    transition: 0.2s ease;
 }
 
 .MenuHeader-star {
@@ -396,6 +411,7 @@ body {
     width: 100%;
     min-height: 40vh;
     /* background-color: darkred; */
+
     display: flex;
     flex-flow: row nowrap;
     justify-content: start;
@@ -405,9 +421,10 @@ body {
 }
 
 .MenuTop-text {
-    max-width: 6.875rem;
+    max-width: 8rem;
     /* background-color: red; */
     padding: .625rem;
+    letter-spacing: 0.08rem;
 }
 
 .MenuTop-p {
@@ -459,7 +476,7 @@ body {
     justify-content: center;
     align-items: center;
 
-    padding: 3.125rem;
+    padding: .625rem 0 2rem 0;
 }
 
 .MenuTitles-ps {
@@ -481,6 +498,8 @@ body {
     flex-flow: row wrap;
     justify-content: start;
     align-items: center;
+
+    letter-spacing: 0.08rem;
 }
 
 .MenuTitles-p::after {
@@ -495,32 +514,184 @@ body {
 .MenuListen {
     width: 100%;
     display: flex;
+
     flex-flow: row nowrap;
     justify-content: center;
     align-items: center;
 }
 
 .MenuListen-btn {
-    border-radius: 1.25rem;
+    border-radius: 3.125rem;
     background-color: transparent;
     border: .0625rem solid white;
-    padding: 0.5rem 1rem;
+    padding: 1rem 2.5rem;
 
+    display: flex;
+    flex-flow: row;
+    justify-content: center;
+    align-items: center;
+    gap: .5625rem;
+ 
     color: white;
     font-family: 'Euclid Circular A', sans-serif;
-    font-size: .9375rem;
+    font-size: 20px;
     text-transform: capitalize;
+
+    letter-spacing: 0.08rem;
 
     transition: 0.5s ease;
 }
 
 .MenuListen-btn:hover {
-    color: black;
-    background-color: white;
-    font-weight: 700;
+    color: rgb(255, 255, 255);
+    font-weight: 500;
     transition: 0.5s ease;
+
+    border: .0625rem solid rgba(255, 255, 255, 0);
+    background-color: rgba(255, 255, 255, 0.242);
 }
 
+.MenuListen-icon {
+    width: .9375rem;
+}
+
+
+/* ETIQUETA LATERAL PRESAVE */
+.FixedPresave {
+    width: 100%;
+    min-height: 130px;
+    background-color: transparent;
+
+    display: flex;
+    flex-flow: row;
+    justify-content: end;
+
+    margin: 130px 0 0 0;
+
+    position: fixed;
+    z-index: 9;
+    pointer-events: none;
+}
+
+.FixedPresave-btn {
+    width: 3.125rem;
+    max-height: 8.125rem;
+    background-color: rgba(151, 151, 151, 0.564);
+
+    display: flex;
+    flex-flow: row;
+    justify-content: center;
+    align-items: center;
+
+    padding: 0 0 0 .3125rem;
+    border-radius: 1rem 0 0 1rem;
+
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    color: white;
+    font-family: 'Euclid Circular A', sans-serif;
+    font-weight: 300;
+    font-size: 18px;
+    
+     letter-spacing: 0.08rem;
+
+    pointer-events: auto;
+}
+
+/* CAPA PRESAVE */
+.Presave {
+    width: 100%;
+    background-color: transparent;
+
+    display: none;
+    flex-flow: row;
+    justify-content: center;
+    align-items: center;
+
+    position: fixed;
+    inset: 0;
+    z-index: 8;
+}
+
+.Presave.isVisible {
+    display: flex;
+}
+
+.PresaveContent {
+    width: 100%;
+    min-height: 100vh;
+    background-color: rgb(23, 23, 23);
+
+    display: flex;
+    flex-flow: column;
+    justify-content: start;
+    align-items: center;
+
+    margin-top: 9rem;
+
+    padding: 2rem;
+    gap: 100px;
+}
+
+.PresaveTop {
+    width: 100%;
+}
+
+.PresaveBack {
+    width: 2.5rem;
+    min-height: 2.5rem;
+
+    background-color: transparent;
+    border: 1px solid white;
+    border-radius: 50%;
+
+    display: flex;
+    flex-flow: row;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 1rem;
+    color: white;
+
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.PresaveBack:hover {
+    border: 1px solid rgba(255, 255, 255, 0);
+    background-color: rgba(255, 255, 255, 0.242);
+}
+
+.PresaveBack-img {
+    width: 1.5rem;
+    cursor: pointer;
+    opacity: 0.7;
+    transition: opacity 0.3s ease;
+
+    transform: rotate(270deg);
+}
+
+.PresaveLayout {
+    width: 100%;
+    min-height: 12.5rem;
+    background-color: red;
+
+    display: flex;
+    flex-flow: column;
+    justify-content: start;
+    align-items: center;
+
+    gap: 40px;
+}
+
+.PresaveForm {
+    display: flex;
+    flex-flow: column;
+    justify-content: start;
+    align-items: center;
+
+    gap: 20px;
+}
 
 /* TRANSITION */
 .Transition {
@@ -595,14 +766,15 @@ body {
     color: white;
 
     position: absolute;
-    top: 10px;
-    left: 10px;
-    right: 10px;
+    top: .625rem;
+    left: .625rem;
+    right: .625rem;
 }
 
 .PlayerHeader-texto {
     /* background-color: red; */
     padding: 0 0 0 2rem;
+        letter-spacing: 0.08rem;
 }
 
 .PlayerHeader-nav {
@@ -613,6 +785,19 @@ body {
     flex-flow: row nowrap;
     justify-content: start;
     align-items: center;
+
+    gap: 1.875rem;
+}
+
+.PlayerHeader-link {
+    letter-spacing: 0.08rem;
+     transition: 0.2s ease;
+}
+
+.PlayerHeader-link:hover {
+    color: white;
+    letter-spacing: 0.35rem;
+    transition: 0.2s ease;
 }
 
 .PlayerHeader-star {
@@ -745,8 +930,8 @@ body {
 }
 
 .PlayerArrow:hover {
-    border: 1px solid black;
-    background-color: black;
+    border: 1px solid rgba(255, 255, 255, 0);
+    background-color: rgba(255, 255, 255, 0.242);
 }
 
 .PlayerUp {
