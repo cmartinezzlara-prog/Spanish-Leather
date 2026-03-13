@@ -39,6 +39,11 @@ console.log(menu)
 // EVENTO
 // Añadir clases. Cuando hago click en escuchar se les aplica isListening -> transition entra / menu desaparece / player aparece
 listenBtn.addEventListener('click', () => {
+
+    // Reiniciar transición SIEMPRE
+    transition.classList.remove('isListening')
+    void transition.offsetWidth
+
     // Muestro la transicion y preparo el Player
     transition.classList.add('isListening')
     menu.classList.add('isListening')
@@ -136,7 +141,7 @@ let isMuted = false
 let index = 0
 // Declaramos el video que esta activo ahora (0=primer video)
 
-videos.forEach(v => v.muted = true)
+videos.forEach(v => v.muted = isMuted)
 
 // PROBANDO TEORÍA DE COPILOT
 // FUNCIÓN
@@ -150,6 +155,37 @@ function updateTrackInfo(i) {
     trackSec.textContent = sec
 }
 
+// FADE IN Y OUT
+// HE TENIDO QUE BUSCAR COMO SE HACE Y EJEMPLOS PARA ELEGIR QUE ESTILO QUERIA
+function fadeIn(video, duration = 1800) {
+    video.volume = 0
+    let step = 0.02
+    let interval = duration / (1 / step)
+
+    let fade = setInterval(() => {
+        if (video.volume < 1) {
+            video.volume = Math.min(1, video.volume + step)
+        } else {
+            clearInterval(fade)
+        }
+    }, interval)
+}
+
+function fadeOut(video, duration = 400) {
+    let step = 0.05
+    let interval = duration / (1 / step)
+
+    let fade = setInterval(() => {
+        if (video.volume > 0) {
+            video.volume = Math.max(0, video.volume - step)
+        } else {
+            clearInterval(fade)
+            video.pause()
+        }
+
+    }, interval)
+}
+
 // FUNCIÓN
 function showVideo(i) {
 
@@ -161,24 +197,50 @@ function showVideo(i) {
     // Si i es mayor o = a 0 esta por denlante (si es 12 es el ultimo)
 
     // Reset
-    videos.forEach(v => {
+    videos.forEach((v, idx) => {
         v.classList.remove('isActive')
-        v.muted = true
-        v.pause()
-        // Importante! para pausar el resto / si no despues de desmutear -se escuharian todos-
+
+        // FADE OUT
+        if (idx !== i) { fadeOut(v) }
     })
 
     // Antes de activar el correcto tengo que ponerlo a 0 = reiniciarlo
-    videos[i].currentTime = 0
-    videos[i].play()
+    // videos[i].currentTime = 0
+    //videos[i].play()
 
     // Activar el correcto
-    videos[i].classList.add('isActive')
+    // videos[i].classList.add('isActive')
 
     // Desmutear el activo / PARA QUE FUNCIONE EL BOTON: isMuted 
     // para que cuando se ha ejecutado el RESET el MUTE funcione -para todos-
     // y -al cambiar de canción-, esta no empiece con -sonido- sino MUTE, 
-    videos[i].muted = isMuted
+    //videos[i].muted = isMuted
+
+    // FADE IN
+    //fadeIn(videos[i])
+
+
+    const video = videos[i]
+    video.currentTime = 0
+    video.classList.add('isActive')
+
+    //siempre empezar muted (autoplay permitido)
+    video.muted = true
+
+    video.play().then(() => {
+
+        //si mute no esta activado, activamos sonido despues
+        if (!isMuted) {
+            fadeIn(video)
+            video.muted = false
+        }
+    }).catch(err => {
+        console.log("Autoplay bloquedo, reintentar", err)
+        video.muted = true
+        video.play()
+    })
+
+
 
     // Quitar isActive de los puntos
     dots.forEach(dots => dots.classList.remove('isActive'))
@@ -194,21 +256,32 @@ function showVideo(i) {
 // EVENTOS
 // Flechas reproductor
 nextBtn.addEventListener('click', () => {
+    startIfNeeded()
     showVideo(index + 1)
 })
 
 prevBtn.addEventListener('click', () => {
+    startIfNeeded()
     showVideo(index - 1)
 })
 
 // Cuando la transición termina -> el video 1 = play
-transition.addEventListener('animationend', () => {
-    console.log("animation end en .Transition")
+//transition.addEventListener('animationend', () => {
+//console.log("animation end en .Transition")
 
-    setTimeout(() => {
+//setTimeout(() => {
+//showVideo(0)
+//})
+//})
+
+let hasStarted = false
+
+function startIfNeeded() {
+    if (!hasStarted) {
+        hasStarted = true
         showVideo(0)
-    })
-})
+    }
+}
 
 // AHORA CAMBIAMOS LOS NOMBRES DE LAS CANCIONES
 //HAY QUE HACER UN TRACK DE LOS DATOS
@@ -228,18 +301,12 @@ transition.addEventListener('animationend', () => {
 muteBtn.addEventListener('click', () => {
     isMuted = !isMuted
 
-    videos.forEach(v => {
-        v.muted = isMuted
-    })
+    videos[index].muted = isMuted
 
     // Cambiar la palabra creo que con textContent
     // Si isMuted mostrar "unmute" / si estan sonando mostrar "mute"
-    if (isMuted) {
-        muteBtn.textContent = "unmute"
-    }
-    else {
-        muteBtn.textContent = "mute"
-    }
+
+    muteBtn.textContent = isMuted ? "unmute" : "mute"
 })
 
 //BOTON PARA VOLVER AL MENU PRINCIPAL 
@@ -260,7 +327,6 @@ btnVolver.addEventListener('click', () => {
     videos.forEach(video => {
         video.pause()
         video.currentTime = 0
-        video.muted = true
     })
 
     // Reseteo el estado del Player
@@ -268,9 +334,6 @@ btnVolver.addEventListener('click', () => {
     isMuted = false
     muteBtn.textContent = "mute"
 
-    // Reseteo BABIECA
-    transition.classList.remove("isListening")
-    void transition.offsetWidth // reinicia la animación
 
     // PROBLEMA: CUANDO VOY AL MENU LOS BOTONES DEL PALYER SIGUEN ACTIVOS
     // Esto hace que al darle a Escuchar, al estasr en la misma posicion que la flecha de abajo
@@ -289,6 +352,8 @@ btnVolver.addEventListener('click', () => {
     // POR TANTO: NO SE VUELVE A ACTIVAR LA ANIMACION YYY NO SE EJECUTA EL PRIMER VIDEO!!
 
     // SOLCIÓN: Pues que pase babieca :) no se como se reinicia la animacion asi que lo buscaré..
+
+    // ACTUALIZACIÓN.. LA VERDAD QUE SI NO PASA BABIECA SE ME COMPLICA TODO MUCHISIMO, MEJOR QUE PASE Y REINICIE EL PLAYER
 })
 
 
@@ -354,7 +419,15 @@ addVerticalSwipe(cover, function () {
 //por la que busque un div llamado .PlayerScreen, donde quiero detectar el swipe
 const pantallaPlayer = document.querySelector(".PlayerScreen")
 
-addVerticalSwipe(pantallaPlayer, function () { showVideo(index + 1) }, function () { showVideo(index - 1) }
+addVerticalSwipe(pantallaPlayer,
+    function () {
+        startIfNeeded()
+        showVideo(index + 1)
+    },
+    function () {
+        startIfNeeded()
+        showVideo(index - 1)
+    }
 )
 
 //ACTIVAMOS PRESAVE DESDE BOTON FIXED LATERAL
@@ -378,5 +451,36 @@ presaveBack.addEventListener('click', () => {
     presave.classList.remove('isVisible')
 })
 
+// ENLACES HEADER
+// ENLACE A MENU (EN MENU Y EN PLAYER)
+const menuLinks = document.querySelectorAll('[data-section="menu"]')
 
+menuLinks.forEach(link => {
+    link.addEventListener('click', (e) => {
+        e.preventDefault()
+
+        // NO IBA PQ TENIA QUE QUITAR EL TARGET BLANCK Y EN REL :) Y YA NO SE ABRE PESTAÑA NUEVA
+
+        // OCULTO PLAYER
+        player.classList.remove('isListening')
+
+        // OCULTO EL COVER PARA QUE NO SE REPRODUZCA TODO DE NUEVO
+        cover.classList.add('isHidden')
+
+        // MUESTRO EL MENU
+        menu.classList.add('isVisible')
+        menu.classList.remove('isListening')
+
+        // RESETEAMOS EL ESTADO DE LOS VIDEOS
+        videos.forEach(video => {
+            video.pause()
+            video.currentTime = 0
+        })
+
+        index = 0
+        isMuted = false
+        muteBtn.textContent = "mute"
+
+    })
+})
 

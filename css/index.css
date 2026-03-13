@@ -814,7 +814,7 @@ body {
     z-index: 7;
     transition-delay: 1s;
     pointer-events: auto;
-    /* era el delay */
+    /* EL DELAY ES IMPORTANTE */
 
     display: flex;
     flex-flow: row nowrap;
@@ -851,7 +851,7 @@ body {
     z-index: 1;
 
     opacity: 0;
-    pointer-events: none;
+    pointer-events: auto;
 
     filter: brightness(0.9);
     transition: opacity 0.5s ease;
@@ -1081,11 +1081,13 @@ body {
     display: none;
 }
 
-/* Solo bloquear gestos del navegador dentro del Player */
+/* Solo bloquear gestos del navegador dentro del Player 
+
 .Player {
     touch-action: none;
     overscroll-behavior-y: contain;
-}
+}*/
+
 
 /* PERMITIR QUE EL SWIPE LLEGUE AL PLAYERSCREEN */
 .PlayerContent .PlayerMute .PlayerArrows {
@@ -1142,3 +1144,6 @@ body {
     }
 
 }
+
+/* MEDIA */
+/* TABLET + MÓVIL */
