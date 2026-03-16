@@ -210,61 +210,50 @@ function showVideo(i) {
     // Si i es mayor o = a 0 esta por denlante (si es 12 es el ultimo)
     if (i < 0) i = videos.length - 1
     if (i >= videos.length) i = 0
-    
+
     // RESET PARA APAGAR TODOS
     videos.forEach((v, idx) => {
         v.classList.remove('isActive')
 
-        v.muted = true
+        // Antes de activar el correcto tengo que ponerlo a 0 = reiniciarlo 
         v.pause()
+        v.muted = true
 
         // FADE OUT
-        fadeOut(v)
+        if (idx !== i) fadeOut(v)
     })
 
-
-    // Antes de activar el correcto tengo que ponerlo a 0 = reiniciarlo 
-    videos[i].currentTime = 0
-    videos[i].play()
+    const video = videos[i]
 
     // ACTIVAR el correcto
     videos[i].classList.add('isActive')
-
+    videos[i].currentTime = 0
     // Desmutear el activo / PARA QUE FUNCIONE EL BOTON: isMuted 
     // para que cuando se ha ejecutado el RESET el MUTE funcione -para todos-
     // y -al cambiar de canción-, esta no empiece con -sonido- sino MUTE, 
-    videos[i].muted = isMuted
-
-    // FADE IN
-    fadeIn(videos[i])
-
-// ESTE SEGUNDO BLOQUE DE REPRODUCCIONE ESTA REPITIENDO LA ACCION Y BLOQUEANDO EN AUTOPLAY DEL NAVEGADOR
-// FALLO ENCONTRADO
-// GUARDAR VERSION GITHUB DEKSTOP Y CAMBIAR 
-    const video = videos[i]
-    video.currentTime = 0
-    video.classList.add('isActive')
-
-    //siempre empezar muted (autoplay permitido)
+    // EMPIEZA CON MUTE
     video.muted = true
 
     video.play().then(() => {
 
-        //si mute no esta activado, activamos sonido despues
+        // Si el usuario NO ha activado mute, hago FADEIN y DESMUTEO
         if (!isMuted) {
             fadeIn(video)
             video.muted = false
         }
     }).catch(err => {
         console.log("Autoplay bloquedo, reintentar", err)
+        // Si BLOQUEA mantenemos MUTE y reintentamos
         video.muted = true
-        video.play()
+        video.play().catch(err2 => {
+            console.log("Segundo intento fallido")
+        })
     })
 
-
-    // QUITAR ISACTIVE puntos
+    // -- ACTUALIZAR PUNTOS GALERIA!! --
+    // DESACTIVAR ISACTIVE puntos
     dots.forEach(dots => dots.classList.remove('isActive'))
-    // ACTIVAR punto orrecto
+    // ACTIVAR punto correcto
     dots[i].classList.add('isActive')
 
     // GUARDAR INDICE ACTUAL
@@ -301,7 +290,6 @@ let hasStarted = false
 function startIfNeeded() {
     if (!hasStarted) {
         hasStarted = true
-        showVideo(0)
     }
 }
 
@@ -453,35 +441,33 @@ addVerticalSwipe(pantallaPlayer,
 // ACTIVAMOS PRESAVE DESDE BOTON FIXED LATERAL
 const presave = document.querySelector('.Presave')
 const presaveBtn = document.querySelector('.FixedPresave-btn')
-// no se como haré lo de que se accione con el header
 const presaveBack = document.querySelector('.PresaveBack')
 
 console.log(presave)
 console.log(presaveBtn)
 console.log(presaveBack)
 
+
+// ESTADO REFERENCIA APERTURA PRESAVE
+let presaveFrom = null
+
 // EVENTOS
 // ABRIR PRESAVE desde el BOTON LATERAL
 presaveBtn.addEventListener('click', () => {
+    presaveFrom = "menu"
     presave.classList.add('isVisible')
 })
-
-// CERRAR desde el PRESAVE con BOTON BACK
-presaveBack.addEventListener('click', () => {
-    presave.classList.remove('isVisible')
-})
-
 
 
 // -- ENLACES HEADER !! --
 // ENLACE A MENU (EN MENU Y EN PLAYER)
 const menuLinks = document.querySelectorAll('[data-section="menu"]')
 
+const presaveLinks = document.querySelectorAll('[data-section="presave"]')
+
 menuLinks.forEach(link => {
     link.addEventListener('click', (e) => {
         e.preventDefault()
-
-        // NO IBA PQ TENIA QUE QUITAR EL TARGET BLANCK Y EN REL :) Y YA NO SE ABRE PESTAÑA NUEVA
 
         // OCULTO PLAYER
         player.classList.remove('isListening')
@@ -502,9 +488,37 @@ menuLinks.forEach(link => {
         index = 0
         isMuted = false
         muteBtn.textContent = "mute"
-
     })
 })
+
+presaveLinks.forEach(link => {
+    link.addEventListener('click', (e) => {
+        e.preventDefault()
+
+        // MARCAR ORIGEN PRESAVE
+        presaveFrom = "header"
+
+        player.classList.remove('isListening')
+        menu.classList.remove('isVisible')
+        menu.classList.remove('isListening')
+
+        presave.classList.add('isVisible')
+
+        // NO  RESETEAMOS EL ESTADO DE LOS VIDEOS PORQUE NO SE ACCEDE DESDE PLAYER
+    })
+})
+
+// CERRAR desde el PRESAVE con BOTON BACK
+presaveBack.addEventListener('click', () => {
+    presave.classList.remove('isVisible')
+
+    if (presaveFrom === "header"){
+        menu.classList.add('isVisible')
+        menu.classList.remove('isListening')
+    }
+})
+
+
 
 //13/03 ME HE CARGADO LA REPRODUCCION DEL PLAYER EN EL ORDENADOR :((((((
 //16/03 VOY A LIMPIAR BIEN EL JS PARA ELIMINAR REPETICION DE ACCIONES QUE GENERAN FALLOS GRANDES
