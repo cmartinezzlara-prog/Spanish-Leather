@@ -132,16 +132,16 @@ const tracks = [
     { name: "Tramuntana", duration: "3:55" }
 ]
 
-// VARIABLE BTN MUTE / UNMUTE
-const muteBtn = document.querySelector('.PlayerBtn-text')
-// ESTADO
-let isMuted = false
 
-// ESTADO
-let index = 0
-// Declaramos el video que esta activo ahora (0=primer video)
-
-videos.forEach(v => v.muted = isMuted)
+// AHORA CAMBIAMOS LOS NOMBRES DE LAS CANCIONES
+//HAY QUE HACER UN TRACK DE LOS DATOS
+// Hay que hacer una funcion mediante la cual los nombres se actualicen  con textContent
+// Y como me da los min y sec junto el ":" tengo que separarlos:
+// segun Copilot sería con (dentro del function):
+// const [min,sec]= track.duration.split(':')
+// trackMin.textContent = min
+// trackSec.textContent = sec
+// Al final de "funtion showVideo" debería añadir "updateTrackInfo(i)""
 
 // PROBANDO TEORÍA DE COPILOT
 // FUNCIÓN
@@ -154,6 +154,21 @@ function updateTrackInfo(i) {
     trackMin.textContent = min
     trackSec.textContent = sec
 }
+
+
+// -- SONIDO VIDEOS !! --
+// VARIABLE BTN MUTE / UNMUTE
+const muteBtn = document.querySelector('.PlayerBtn-text')
+
+// ESTADO
+let isMuted = false
+
+// ESTADO
+let index = 0
+
+// Declaramos el video que esta activo ahora (0=primer video)
+videos.forEach(v => v.muted = isMuted)
+
 
 // FADE IN Y OUT
 // HE TENIDO QUE BUSCAR COMO SE HACE Y EJEMPLOS PARA ELEGIR QUE ESTILO QUERIA
@@ -186,40 +201,46 @@ function fadeOut(video, duration = 400) {
     }, interval)
 }
 
+
 // FUNCIÓN
 function showVideo(i) {
 
-    // Orden de videos
-    if (i < 0) i = videos.length - 1
-    if (i >= videos.length) i = 0
-
+    // ORDEN DE VÍDEOS
     // Si i es menor de 0 esta por detras del video activo o primer video
     // Si i es mayor o = a 0 esta por denlante (si es 12 es el ultimo)
-
-    // Reset
+    if (i < 0) i = videos.length - 1
+    if (i >= videos.length) i = 0
+    
+    // RESET PARA APAGAR TODOS
     videos.forEach((v, idx) => {
         v.classList.remove('isActive')
 
+        v.muted = true
+        v.pause()
+
         // FADE OUT
-        if (idx !== i) { fadeOut(v) }
+        fadeOut(v)
     })
 
-    // Antes de activar el correcto tengo que ponerlo a 0 = reiniciarlo
-    // videos[i].currentTime = 0
-    //videos[i].play()
 
-    // Activar el correcto
-    // videos[i].classList.add('isActive')
+    // Antes de activar el correcto tengo que ponerlo a 0 = reiniciarlo 
+    videos[i].currentTime = 0
+    videos[i].play()
+
+    // ACTIVAR el correcto
+    videos[i].classList.add('isActive')
 
     // Desmutear el activo / PARA QUE FUNCIONE EL BOTON: isMuted 
     // para que cuando se ha ejecutado el RESET el MUTE funcione -para todos-
     // y -al cambiar de canción-, esta no empiece con -sonido- sino MUTE, 
-    //videos[i].muted = isMuted
+    videos[i].muted = isMuted
 
     // FADE IN
-    //fadeIn(videos[i])
+    fadeIn(videos[i])
 
-
+// ESTE SEGUNDO BLOQUE DE REPRODUCCIONE ESTA REPITIENDO LA ACCION Y BLOQUEANDO EN AUTOPLAY DEL NAVEGADOR
+// FALLO ENCONTRADO
+// GUARDAR VERSION GITHUB DEKSTOP Y CAMBIAR 
     const video = videos[i]
     video.currentTime = 0
     video.classList.add('isActive')
@@ -241,20 +262,21 @@ function showVideo(i) {
     })
 
 
-
-    // Quitar isActive de los puntos
+    // QUITAR ISACTIVE puntos
     dots.forEach(dots => dots.classList.remove('isActive'))
-    // Activo el correcto
+    // ACTIVAR punto orrecto
     dots[i].classList.add('isActive')
 
-    // Sirve para guardar el indice actual
+    // GUARDAR INDICE ACTUAL
     index = i
 
     updateTrackInfo(i)
 }
 
+
+
 // EVENTOS
-// Flechas reproductor
+// FLECHAS REPRODUCTOR
 nextBtn.addEventListener('click', () => {
     startIfNeeded()
     showVideo(index + 1)
@@ -266,13 +288,13 @@ prevBtn.addEventListener('click', () => {
 })
 
 // Cuando la transición termina -> el video 1 = play
-//transition.addEventListener('animationend', () => {
-//console.log("animation end en .Transition")
+transition.addEventListener('animationend', () => {
+    console.log("animation end en .Transition")
 
-//setTimeout(() => {
-//showVideo(0)
-//})
-//})
+    setTimeout(() => {
+        showVideo(0)
+    })
+})
 
 let hasStarted = false
 
@@ -283,15 +305,8 @@ function startIfNeeded() {
     }
 }
 
-// AHORA CAMBIAMOS LOS NOMBRES DE LAS CANCIONES
-//HAY QUE HACER UN TRACK DE LOS DATOS
-// Hay que hacer una funcion mediante la cual los nombres se actualicen  con textContent
-// Y como me da los min y sec junto el ":" tengo que separarlos:
-// segun Copilot sería con (dentro del function):
-// const [min,sec]= track.duration.split(':')
-// trackMin.textContent = min
-// trackSec.textContent = sec
-// Al final de "funtion showVideo" debería añadir "updateTrackInfo(i)""
+
+
 
 // AÑADIMOS EL EVENTO CLICK EN MUTE PARA SILENCIAR Y SOBEESCRIBIR EN EL HTML
 // LUEGO LA PALABRA MUTE CAMBIA A UNMUTE; lo hacemos igual con textcontent
@@ -351,13 +366,14 @@ btnVolver.addEventListener('click', () => {
     // Esto SIGNIFICA QUE: la transición se queda en su estado final / cuando pusle Ecuchar la clase is Listening YA ESTABA PUESTA
     // POR TANTO: NO SE VUELVE A ACTIVAR LA ANIMACION YYY NO SE EJECUTA EL PRIMER VIDEO!!
 
-    // SOLCIÓN: Pues que pase babieca :) no se como se reinicia la animacion asi que lo buscaré..
+    // SOLUCIÓN: Pues que pase babieca :) no se como se reinicia la animacion asi que lo buscaré..
 
     // ACTUALIZACIÓN.. LA VERDAD QUE SI NO PASA BABIECA SE ME COMPLICA TODO MUCHISIMO, MEJOR QUE PASE Y REINICIE EL PLAYER
 })
 
 
-// SWIPE PARA IPAD Y MÓVIL - QUITAR COVER / PASAR DE VÍDEO
+
+// -- SWIPE PARA IPAD Y MÓVIL - QUITAR COVER / PASAR DE VÍDEO --
 // Hay que detectar el swipe desde que se detecta el toque con el el dedo >toqueInicial  
 // hasta donde deja de tocar la pantalla para considerarlo un deslizamiento >toqueFinal
 // lo consideramos evento >(e)= touchStart / touchEnd
@@ -373,38 +389,38 @@ btnVolver.addEventListener('click', () => {
 function addVerticalSwipe(elemento, actionSwipeUp, actionSwipeDown) {
 
     let startY = 0;
-    //cuando el dedo toca
+    // DETECTA TOQUE
     elemento.addEventListener("touchstart", (e) => {
         const touchStart = e.touches[0]
         startY = touchStart.clientY
-        //guardamos que el dedo empezó aquí y este es su posicionameinto vertical (Y)
+        // GUARDAR POSICIÓN VERTICAL(Y)
     })
-    //cuando el dedo deja de tocar
+    // DEJA DETECTAR TOQUE
     elemento.addEventListener("touchend", (e) => {
         const touchEnd = e.changedTouches[0]
-        //el dedo se levanta y guardamos posicion final
+        // GUARDAR POSICIÓN FINAL VERTICAL(Y)
 
-        //hacemos una constante (diferenciaY) que determina que:
+        // Constante (diferenciaY) que determina que:
         const diferenciaY = startY - touchEnd.clientY
 
         console.log("TOUCHEND detectado. diferenciaY =", diferenciaY)
 
-        //1.si el toque es pequeño (menos 50px) no se considera swipe (umbral de movimiento)
-        if (Math.abs(diferenciaY) < 50) return
+        // 1.SI el toque es PEQUEÑO (menos 50px) NO se considera SWIPE (umbral de movimiento)
+        if (Math.abs(diferenciaY) < 30) return
 
-        //2.si fue hacia arriba el resultado es positivo
+        // 2.SI fue hacia ARRIBA el resultado es POSITIVO
         if (diferenciaY > 0) {
             if (actionSwipeUp) actionSwipeUp()
         }
 
-        //3.si fue hacia abajo el resultado es negativo
+        // 3.SI fue hacia ABAJO el resultado es NEGATIVO
         else {
             if (actionSwipeDown) actionSwipeDown()
         }
     })
 }
 
-//AHORA LLAMAMOS A LOS ELEMENTOS
+// AHORA LLAMAMOS A LOS ELEMENTOS
 addVerticalSwipe(cover, function () {
 
     if (!coverActivo) return
@@ -415,10 +431,11 @@ addVerticalSwipe(cover, function () {
     coverActivo = false
 })
 
-//para pasar las canciones del reproductor hay que hacer una variable 
-//por la que busque un div llamado .PlayerScreen, donde quiero detectar el swipe
+// Para pasar las canciones del reproductor hay que hacer una variable 
+// por la que busque el div llamado .PlayerScreen, donde quiero DETECTAR SWIPE
 const pantallaPlayer = document.querySelector(".PlayerScreen")
 
+// SWIPE EN PANTALLA
 addVerticalSwipe(pantallaPlayer,
     function () {
         startIfNeeded()
@@ -430,18 +447,21 @@ addVerticalSwipe(pantallaPlayer,
     }
 )
 
-//ACTIVAMOS PRESAVE DESDE BOTON FIXED LATERAL
+
+
+// -- PRESAVE!! --
+// ACTIVAMOS PRESAVE DESDE BOTON FIXED LATERAL
 const presave = document.querySelector('.Presave')
 const presaveBtn = document.querySelector('.FixedPresave-btn')
-//no se como haré lo de que se accione con el header
+// no se como haré lo de que se accione con el header
 const presaveBack = document.querySelector('.PresaveBack')
 
 console.log(presave)
 console.log(presaveBtn)
 console.log(presaveBack)
 
-//EVENTOS
-// ABRIR desde el BOTON LATERAL
+// EVENTOS
+// ABRIR PRESAVE desde el BOTON LATERAL
 presaveBtn.addEventListener('click', () => {
     presave.classList.add('isVisible')
 })
@@ -451,7 +471,9 @@ presaveBack.addEventListener('click', () => {
     presave.classList.remove('isVisible')
 })
 
-// ENLACES HEADER
+
+
+// -- ENLACES HEADER !! --
 // ENLACE A MENU (EN MENU Y EN PLAYER)
 const menuLinks = document.querySelectorAll('[data-section="menu"]')
 
@@ -485,3 +507,4 @@ menuLinks.forEach(link => {
 })
 
 //13/03 ME HE CARGADO LA REPRODUCCION DEL PLAYER EN EL ORDENADOR :((((((
+//16/03 VOY A LIMPIAR BIEN EL JS PARA ELIMINAR REPETICION DE ACCIONES QUE GENERAN FALLOS GRANDES
