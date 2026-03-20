@@ -51,27 +51,6 @@ console.log(cover)
 console.log(flash)
 
 
-// EVENTO
-// Añadir clases. Cuando hago click en escuchar se les aplica isListening -> transition entra / menu desaparece / player aparece
-listenBtn.addEventListener('click', () => {
-
-    // Reiniciar transición SIEMPRE
-    transition.classList.remove('isListening')
-    void transition.offsetWidth
-
-    // Muestro la transicion y preparo el Player
-    transition.classList.add('isListening')
-    menu.classList.add('isListening')
-    player.classList.add('isListening')
-
-    // RE-ACTIVAR eventos del PLAYER
-    player.style.pointerEvents = "auto"
-
-    // RESETEO EL MUTE AL ENTRAR
-    isMuted = false
-    muteBtn.textContent = "mute"
-})
-
 
 // VARIABLES
 // Splash  ->  Cover
@@ -107,8 +86,11 @@ window.addEventListener('wheel', () => {
 
     document.body.style.overflow = "auto"
     coverActivo = false
-
 })
+
+
+
+
 
 // VARIABLES
 // GALERIA 
@@ -163,6 +145,56 @@ function updateTrackInfo(i) {
 }
 
 
+
+
+
+
+// Cuando la transición termina -> el video 1 = play
+transition.addEventListener('animationend', () => {
+    console.log("animation end en .Transition")
+
+    setTimeout(() => {
+        showVideo(0)
+    })
+})
+
+let hasStarted = false
+function startIfNeeded() {
+    if (!hasStarted) {
+        hasStarted = true
+    }
+}
+
+
+
+
+
+
+
+// EVENTO
+// Añadir clases. Cuando hago click en escuchar se les aplica isListening -> transition entra / menu desaparece / player aparece
+listenBtn.addEventListener('click', () => {
+
+    // Reiniciar transición SIEMPRE
+    transition.classList.remove('isListening')
+    void transition.offsetWidth
+
+    // Muestro la transicion y preparo el Player
+    transition.classList.add('isListening')
+    menu.classList.add('isListening')
+    player.classList.add('isListening')
+
+    // RE-ACTIVAR eventos del PLAYER
+    player.style.pointerEvents = "auto"
+
+    // RESETEO EL MUTE AL ENTRAR
+    isMuted = false
+    muteBtn.textContent = "mute"
+})
+
+
+
+
 // -- SONIDO VIDEOS !! --
 // VARIABLE BTN MUTE / UNMUTE
 const muteBtn = document.querySelector('.PlayerBtn-text')
@@ -170,8 +202,9 @@ const muteBtn = document.querySelector('.PlayerBtn-text')
 let isMuted = false
 let index = 0
 
-// Declaramos el video que esta activo ahora (0=primer video)
-videos.forEach(v => v.muted = isMuted)
+
+
+
 
 
 // FADE IN Y OUT
@@ -206,6 +239,50 @@ function fadeOut(video, duration = 400) {
 }
 
 
+
+
+
+
+// metemos un addeventlistener mute btn click 
+// isMuted =!ismuted
+//muteBtn.textContent =ismuted ?"unmute":"mute"
+//aplicamos el estado de mute > BUSCAR
+
+// ------ FUNCIÓN MUTESTATE!!!! -----
+function applyMuteState() {
+    videos.forEach((video, i) => {
+        video.muted = isMuted || i !== index
+    })
+}
+
+
+
+
+
+
+
+
+// AÑADIMOS EL EVENTO CLICK EN MUTE PARA SILENCIAR Y SOBEESCRIBIR EN EL HTML
+// LUEGO LA PALABRA MUTE CAMBIA A UNMUTE; lo hacemos igual con textcontent
+// COMO ES A TODOS LOS VIDEOS TENDRÁ QUE SER VIDEOS.FOREACH!!!..... V.MUTED = ISMUTED
+// Los videos no tienen que tener el estado global cuando no estan activos
+
+muteBtn.addEventListener('click', () => {
+    isMuted = !isMuted
+
+    // Cambiar la palabra creo que con textContent
+    // Si isMuted mostrar "unmute" / si estan sonando mostrar "mute"
+    muteBtn.textContent = isMuted ? "unmute" : "mute"
+    applyMuteState()
+})
+
+
+
+
+
+
+
+
 // FUNCIÓN
 function showVideo(i) {
 
@@ -216,15 +293,14 @@ function showVideo(i) {
     if (i >= videos.length) i = 0
 
     // RESET PARA APAGAR TODOS
-    videos.forEach((v, idx) => {
-        v.classList.remove('isActive')
+    videos.forEach((video, idx) => {
+        video.classList.remove('isActive')
 
         // Antes de activar el correcto tengo que ponerlo a 0 = reiniciarlo 
-        v.pause()
-        v.muted = true
+        video.pause()
 
         // FADE OUT
-        if (idx !== i) fadeOut(v)
+        if (idx !== i) fadeOut(video)
     })
 
     const video = videos[i]
@@ -234,16 +310,16 @@ function showVideo(i) {
     videos[i].currentTime = 0
     // Desmutear el activo / PARA QUE FUNCIONE EL BOTON: isMuted 
     // para que cuando se ha ejecutado el RESET el MUTE funcione -para todos-
-    // y -al cambiar de canción-, esta no empiece con -sonido- sino MUTE, 
-    // EMPIEZA CON MUTE
-    video.muted = true
+
+// GUARDAR INDICE ACTUAL
+    index = i
+    applyMuteState()
 
     video.play().then(() => {
 
         // Si el usuario NO ha activado mute, hago FADEIN y DESMUTEO
         if (!isMuted) {
             fadeIn(video)
-            video.muted = false
         }
     })
 
@@ -252,11 +328,12 @@ function showVideo(i) {
     dots.forEach(dots => dots.classList.remove('isActive'))
     // ACTIVAR punto correcto
     dots[i].classList.add('isActive')
-
-    // GUARDAR INDICE ACTUAL
-    index = i
+  
     updateTrackInfo(i)
 }
+
+
+
 
 
 // EVENTOS
@@ -271,68 +348,43 @@ prevBtn.addEventListener('click', () => {
     showVideo(index - 1)
 })
 
-// Cuando la transición termina -> el video 1 = play
-transition.addEventListener('animationend', () => {
-    console.log("animation end en .Transition")
-
-    setTimeout(() => {
-        showVideo(0)
-    })
-})
-
-let hasStarted = false
-
-function startIfNeeded() {
-    if (!hasStarted) {
-        hasStarted = true
-    }
-}
 
 
 
-// AÑADIMOS EL EVENTO CLICK EN MUTE PARA SILENCIAR Y SOBEESCRIBIR EN EL HTML
-// LUEGO LA PALABRA MUTE CAMBIA A UNMUTE; lo hacemos igual con textcontent
-// COMO ES A TODOS LOS VIDEOS TENDRÁ QUE SER VIDEOS.FOREACH!!!..... V.MUTED = ISMUTED
-// Los videos no tienen que tener el estado global cuando no estan activos
 
-muteBtn.addEventListener('click', () => {
-    isMuted = !isMuted
 
-    videos[index].muted = isMuted
 
-    // Cambiar la palabra creo que con textContent
-    // Si isMuted mostrar "unmute" / si estan sonando mostrar "mute"
-    muteBtn.textContent = isMuted ? "unmute" : "mute"
-})
+
+
+
+
 
 //BOTON PARA VOLVER AL MENU PRINCIPAL 
+// PROBLEMA: CUANDO VOY AL MENU LOS BOTONES DEL PALYER SIGUEN ACTIVOS
+// Esto hace que al darle a Escuchar, al estasr en la misma posicion que la flecha de abajo
+// se clicka y cuando vamos al player, vemos que se esta reproduciendo la segunda cancion...
+
+// SOLUCION: 
+// ACTIVAR eventos del Player >  player.style.pointerEvents = "auto"; (en ListenBtn.addEventListener...)
+// DESACTIVAR eventos del Player >  player.style.pointerEvents = "none"; (en btnVolver.addEventListener...)
+
+
+// PROBLEMA: cuando le doy a volver, luego a escuchar, el primer video no se reproduce ni pasa el babieca
+// Lo que ocurre es que: cuando pulso escuchar por primera vez, añado transition.clasList.add("isListening")
+// la animacion de babieca corre / cuando termina (animationend) se ejecuta showvideo(0) /
+// peeero cuando pulso VOLVER estoy quitando player.isListening pero NO quito transition.isListening...
+// Esto SIGNIFICA QUE: la transición se queda en su estado final / cuando pusle Ecuchar la clase is Listening YA ESTABA PUESTA
+// POR TANTO: NO SE VUELVE A ACTIVAR LA ANIMACION YYY NO SE EJECUTA EL PRIMER VIDEO!!
+
+// SOLUCIÓN: Pues que pase babieca :) no se como se reinicia la animacion asi que lo buscaré..
+
+// ACTUALIZACIÓN.. LA VERDAD QUE SI NO PASA BABIECA SE ME COMPLICA TODO MUCHISIMO, MEJOR QUE PASE Y REINICIE EL PLAYER
 const btnVolver = document.querySelector('.PlayerBack-btn')
-
 btnVolver.addEventListener('click', () => {
-
     showSection("menu")
-
-
-    // PROBLEMA: CUANDO VOY AL MENU LOS BOTONES DEL PALYER SIGUEN ACTIVOS
-    // Esto hace que al darle a Escuchar, al estasr en la misma posicion que la flecha de abajo
-    // se clicka y cuando vamos al player, vemos que se esta reproduciendo la segunda cancion...
-
-    // SOLUCION: 
-    // ACTIVAR eventos del Player >  player.style.pointerEvents = "auto"; (en ListenBtn.addEventListener...)
-    // DESACTIVAR eventos del Player >  player.style.pointerEvents = "none"; (en btnVolver.addEventListener...)
-
-
-    // PROBLEMA: cuando le doy a volver, luego a escuchar, el primer video no se reproduce ni pasa el babieca
-    // Lo que ocurre es que: cuando pulso escuchar por primera vez, añado transition.clasList.add("isListening")
-    // la animacion de babieca corre / cuando termina (animationend) se ejecuta showvideo(0) /
-    // peeero cuando pulso VOLVER estoy quitando player.isListening pero NO quito transition.isListening...
-    // Esto SIGNIFICA QUE: la transición se queda en su estado final / cuando pusle Ecuchar la clase is Listening YA ESTABA PUESTA
-    // POR TANTO: NO SE VUELVE A ACTIVAR LA ANIMACION YYY NO SE EJECUTA EL PRIMER VIDEO!!
-
-    // SOLUCIÓN: Pues que pase babieca :) no se como se reinicia la animacion asi que lo buscaré..
-
-    // ACTUALIZACIÓN.. LA VERDAD QUE SI NO PASA BABIECA SE ME COMPLICA TODO MUCHISIMO, MEJOR QUE PASE Y REINICIE EL PLAYER
 })
+
+
 
 
 
@@ -350,19 +402,18 @@ btnVolver.addEventListener('click', () => {
 
 //FUNCIÓN
 function addVerticalSwipe(elemento, actionSwipeUp, actionSwipeDown) {
-
     let startY = 0;
+
     // DETECTA TOQUE
     elemento.addEventListener("touchstart", (e) => {
+        // GUARDAR POSICIÓN VERTICAL(Y) startY = e.touches[0].clientY
         startY = e.touches[0].clientY
-        // GUARDAR POSICIÓN VERTICAL(Y)
     })
 
     // DEJA DETECTAR TOQUE
     elemento.addEventListener("touchend", (e) => {
         // Constante (diferenciaY) que determina que:
-        const diferenciaY = startY - e.changedtouches[0].clientY
-
+        const diferenciaY = startY - e.changedTouches[0].clientY
         console.log("TOUCHEND detectado. diferenciaY =", diferenciaY)
 
         // 1.SI el toque es PEQUEÑO (menos 50px) NO se considera SWIPE (umbral de movimiento)
@@ -373,6 +424,7 @@ function addVerticalSwipe(elemento, actionSwipeUp, actionSwipeDown) {
         else actionSwipeDown()
     })
 }
+
 
 // AHORA LLAMAMOS A LOS ELEMENTOS
 addVerticalSwipe(cover, () => {
@@ -403,6 +455,10 @@ addVerticalSwipe(pantallaPlayer,
 
 
 
+
+
+
+
 // -- PRESAVE!! --
 // ACTIVAMOS PRESAVE DESDE BOTON FIXED LATERAL
 const presaveBtn = document.querySelector('.FixedPresave-btn')
@@ -420,9 +476,9 @@ presaveBack.addEventListener('click', () => {
     showSection("menu")
 })
 
-// TOUR
 
-// INFO
+
+
 
 // SHOWSECTION
 const sections = {
@@ -438,12 +494,13 @@ function resetPlayer() {
     videos.forEach(video => {
         video.pause()
         video.currentTime = 0
-        video.muted = true
 
     })
+
     index = 0
     isMuted = false
     muteBtn.textContent = "mute"
+    applyMuteState()
     hasStarted = false
 }
 
@@ -453,7 +510,7 @@ function showSection(name) {
     Object.entries(sections).forEach(([key, el]) => {
         if (!el) return
 
-        const active = ley === name
+        const active = key === name
         el.classList.toggle('isVisible', active)
         el.classList.toggle('isHidden', !active)
 
@@ -471,6 +528,7 @@ function showSection(name) {
 document.querySelectorAll('[data-goto]').forEach(link => {
     link.addEventListener('click', e => {
         e.preventDefault()
+
         const target = link.dataset.goto
         console.log("Ir a:", target)
         showSection(target)
@@ -481,8 +539,8 @@ document.querySelectorAll('[data-goto]').forEach(link => {
 //16/03 VOY A LIMPIAR BIEN EL JS PARA ELIMINAR REPETICION DE ACCIONES QUE GENERAN FALLOS GRANDES
 //20/03 CREO QUE HAY QUE ELIMINAR LOS LISTENNERS MENULINKS Y PRESAVE LINKS
 // LA FUNCION RESET PLAYER AL FINAL DEL ARCHIVO ME PODRIA AYUDAR A DEJAR TODO MAS LIMPIO
-// BASAR TODO EN DATA-GOTO Y SHOWSECTION 
-// NO FUNCIONAN: 
+// BASAR TODO EN DATA-GOTO Y SHOWSECTION
+// NO FUNCIONAN:
 //   -> MUTE UNMUTE BTN CUANDO VIENES DE UN VIDEO EN MUTE
 //   -> LINKS DEL HEADER
 //   -> AHORA ME HE CARGADO EL PRESAVE :/ JEH
@@ -490,3 +548,7 @@ document.querySelectorAll('[data-goto]').forEach(link => {
 //   -> TOUR SECCTION
 //   -> INFO SECCTION
 //   -> RESPONSIVE
+
+// TENGO 70MIL FALLOS DE ESCRITURA DETECTADOS POR IA PQ NO SE QUE FALLA 
+
+// NADA NO HAY FORMA NI CON UN ESTADO PERSONALIZADO

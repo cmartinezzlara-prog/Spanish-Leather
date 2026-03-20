@@ -637,6 +637,10 @@ body {
     display: flex;
 }
 
+.Presave.isHidden {
+    display: none;
+}
+
 .PresaveContent {
     width: 100%;
     min-height: 100vh;
