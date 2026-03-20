@@ -349,7 +349,7 @@ body {
     transition-delay: 1s;
 }
 
-.MenuHeader {
+.MainHeader {
     /* background-color: aqua; */
     min-height: 3.125rem;
 
@@ -367,19 +367,19 @@ body {
     right: .625rem;
 }
 
-.MenuHeader-texto {
+.MainHeader-texto {
     /* background-color: red; */
     padding: 0 0 0 2rem;
     letter-spacing: 0.08rem;
     transition: 0.4s ease;
 }
 
-.MenuHeader-texto:hover {
+.MainHeader-texto:hover {
     letter-spacing: 0.25rem;
     transition: 0.4s ease;
 }
 
-.MenuHeader-nav {
+.MainHeader-nav {
     /* background-color: blue; */
     padding: 0 2rem 0 0;
 
@@ -391,22 +391,22 @@ body {
     gap: 1.875rem;
 }
 
-.MenuHeader-link {
+.MainHeader-link {
     letter-spacing: 0.08rem;
     transition: 0.4s ease;
 }
 
-.MenuHeader-link:hover {
+.MainHeader-link:hover {
     letter-spacing: 0.35rem;
     transition: 0.4s ease;
 }
 
-.MenuHeader-star {
+.MainHeader-star {
     max-height: 1.25rem;
     width: 1.875rem;
 }
 
-.MenuHeader-nav:hover .MenuHeader-star {
+.MainHeader-nav:hover .MainHeader-star {
     animation: spin 5s linear infinite;
 }
 
@@ -707,7 +707,7 @@ body {
 /* -- DISEÑO DE TEXTO -- */
 .PresaveText {
     width: 100%;
-    background-color: red;
+    /* background-color: red; */
 
     display: flex;
     flex-flow: column;
@@ -749,7 +749,7 @@ body {
 /* -- FORMULARIO -- */
 .PresaveForm {
     width: 100%;
-    background-color: yellow;
+    /* background-color: yellow; */
 
     display: flex;
     flex-flow: column;

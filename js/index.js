@@ -24,16 +24,31 @@
 // VARIABLES 
 // Btn "Escuchar"
 const listenBtn = document.querySelector('.MenuListen-btn')
+
 // Transicion Babieca
 const transition = document.querySelector('.Transition')
-// Player y menú
+
+// Secciones principales
 const player = document.querySelector('.Player')
 const menu = document.querySelector('.Menu')
+const splash = document.querySelector('.Splash')
+const cover = document.querySelector('.Cover')
+const presave = document.querySelector('.Presave')
+const tour = document.querySelector('.Tour')
+const info = document.querySelector('.Info')
+
+// Splash
+const flash = document.querySelector('.Splash-flash')
+
 
 console.log(listenBtn)
 console.log(transition)
+
 console.log(player)
 console.log(menu)
+console.log(splash)
+console.log(cover)
+console.log(flash)
 
 
 // EVENTO
@@ -57,17 +72,9 @@ listenBtn.addEventListener('click', () => {
     muteBtn.textContent = "mute"
 })
 
+
 // VARIABLES
 // Splash  ->  Cover
-const splash = document.querySelector('.Splash')
-const cover = document.querySelector('.Cover')
-const flash = document.querySelector('.Splash-flash')
-
-console.log(splash)
-console.log(cover)
-console.log(flash)
-
-
 // Mientras splash isHidden -> cover isVisible
 const showCover = () => {
     console.log('Show cover')
@@ -159,11 +166,8 @@ function updateTrackInfo(i) {
 // -- SONIDO VIDEOS !! --
 // VARIABLE BTN MUTE / UNMUTE
 const muteBtn = document.querySelector('.PlayerBtn-text')
-
-// ESTADO
+// ESTADOS
 let isMuted = false
-
-// ESTADO
 let index = 0
 
 // Declaramos el video que esta activo ahora (0=primer video)
@@ -241,13 +245,6 @@ function showVideo(i) {
             fadeIn(video)
             video.muted = false
         }
-    }).catch(err => {
-        console.log("Autoplay bloquedo, reintentar", err)
-        // Si BLOQUEA mantenemos MUTE y reintentamos
-        video.muted = true
-        video.play().catch(err2 => {
-            console.log("Segundo intento fallido")
-        })
     })
 
     // -- ACTUALIZAR PUNTOS GALERIA!! --
@@ -258,10 +255,8 @@ function showVideo(i) {
 
     // GUARDAR INDICE ACTUAL
     index = i
-
     updateTrackInfo(i)
 }
-
 
 
 // EVENTOS
@@ -295,7 +290,6 @@ function startIfNeeded() {
 
 
 
-
 // AÑADIMOS EL EVENTO CLICK EN MUTE PARA SILENCIAR Y SOBEESCRIBIR EN EL HTML
 // LUEGO LA PALABRA MUTE CAMBIA A UNMUTE; lo hacemos igual con textcontent
 // COMO ES A TODOS LOS VIDEOS TENDRÁ QUE SER VIDEOS.FOREACH!!!..... V.MUTED = ISMUTED
@@ -308,7 +302,6 @@ muteBtn.addEventListener('click', () => {
 
     // Cambiar la palabra creo que con textContent
     // Si isMuted mostrar "unmute" / si estan sonando mostrar "mute"
-
     muteBtn.textContent = isMuted ? "unmute" : "mute"
 })
 
@@ -317,25 +310,7 @@ const btnVolver = document.querySelector('.PlayerBack-btn')
 
 btnVolver.addEventListener('click', () => {
 
-    // Oculto el Player
-    player.classList.remove('isListening')
-    // DESACTIVAR eventos del PLAYER
-    player.style.pointerEvents = "none"
-
-    // Muestro el Menu
-    menu.classList.add('isVisible')
-    menu.classList.remove('isListening')
-
-    // Paramos los videos
-    videos.forEach(video => {
-        video.pause()
-        video.currentTime = 0
-    })
-
-    // Reseteo el estado del Player
-    index = 0
-    isMuted = false
-    muteBtn.textContent = "mute"
+    showSection("menu")
 
 
     // PROBLEMA: CUANDO VOY AL MENU LOS BOTONES DEL PALYER SIGUEN ACTIVOS
@@ -379,17 +354,14 @@ function addVerticalSwipe(elemento, actionSwipeUp, actionSwipeDown) {
     let startY = 0;
     // DETECTA TOQUE
     elemento.addEventListener("touchstart", (e) => {
-        const touchStart = e.touches[0]
-        startY = touchStart.clientY
+        startY = e.touches[0].clientY
         // GUARDAR POSICIÓN VERTICAL(Y)
     })
+
     // DEJA DETECTAR TOQUE
     elemento.addEventListener("touchend", (e) => {
-        const touchEnd = e.changedTouches[0]
-        // GUARDAR POSICIÓN FINAL VERTICAL(Y)
-
         // Constante (diferenciaY) que determina que:
-        const diferenciaY = startY - touchEnd.clientY
+        const diferenciaY = startY - e.changedtouches[0].clientY
 
         console.log("TOUCHEND detectado. diferenciaY =", diferenciaY)
 
@@ -397,19 +369,13 @@ function addVerticalSwipe(elemento, actionSwipeUp, actionSwipeDown) {
         if (Math.abs(diferenciaY) < 30) return
 
         // 2.SI fue hacia ARRIBA el resultado es POSITIVO
-        if (diferenciaY > 0) {
-            if (actionSwipeUp) actionSwipeUp()
-        }
-
-        // 3.SI fue hacia ABAJO el resultado es NEGATIVO
-        else {
-            if (actionSwipeDown) actionSwipeDown()
-        }
+        if (diferenciaY > 0) actionSwipeUp()
+        else actionSwipeDown()
     })
 }
 
 // AHORA LLAMAMOS A LOS ELEMENTOS
-addVerticalSwipe(cover, function () {
+addVerticalSwipe(cover, () => {
 
     if (!coverActivo) return
     cover.classList.add("isHidden")
@@ -425,11 +391,11 @@ const pantallaPlayer = document.querySelector(".PlayerScreen")
 
 // SWIPE EN PANTALLA
 addVerticalSwipe(pantallaPlayer,
-    function () {
+    () => {
         startIfNeeded()
         showVideo(index + 1)
     },
-    function () {
+    () => {
         startIfNeeded()
         showVideo(index - 1)
     }
@@ -439,86 +405,88 @@ addVerticalSwipe(pantallaPlayer,
 
 // -- PRESAVE!! --
 // ACTIVAMOS PRESAVE DESDE BOTON FIXED LATERAL
-const presave = document.querySelector('.Presave')
 const presaveBtn = document.querySelector('.FixedPresave-btn')
 const presaveBack = document.querySelector('.PresaveBack')
 
-console.log(presave)
 console.log(presaveBtn)
 console.log(presaveBack)
 
-
-// ESTADO REFERENCIA APERTURA PRESAVE
-let presaveFrom = null
-
-// EVENTOS
-// ABRIR PRESAVE desde el BOTON LATERAL
 presaveBtn.addEventListener('click', () => {
-    presaveFrom = "menu"
-    presave.classList.add('isVisible')
-})
-
-
-// -- ENLACES HEADER !! --
-// ENLACE A MENU (EN MENU Y EN PLAYER)
-const menuLinks = document.querySelectorAll('[data-section="menu"]')
-
-const presaveLinks = document.querySelectorAll('[data-section="presave"]')
-
-menuLinks.forEach(link => {
-    link.addEventListener('click', (e) => {
-        e.preventDefault()
-
-        // OCULTO PLAYER
-        player.classList.remove('isListening')
-
-        // OCULTO EL COVER PARA QUE NO SE REPRODUZCA TODO DE NUEVO
-        cover.classList.add('isHidden')
-
-        // MUESTRO EL MENU
-        menu.classList.add('isVisible')
-        menu.classList.remove('isListening')
-
-        // RESETEAMOS EL ESTADO DE LOS VIDEOS
-        videos.forEach(video => {
-            video.pause()
-            video.currentTime = 0
-        })
-
-        index = 0
-        isMuted = false
-        muteBtn.textContent = "mute"
-    })
-})
-
-presaveLinks.forEach(link => {
-    link.addEventListener('click', (e) => {
-        e.preventDefault()
-
-        // MARCAR ORIGEN PRESAVE
-        presaveFrom = "header"
-
-        player.classList.remove('isListening')
-        menu.classList.remove('isVisible')
-        menu.classList.remove('isListening')
-
-        presave.classList.add('isVisible')
-
-        // NO  RESETEAMOS EL ESTADO DE LOS VIDEOS PORQUE NO SE ACCEDE DESDE PLAYER
-    })
+    showSection("presave")
 })
 
 // CERRAR desde el PRESAVE con BOTON BACK
 presaveBack.addEventListener('click', () => {
-    presave.classList.remove('isVisible')
-
-    if (presaveFrom === "header"){
-        menu.classList.add('isVisible')
-        menu.classList.remove('isListening')
-    }
+    showSection("menu")
 })
 
+// TOUR
 
+// INFO
+
+// SHOWSECTION
+const sections = {
+    cover,
+    menu,
+    player,
+    presave,
+    tour,
+    info
+}
+
+function resetPlayer() {
+    videos.forEach(video => {
+        video.pause()
+        video.currentTime = 0
+        video.muted = true
+
+    })
+    index = 0
+    isMuted = false
+    muteBtn.textContent = "mute"
+    hasStarted = false
+}
+
+function showSection(name) {
+    console.log("showSection llamada con:", name)
+
+    Object.entries(sections).forEach(([key, el]) => {
+        if (!el) return
+
+        const active = ley === name
+        el.classList.toggle('isVisible', active)
+        el.classList.toggle('isHidden', !active)
+
+        // buscar como se crea una const que haga toggle con los dos estados
+    })
+
+    if (name !== 'player') {
+        console.log("Reset pq si no peta")
+        resetPlayer()
+
+        // vale a ver hacemos el funtion del player
+    }
+}
+
+document.querySelectorAll('[data-goto]').forEach(link => {
+    link.addEventListener('click', e => {
+        e.preventDefault()
+        const target = link.dataset.goto
+        console.log("Ir a:", target)
+        showSection(target)
+    })
+})
 
 //13/03 ME HE CARGADO LA REPRODUCCION DEL PLAYER EN EL ORDENADOR :((((((
 //16/03 VOY A LIMPIAR BIEN EL JS PARA ELIMINAR REPETICION DE ACCIONES QUE GENERAN FALLOS GRANDES
+//20/03 CREO QUE HAY QUE ELIMINAR LOS LISTENNERS MENULINKS Y PRESAVE LINKS
+// LA FUNCION RESET PLAYER AL FINAL DEL ARCHIVO ME PODRIA AYUDAR A DEJAR TODO MAS LIMPIO
+// BASAR TODO EN DATA-GOTO Y SHOWSECTION 
+// NO FUNCIONAN: 
+//   -> MUTE UNMUTE BTN CUANDO VIENES DE UN VIDEO EN MUTE
+//   -> LINKS DEL HEADER
+//   -> AHORA ME HE CARGADO EL PRESAVE :/ JEH
+// PENDIENTES:
+//   -> TOUR SECCTION
+//   -> INFO SECCTION
+//   -> RESPONSIVE
