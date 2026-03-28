@@ -349,6 +349,10 @@ body {
     transition-delay: 1s;
 }
 
+.Menu.isHidden{
+    display: none;
+}
+
 .MainHeader {
     /* background-color: aqua; */
     min-height: 3.125rem;
@@ -633,6 +637,10 @@ body {
     z-index: 8;
 }
 
+.MainHeader-presave {
+    background-color: black;
+}
+
 .Presave.isVisible {
     display: flex;
 }
@@ -791,6 +799,40 @@ body {
     font-size: 1.3rem;
     font-weight: 600;
     color: white;
+}
+
+
+/* ***** TOUR ***** */
+.Tour {
+    display: none;
+}
+
+.Tour.isVisible {
+    width: 100%;
+    min-height: 100vh;
+    background-color: rgb(0, 0, 0);
+
+    position: fixed;
+    inset: 0;
+    z-index: 8;
+
+    display: flex;
+}
+
+.Tour.isHidden{
+    display: none;
+}
+
+.MainHeader-tour{
+    background-color: transparent;
+}
+
+.TourLayout{
+    width: 100%;
+    background-color: rgb(200, 67, 67);
+
+    margin-top: 4rem;
+    padding: 2rem;
 }
 
 /* TRANSITION */
@@ -1184,6 +1226,10 @@ body {
     transition: 0.2s ease;
 }
 
+.Player.isHidden{
+    display: none;
+}
+
 .h-hidden {
     display: none;
 }
@@ -1205,6 +1251,7 @@ body {
 .PlayerMute button .PlayerArrows button {
     pointer-events: auto;
 }
+
 
 
 @keyframes flashPulse {
@@ -1255,10 +1302,10 @@ body {
 /* MEDIA */
 /* TABLET + MÓVIL */
 @media (max-width:900px) {
-   .PresaveContent{
-    gap: 30px;
-   }
-   
+    .PresaveContent {
+        gap: 30px;
+    }
+
     .PresaveLayout {
         flex-flow: row wrap;
         gap: 5px;
@@ -1279,6 +1326,6 @@ body {
 
     .PresaveText p:nth-child(4) {
         font-size: 1.1rem;
-         line-height: 1rem;
+        line-height: 1rem;
     }
 }

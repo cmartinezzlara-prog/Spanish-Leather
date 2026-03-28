@@ -68,6 +68,7 @@ flash.addEventListener('animationend', () => {
     console.log('Animación acabada')
     showCover()
 
+
     // Splash display none
     splash.addEventListener('transitionend', () => {
         splash.style.display = 'none'
@@ -171,36 +172,60 @@ function startIfNeeded() {
 
 
 
-// EVENTO
-// Añadir clases. Cuando hago click en escuchar se les aplica isListening -> transition entra / menu desaparece / player aparece
-listenBtn.addEventListener('click', () => {
-
-    // Reiniciar transición SIEMPRE
-    transition.classList.remove('isListening')
-    void transition.offsetWidth
-
-    // Muestro la transicion y preparo el Player
-    transition.classList.add('isListening')
-    menu.classList.add('isListening')
-    player.classList.add('isListening')
-
-    // RE-ACTIVAR eventos del PLAYER
-    player.style.pointerEvents = "auto"
-
-    // RESETEO EL MUTE AL ENTRAR
-    isMuted = false
-    muteBtn.textContent = "mute"
-})
-
-
-
-
 // -- SONIDO VIDEOS !! --
 // VARIABLE BTN MUTE / UNMUTE
 const muteBtn = document.querySelector('.PlayerBtn-text')
 // ESTADOS
 let isMuted = false
 let index = 0
+
+
+
+
+
+
+
+// metemos un addeventlistener mute btn click 
+// isMuted =!ismuted
+//muteBtn.textContent =ismuted ?"unmute":"mute"
+//aplicamos el estado de mute > BUSCAR
+
+// ------ FUNCIÓN MUTESTATE!!!! -----
+function applyMuteState() {
+    videos.forEach((video, i) => {
+        video.muted = isMuted || i !== index
+
+// si le hemos dado a desmutear
+        if (!isMuted) {
+            //y declaramos que este el video en el que estamos / el activo
+            if (i === index) {
+                //lo ponemos en volumen
+                video.volume = 1
+            }
+        }
+    })
+}
+
+
+
+
+
+
+
+// AÑADIMOS EL EVENTO CLICK EN MUTE PARA SILENCIAR Y SOBEESCRIBIR EN EL HTML
+// LUEGO LA PALABRA MUTE CAMBIA A UNMUTE; lo hacemos igual con textcontent
+// COMO ES A TODOS LOS VIDEOS TENDRÁ QUE SER VIDEOS.FOREACH!!!..... V.MUTED = ISMUTED
+// Los videos no tienen que tener el estado global cuando no estan activos
+
+muteBtn.addEventListener('click', () => {
+    isMuted = !isMuted
+
+    // Cambiar la palabra creo que con textContent
+    // Si isMuted mostrar "unmute" / si estan sonando mostrar "mute"
+    muteBtn.textContent = isMuted ? "unmute" : "mute"
+    applyMuteState()
+})
+
 
 
 
@@ -243,41 +268,6 @@ function fadeOut(video, duration = 400) {
 
 
 
-// metemos un addeventlistener mute btn click 
-// isMuted =!ismuted
-//muteBtn.textContent =ismuted ?"unmute":"mute"
-//aplicamos el estado de mute > BUSCAR
-
-// ------ FUNCIÓN MUTESTATE!!!! -----
-function applyMuteState() {
-    videos.forEach((video, i) => {
-        video.muted = isMuted || i !== index
-    })
-}
-
-
-
-
-
-
-
-
-// AÑADIMOS EL EVENTO CLICK EN MUTE PARA SILENCIAR Y SOBEESCRIBIR EN EL HTML
-// LUEGO LA PALABRA MUTE CAMBIA A UNMUTE; lo hacemos igual con textcontent
-// COMO ES A TODOS LOS VIDEOS TENDRÁ QUE SER VIDEOS.FOREACH!!!..... V.MUTED = ISMUTED
-// Los videos no tienen que tener el estado global cuando no estan activos
-
-muteBtn.addEventListener('click', () => {
-    isMuted = !isMuted
-
-    // Cambiar la palabra creo que con textContent
-    // Si isMuted mostrar "unmute" / si estan sonando mostrar "mute"
-    muteBtn.textContent = isMuted ? "unmute" : "mute"
-    applyMuteState()
-})
-
-
-
 
 
 
@@ -311,7 +301,7 @@ function showVideo(i) {
     // Desmutear el activo / PARA QUE FUNCIONE EL BOTON: isMuted 
     // para que cuando se ha ejecutado el RESET el MUTE funcione -para todos-
 
-// GUARDAR INDICE ACTUAL
+    // GUARDAR INDICE ACTUAL
     index = i
     applyMuteState()
 
@@ -328,7 +318,7 @@ function showVideo(i) {
     dots.forEach(dots => dots.classList.remove('isActive'))
     // ACTIVAR punto correcto
     dots[i].classList.add('isActive')
-  
+
     updateTrackInfo(i)
 }
 
@@ -352,6 +342,31 @@ prevBtn.addEventListener('click', () => {
 
 
 
+
+
+
+// EVENTO
+// Añadir clases. Cuando hago click en escuchar se les aplica isListening -> transition entra / menu desaparece / player aparece
+listenBtn.addEventListener('click', () => {
+
+    // Reiniciar transición SIEMPRE
+    transition.classList.remove('isListening')
+    void transition.offsetWidth
+
+player.classList.remove('isHidden')
+
+    // Muestro la transicion y preparo el Player
+    transition.classList.add('isListening')
+    menu.classList.add('isListening')
+    player.classList.add('isListening')
+
+    // RE-ACTIVAR eventos del PLAYER
+    player.style.pointerEvents = "auto"
+
+    // RESETEO EL MUTE AL ENTRAR
+    isMuted = false
+    muteBtn.textContent = "mute"
+})
 
 
 
@@ -381,7 +396,10 @@ prevBtn.addEventListener('click', () => {
 // ACTUALIZACIÓN.. LA VERDAD QUE SI NO PASA BABIECA SE ME COMPLICA TODO MUCHISIMO, MEJOR QUE PASE Y REINICIE EL PLAYER
 const btnVolver = document.querySelector('.PlayerBack-btn')
 btnVolver.addEventListener('click', () => {
+    console.log("volver a menu")
     showSection("menu")
+
+
 })
 
 
@@ -502,7 +520,20 @@ function resetPlayer() {
     muteBtn.textContent = "mute"
     applyMuteState()
     hasStarted = false
+
+
+    //PARA QUITAR LOS ESTADOS AL DARLE A MENU O VOLVER
+    player.classList.remove('isListening')
+    // player.classList.add('isHidden')
+    menu.classList.remove('isListening')
+    transition.classList.remove('isListening')
+
+    player.style.pointerEvents = "none"
 }
+
+
+
+
 
 function showSection(name) {
     console.log("showSection llamada con:", name)
@@ -513,6 +544,7 @@ function showSection(name) {
         const active = key === name
         el.classList.toggle('isVisible', active)
         el.classList.toggle('isHidden', !active)
+
 
         // buscar como se crea una const que haga toggle con los dos estados
     })
@@ -535,6 +567,8 @@ document.querySelectorAll('[data-goto]').forEach(link => {
     })
 })
 
+
+
 //13/03 ME HE CARGADO LA REPRODUCCION DEL PLAYER EN EL ORDENADOR :((((((
 //16/03 VOY A LIMPIAR BIEN EL JS PARA ELIMINAR REPETICION DE ACCIONES QUE GENERAN FALLOS GRANDES
 //20/03 CREO QUE HAY QUE ELIMINAR LOS LISTENNERS MENULINKS Y PRESAVE LINKS
@@ -549,6 +583,35 @@ document.querySelectorAll('[data-goto]').forEach(link => {
 //   -> INFO SECCTION
 //   -> RESPONSIVE
 
-// TENGO 70MIL FALLOS DE ESCRITURA DETECTADOS POR IA PQ NO SE QUE FALLA 
-
+// TENGO 70MIL FALLOS DE ESCRITURA DETECTADOS POR IA PQ NO SE QUE FALLA
 // NADA NO HAY FORMA NI CON UN ESTADO PERSONALIZADO
+
+///23/03 NO VA EL BTN VOLVER NI LOS HEADERS // VALE IGUAL NO VA PQ EN NINGUN MOMENTO LE QUITO LAS CLASES (REMOVE...)
+// PREFIERO QUITAR EL PRESAVE DEL PLAYER PARA NO TENER QUE LIARLA MAS OARA ARREGLAR EL RESET OTRA VEZ AL QUITAR LA PESTAÑA DE PRESAVE DESDE AHI
+//  SI QUITO PRESAVE DEL HEADER DEL PLAYER LA TRANSICIÓN DE UN HEADER A OTRO ES MUY MALA, SE SUPERPONEN.
+// SI MUTEO, ME VOY AOTRO VIDEO Y DESMUTEO, ESTE NO SE OYE, NO ES HASTA QUE PASO DE VIDEO EN DESMUTEADO QUE SE ESCUCHA EL AUDIO.
+//  SI SHOWSECTION HACE TOGGLE EN LAS CLASES ISVISIBLE/HIDDEN PERO NO GESTIONA EL QUE SE RESETEE EL ESTADO DEL VIDEO, QUE LIMPIE LO QUE BLOQUEA LA NAVEGACION
+//  ES COMO QUE EL RESET PLAYER NO LIMPIA LAS CLASES DE TRANSICION
+// PROBARE REMOVE LAS CLASES Y POINTER EVENTS NONE AL PALYER PARA QUE VUELVA AL MENU
+// PARA EL MOUTE/UNMUTE: EL VOLUMENT AHORA ESTA A 0 PQ AHORA CUANDO HAGO FADE IN ESTOY CON ISMUTED=TRUE
+//  Y CUANDO DESMUTEO LO QUE HAGO ES QUE EL MUTED= FALSE PERO SIGUE EN VOLUMENT 0
+// ENTONCES EN EL ESTADO DE MUTE PUEDO DECIRLE QUE VOLUMEN = 1..que SI NO ESTOY MUTEADA "ISMUTED=FALSE"
+//  Y ESTE VIDEO ESTA ACTIVO "I === INDEX" PUES LE PONGO "VIDEO.VOLUME = 1"
+//  O LO QUE ES LO MISMO SI "ISMUTED == FALSE" Y "I===INDEX" "VIDEO.VOLUME =1"
+// Y AL RESET PLAYER LE PUEDO AÑADIR QUE SI SE EJECUTA EL POINTER EVENTS PASARIA A SER AUTOMATICO
+
+//28/03 EL PLAYER CON EL BOTON MUTE/UNMUTE VA PERFECTO.
+// AHORA FALTAN:
+//  - QUITAR PRESAVE DEL HEADER PLAYER PQ ME COMPLICA TODO
+//  - ENLACES HEADER PLAYER (ARREGLAR TAMBIEN EL BOTON DE VOLVER: MENU)
+//     NOMBRE GUITARRICADELAFUENTE: REFRESH
+//     TOUR: TOUR
+//     MENU: MENU
+//  - MEJORAR VISUALEMNTE EL FORMULARIO
+//  - TOUR
+//  - INFO 
+
+// PENDIENTE: 
+//  - MEJORAR VISUALEMNTE EL FORMULARIO
+//  - TOUR
+//  - INFO 

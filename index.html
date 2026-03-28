@@ -100,7 +100,7 @@
 
             <!-- IZQUIERDA -->
             <div class="MainHeader-texto">
-                <a href="#" class="MainHeader-author" data-goto="menu">guitarricadelafuente</a>
+                <a href="/" class="MainHeader-author">guitarricadelafuente</a>
             </div>
 
             <!-- DERECHA -->
@@ -163,6 +163,8 @@
 
 
 
+
+
     <!-- ********** TOUR *********** -->
     <section class="Tour">
         <h2 class="h-hidden">Fechas del Tour</h2>
@@ -171,7 +173,7 @@
 
             <!-- IZQUIERDA -->
             <div class="MainHeader-texto">
-                <a href="#" class="MainHeader-author" data-goto="menu">guitarricadelafuente</a>
+                <a href="/" class="MainHeader-author">guitarricadelafuente</a>
             </div>
 
             <!-- DERECHA -->
@@ -187,11 +189,53 @@
         </header>
 
         <!-- CONTENIDO -->
-        <div class="TourContent">
+        <div class="TourLayout">
+            <!-- SELLO DE LA GIRA -->
+            <div class="TourSeal">
+                <img src="" alt="Sello gira">
+            </div>
+
+            <!-- WRAPPER DE FECHAS -->
+            <div class="TourWrapper">
+                <div class="WrapperHeader">
+                    <span>Ciudad</span>
+                    <span>Localización</span>
+                    <span>Fecha</span>
+                    <span>Entradas</span>
+                </div>
+
+                <!-- MÁSCARA -->
+                <div class="TourPath">
+                    <ul class="TourList">
+                        <li class="TourRow">
+                            <span>París</span>
+                            <span>Elysee Montmartre</span>
+                            <span>30 enero 2026</span>
+                            <span>SOLD OUT</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="TourArrows">
+                    <button class="TourArrow TourArrow--prev" title="Previa">
+                        <img src="assets/content/arrowup.svg" alt="">
+                    </button>
+                    <button class="TourArrow TourArrow--next" title="Siguiente">
+                        <img src="assets/content/arrowdown.svg" alt="">
+                    </button>
+                </div>
+            </div>
+
+            <button class="TourInfo" title="Más información">
+            </button>
+
+
+
 
         </div>
 
     </section>
+
 
 
 
@@ -201,6 +245,7 @@
 
         <img src="assets/content/babiecaimg.svg" class="TransitionText" loading="lazy" alt="Animación Babieca">
     </section>
+
 
 
 
@@ -282,7 +327,7 @@
 
                     <!-- IZQUIERDA -->
                     <div class="MainHeader-texto">
-                        <a href="#" class="MainHeader-author" data-goto="menu">guitarricadelafuente</a>
+                        <a href="/" class="MainHeader-author">guitarricadelafuente</a>
                     </div>
 
                     <!-- DERECHA -->
@@ -292,9 +337,9 @@
                         <a href="#" class="MainHeader-link" data-goto="tour" title="Ver fechas del tour">Tour</a>
 
                         <a href="#" class="MainHeader-link" data-goto="menu" title="Ir al menu principal">Menu</a>
-
+                        <!-- 
                         <a href="#" class="MainHeader-link" data-goto="presave"
-                            title="Hacer presave del album">Presave</a>
+                            title="Hacer presave del album">Presave</a> -->
                     </nav>
                 </header>
 
@@ -355,7 +400,29 @@
         </div>
     </section>
 
+
+
+
     <section class="Presave">
+        <header class="MainHeader MainHeader-presave" aria-label="Navegación principal">
+
+            <!-- IZQUIERDA -->
+            <div class="MainHeader-texto">
+                <a href="/" class="MainHeader-author">guitarricadelafuente</a>
+            </div>
+
+            <!-- DERECHA -->
+            <nav class="MainHeader-nav">
+                <img src="assets/content/iregularstar.svg" class="MainHeader-star" loading="lazy" alt="Icono">
+
+                <a href="#" class="MainHeader-link" data-goto="tour" title="Ver fechas del tour">Tour</a>
+
+                <a href="#" class="MainHeader-link" data-goto="menu" title="Ir al menu principal">Menu</a>
+            </nav>
+        </header>
+
+
+
         <div class="PresaveContent">
             <div class="PresaveTop">
                 <button class="PresaveBack" title="atrás">
@@ -386,6 +453,8 @@
 
         </div>
     </section>
+
+
 
 </body>
 
