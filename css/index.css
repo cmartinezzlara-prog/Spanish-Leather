@@ -835,6 +835,25 @@ body {
     padding: 2rem;
 }
 
+.TourSeal{}
+
+.TourWrapper{}
+.WrapperHeader{}
+.TourPath{}
+.TourList{}
+.TourRow{}
+.TourArrows{}
+.TourArrow{}
+.TourArrow--prev{}
+.TourArrow--next{}
+
+
+
+.TourInfo{}
+
+
+
+
 /* TRANSITION */
 .Transition {
     position: fixed;
