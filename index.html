@@ -190,32 +190,39 @@
 
         <!-- CONTENIDO -->
         <div class="TourLayout">
-            <!-- SELLO DE LA GIRA -->
+
+            <!-- SELLO GIRA -->
             <div class="TourSeal">
-                <img src="" alt="Sello gira">
+                <img class="TourImg" src="assets/content/tour-label.svg" alt="Sello gira">
             </div>
 
-            <!-- WRAPPER DE FECHAS -->
+            <!-- WRAPPER (rosa)-->
             <div class="TourWrapper">
-                <div class="WrapperHeader">
-                    <span>Ciudad</span>
-                    <span>Localización</span>
-                    <span>Fecha</span>
-                    <span>Entradas</span>
+
+                <div class="TourList">
+                    <!-- CABECERA -->
+                    <div class="TourList-Header">
+                        <span>Ciudad</span>
+                        <span>Localización</span>
+                        <span>Fecha</span>
+                        <span>Entradas</span>
+                    </div>
+
+                    <!-- MÁSCARA -->
+                    <div class="TourList-Path">
+                        <ul class="TourUl">
+                            <li class="TourItem">
+                                <span>Ciudad</span>
+                                <span>Local</span>
+                                <span>Fecha</span>
+                                <span>Entradas</span>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
 
-                <!-- MÁSCARA -->
-                <div class="TourPath">
-                    <ul class="TourList">
-                        <li class="TourRow">
-                            <span>París</span>
-                            <span>Elysee Montmartre</span>
-                            <span>30 enero 2026</span>
-                            <span>SOLD OUT</span>
-                        </li>
-                    </ul>
-                </div>
 
+                <!-- FLECHAS -->
                 <div class="TourArrows">
                     <button class="TourArrow TourArrow--prev" title="Previa">
                         <img src="assets/content/arrowup.svg" alt="">
@@ -226,11 +233,12 @@
                 </div>
             </div>
 
-            <button class="TourInfo" title="Más información">
-            </button>
-
-
-
+            <!-- INFO -->
+            <div class="InfoBox">
+                <button class="InfoBtn" title="Más información">
+                    <p>i</p>
+                </button>
+            </div>
 
         </div>
 
@@ -453,9 +461,6 @@
 
         </div>
     </section>
-
-
-
 </body>
 
 </html>

@@ -195,7 +195,7 @@ function applyMuteState() {
     videos.forEach((video, i) => {
         video.muted = isMuted || i !== index
 
-// si le hemos dado a desmutear
+        // si le hemos dado a desmutear
         if (!isMuted) {
             //y declaramos que este el video en el que estamos / el activo
             if (i === index) {
@@ -353,7 +353,7 @@ listenBtn.addEventListener('click', () => {
     transition.classList.remove('isListening')
     void transition.offsetWidth
 
-player.classList.remove('isHidden')
+    player.classList.remove('isHidden')
 
     // Muestro la transicion y preparo el Player
     transition.classList.add('isListening')
@@ -569,6 +569,98 @@ document.querySelectorAll('[data-goto]').forEach(link => {
 
 
 
+// ---- CONCIERTOS TOUR ----
+// ARRAY ( le voy a pedir a cht gpt que me rellene los cmapos de la base de mi array con la lista de conciertos)
+const tourDates = [
+    { ciudad: "Argentina", local: "Lollapalooza Argentina", fecha: "13 marzo 2026", estado: "SOLD-OUT" },
+    { ciudad: "Santiago de Chile", local: "Lollapalooza Chile", fecha: "14 marzo 2026", estado: "SOLD-OUT" },
+    { ciudad: "Sao Paolo", local: "Fabrique", fecha: "19 marzo 2026", estado: "SOLD-OUT" },
+    { ciudad: "Bogotá", local: "Estéreo Picnic", fecha: "21 marzo 2026", estado: "SOLD-OUT" },
+    { ciudad: "Lima", local: "CC. Leguía", fecha: "25 marzo 2026", estado: "SOLD-OUT" },
+    { ciudad: "Monterrey", local: "Tecate Pal Norte", fecha: "27 marzo 2026", estado: "SOLD-OUT" },
+   
+    { ciudad: "Benicassim", local: "SanSan", fecha: "03 abril 2026", estado: "ENTRADAS" },
+    { ciudad: "Milan", local: "Fabrique", fecha: "10 abril 2026", estado: "ENTRADAS" },
+    { ciudad: "Berlín", local: "Metropol", fecha: "11 abril 2026", estado: "ENTRADAS" },
+    { ciudad: "Murcia", local: "Warm Up", fecha: "01 mayo 2026", estado: "ENTRADAS" },
+   { ciudad: "Barcelona", local: "Primavera Sound", fecha: "03 junio 2026", estado: "ENTRADAS" },
+    { ciudad: "Vilanova i la Geltrú", local: "Vida Festival", fecha: "03 julio 2026", estado: "ENTRADAS" },
+    { ciudad: "Málaga", local: "Plaza de toros de Málaga", fecha: "11 julio 2026", estado: "ENTRADAS" },
+    { ciudad: "Santander", local: "Santander Music", fecha: "31 julio 2026", estado: "ENTRADAS" },
+    { ciudad: "Chiclana de la F.", local: "Concert Music Festival", fecha: "09 agosto 2026", estado: "ENTRADAS" },
+    { ciudad: "Zaragoza", local: "Vive Latino", fecha: "05 septiembre 2026", estado: "ENTRADAS" },
+    { ciudad: "Madrid", local: "Movistar Arena", fecha: "02 octubre 2026", estado: "ENTRADAS" }
+    
+]
+
+const tourUl = document.querySelector('.TourUl')
+const visibleRows = 7
+// Marco el indice inicial 
+let startIndex = 0
+
+
+function loadDates() {
+    //limpiar 
+    tourUl.innerHTML = ""
+
+    tourDates.forEach(date => {
+        const li = document.createElement('li')
+        li.classList.add('TourItem')
+
+        li.innerHTML = `
+        <span>${date.ciudad}</span>
+        <span>${date.local}</span>
+        <span>${date.fecha}</span>
+        <span>${date.estado}</span>`
+
+        tourUl.appendChild(li)
+    })
+}
+
+function updateVisibleRows() {
+    const items = document.querySelectorAll('.TourItem')
+
+    items.forEach((item, i) => {
+        if (i >= startIndex && i < startIndex + visibleRows) {
+            item.style.display = "grid"
+        } else {
+            item.style.display = "none"
+        }
+    })
+}
+
+loadDates()
+updateVisibleRows()
+
+
+// FELCHAS
+const arrowUp = document.querySelector('.TourArrow--prev')
+const arrowDown = document.querySelector('.TourArrow--next')
+
+// FUNCION
+// SI startIndex es mayor que 0 startIndex=startIndex -1 / y actualizamos las lineas visibles
+function scrollUp() {
+    console.log("flecha arriba")
+    if (startIndex > 0) {
+        startIndex = startIndex - 1
+        updateVisibleRows()
+    }
+}
+
+function scrollDown() {
+    console.log("flecha abajo")
+
+    if (startIndex < tourDates.length - visibleRows) {
+        startIndex = startIndex + 1
+        updateVisibleRows()
+    }
+}
+
+arrowUp.addEventListener('click', scrollUp)
+arrowDown.addEventListener('click', scrollDown)
+// NO VA SCROLLDOWN Y TIENE QUE VER CON LAC APACIDAD DE LA MASCARA
+
+
 //13/03 ME HE CARGADO LA REPRODUCCION DEL PLAYER EN EL ORDENADOR :((((((
 //16/03 VOY A LIMPIAR BIEN EL JS PARA ELIMINAR REPETICION DE ACCIONES QUE GENERAN FALLOS GRANDES
 //20/03 CREO QUE HAY QUE ELIMINAR LOS LISTENNERS MENULINKS Y PRESAVE LINKS
@@ -609,9 +701,12 @@ document.querySelectorAll('[data-goto]').forEach(link => {
 //     MENU: MENU
 //  - MEJORAR VISUALEMNTE EL FORMULARIO
 //  - TOUR
-//  - INFO 
+//  - INFO
 
-// PENDIENTE: 
+// PENDIENTE:
 //  - MEJORAR VISUALEMNTE EL FORMULARIO
 //  - TOUR
-//  - INFO 
+//  - INFO
+
+//29/03 EN LUGAR DE HACER DIVS CON LA INFO DE CADA CONCIERTO...
+// VOY A HACER UN ARRAY EN JS
