@@ -414,10 +414,27 @@ body {
     animation: spin 5s linear infinite;
 }
 
+
+
+/* --- MENU LAYOUT --- */
+.MenuLayout {
+    width: 100%;
+    min-height: 90vh;
+    
+    display: flex;
+    flex-flow: column;
+    justify-content: start;
+    align-items: center;
+    margin: 4rem 0 0 0;
+
+    position: relative;
+}
+
+
 /* TOP MENU */
 .MenuTop {
     width: 100%;
-    min-height: 35vh;
+    min-height: 30vh;
     /* background-color: darkred; */
 
     display: flex;
@@ -425,7 +442,7 @@ body {
     justify-content: start;
     align-items: center;
 
-    padding: 4rem 0 0 5rem;
+    padding: 0 0 0 5rem;
 }
 
 .MenuTop-text {
@@ -433,6 +450,7 @@ body {
     /* background-color: red; */
     padding: .625rem;
     letter-spacing: 0.08rem;
+    font-size: 16px;
 }
 
 .MenuTop-p {
@@ -476,6 +494,7 @@ body {
     padding: 0 0 .625rem .3125rem;
 }
 
+/* MENU TITLES */
 .MenuTitles {
     width: 100%;
     /* background-color: red; */
@@ -489,7 +508,7 @@ body {
 }
 
 .MenuTitles-ps {
-    max-width: 37.5rem;
+    max-width: 37rem;
     /* background-color: black; */
 
     display: flex;
@@ -497,8 +516,8 @@ body {
     justify-content: space-between;
     align-items: center;
 
-    line-height: 3.3rem;
-    font-size: 1.2rem;
+    line-height: 3.2rem;
+    font-size: 1.1rem;
     text-transform: capitalize;
 }
 
@@ -520,9 +539,11 @@ body {
     content: "";
 }
 
+/* LISTEN BTN */
 .MenuListen {
     width: 100%;
     display: flex;
+    /* background-color: blue; */
 
     flex-flow: row nowrap;
     justify-content: center;
@@ -530,10 +551,10 @@ body {
 }
 
 .MenuListen-btn {
-    border-radius: 3.125rem;
     background-color: transparent;
     border: .0625rem solid white;
-    padding: 1.2rem 7rem;
+    border-radius: 3.125rem;
+    padding: 1.1rem 6rem;
 
     display: flex;
     flex-flow: row;
@@ -543,12 +564,11 @@ body {
 
     color: white;
     font-family: 'Euclid Circular A', sans-serif;
-    font-size: 25px;
+    font-size: 23px;
     font-weight: 300;
     text-transform: capitalize;
 
     letter-spacing: 0.08rem;
-
     transition: 0.5s ease;
 }
 
@@ -563,6 +583,25 @@ body {
 
 .MenuListen-icon {
     width: .9375rem;
+}
+
+
+
+.InfoBox--menu {
+    width: 100%;
+    max-height: 4.375rem;
+    /* background-color: red; */
+
+    display: flex;
+    flex-flow: row;
+    justify-content: end;
+    align-items: end;
+
+    margin: 0 8rem 2rem 0;
+
+    position: absolute;
+    bottom: 1.8rem;
+    z-index: 8;
 }
 
 
@@ -840,19 +879,20 @@ body {
     flex-flow: column;
     justify-content: start;
     align-items: center;
-    margin-top: 4rem;
+    margin: 4rem 0 0 0;
 
     position: relative;
 }
 
 .TourWrapper {
-    width: 80%;
+    width: 70%;
     /* background-color: rgb(201, 165, 165); */
 
     display: flex;
     flex-flow: column;
     justify-content: center;
     align-items: center;
+    
     position: relative;
 }
 
@@ -865,31 +905,42 @@ body {
     justify-content: start;
     align-items: start;
 
-    margin: 2rem 0 1rem 0;
+    margin: 1rem 0 1rem 0;
 }
 
 .TourImg {
     max-width: 120px;
 }
 
-.TourList{
+.TourList {
     width: 100%;
     /* background-color: yellow; */
+
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .TourList-Header {
     width: 100%;
-    background-color: greenyellow;
+    /* background-color: greenyellow; */
+    border-bottom: 1px solid white;
 
     display: grid;
-    grid-template-columns: 1.5fr 2fr 1fr 0.3fr;
-    padding: 0 1.5rem 0 1.5rem;
+    grid-template-columns: 1.5fr 1.5fr 1fr 0.5fr;
+    padding: 0 1.5rem 1rem 1.5rem;
+
+    text-transform: uppercase;
+    font-weight: 500;
+    font-size: 13px;
+    color: white;
 }
 
 .TourList-Path {
     width: 100%;
     min-height: 50vh;
-    background-color: rgb(71, 71, 71);
+    /* background-color: rgb(71, 71, 71); */
 
     overflow: hidden;
     /* MÁSCARA */
@@ -898,18 +949,25 @@ body {
 
 .TourUl {
     width: 100%;
-    background-color: red;
+    /* background-color: red; */
 
     display: grid;
     grid-auto-rows: 3rem;
 }
 
-.TourItem{
+.TourItem {
     width: 100%;
+    /* background-color: red; */
+    border-bottom: 1px solid white;
 
     display: grid;
-    grid-template-columns: 1.5fr 2fr 1fr 0.3fr;
+    grid-template-columns: 1.5fr 1.5fr 1fr 0.5fr;
     padding: 0 1.5rem 0 1.5rem;
+    align-items: center;
+
+    color: white;
+    font-weight: 300;
+    font-size: 15px;
 }
 
 .TourArrows {
@@ -955,16 +1013,17 @@ body {
 
 .InfoBox {
     width: 100%;
-    min-height: 85vh;
+    max-height: 4.375rem;
     /* background-color: red; */
 
     display: flex;
-    flex-flow: row;
+    flex-flow: row nowrap;
     justify-content: end;
     align-items: end;
 
     margin: 0 8rem 2rem 0;
     position: absolute;
+    bottom: 2rem;
 }
 
 .InfoBtn {
@@ -1007,7 +1066,7 @@ body {
 .TransitionText {
     height: 110vh;
     width: auto;
-    /* un poco mas para que sobresalga de arriba y abajo 
+    /* un poco mas para que sobresalga de arriba y abajo
     para ello exagero el vh y le aplico position absolute
     top:-x vh / left:0*/
 
@@ -1208,12 +1267,13 @@ body {
 }
 
 .PlayerArrow {
-    max-width: 2.5rem;
-    min-height: 2.5rem;
+    max-width: 3rem;
+    min-height: 3rem;
 
     background-color: transparent;
     border: 1px solid white;
-    border-radius: 50%;
+    border-radius: 50px;
+    padding: 10px;
 
     display: flex;
     flex-flow: row;
@@ -1233,14 +1293,14 @@ body {
 }
 
 .PlayerUp {
-    width: 1.5rem;
+    width: 2rem;
     cursor: pointer;
     opacity: 0.7;
     transition: opacity 0.3s ease;
 }
 
 .PlayerDown {
-    width: 1.5rem;
+    width: 2rem;
     cursor: pointer;
     opacity: 0.7;
     transition: opacity 0.3s ease;
@@ -1384,7 +1444,7 @@ body {
     display: none;
 }
 
-/* Solo bloquear gestos del navegador dentro del Player 
+/* Solo bloquear gestos del navegador dentro del Player
 
 .Player {
     touch-action: none;
