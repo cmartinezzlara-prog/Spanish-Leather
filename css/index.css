@@ -853,7 +853,7 @@ body {
 
     display: flex;
     flex-flow: column;
-    justify-content: center;
+    justify-content: start;
     align-items: center;
 
     position: fixed;
@@ -872,8 +872,8 @@ body {
 
 .TourLayout {
     width: 100%;
-    min-height: 90vh;
-    /* background-color: rgb(200, 67, 67); */
+    height: 100vh;
+    /* background-color: rgb(193, 182, 88); */
 
     display: flex;
     flex-flow: column;
@@ -882,6 +882,7 @@ body {
     margin: 4rem 0 0 0;
 
     position: relative;
+    top: 0;
 }
 
 .TourWrapper {
@@ -901,11 +902,11 @@ body {
     /* background-color: red; */
 
     display: flex;
-    flex-flow: column;
+    flex-flow: row;
     justify-content: start;
     align-items: start;
 
-    margin: 1rem 0 1rem 0;
+    padding: 1rem;
 }
 
 .TourImg {
@@ -939,7 +940,6 @@ body {
 
 .TourList-Path {
     width: 100%;
-    min-height: 50vh;
     /* background-color: rgb(71, 71, 71); */
 
     overflow: hidden;
@@ -971,7 +971,7 @@ body {
 }
 
 .TourArrows {
-    min-height: 75vh;
+    min-height: 500px;
     /* background-color: red; */
 
     display: flex;
