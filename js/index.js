@@ -659,6 +659,25 @@ function scrollDown() {
 arrowUp.addEventListener('click', scrollUp)
 arrowDown.addEventListener('click', scrollDown)
 
+
+
+
+// INFO SECTION
+const infoBtns = document.querySelectorAll('.InfoBtn')
+const infoBack = document.querySelector('.InfoBack')
+const infoSection = document.querySelector('.Info')
+
+infoBtns.forEach(btn =>{
+    btn.addEventListener('click', ()=>{
+        infoSection.classList.add('isVisible')
+        infoSection.classList.remove('isHidden')
+    })
+})
+
+infoBack.addEventListener('click', ()=>{
+    infoSection.classList.remove('isVisible')
+})
+
 //13/03 ME HE CARGADO LA REPRODUCCION DEL PLAYER EN EL ORDENADOR :((((((
 //16/03 VOY A LIMPIAR BIEN EL JS PARA ELIMINAR REPETICION DE ACCIONES QUE GENERAN FALLOS GRANDES
 //20/03 CREO QUE HAY QUE ELIMINAR LOS LISTENNERS MENULINKS Y PRESAVE LINKS
@@ -708,3 +727,5 @@ arrowDown.addEventListener('click', scrollDown)
 
 //29/03 EN LUGAR DE HACER DIVS CON LA INFO DE CADA CONCIERTO...
 // VOY A HACER UN ARRAY EN JS
+
+//04/04 INFO BTN Y SECTION 

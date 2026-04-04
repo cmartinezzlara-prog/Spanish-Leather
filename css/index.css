@@ -420,7 +420,7 @@ body {
 .MenuLayout {
     width: 100%;
     min-height: 90vh;
-    
+
     display: flex;
     flex-flow: column;
     justify-content: start;
@@ -460,7 +460,7 @@ body {
     text-transform: capitalize;
 }
 
-.MenuTop-wheel {
+.TopWheel {
     width: 10.625rem;
     min-height: 10.625rem;
     /* background-color: white; */
@@ -473,22 +473,22 @@ body {
     transition: 0.8s ease;
 }
 
-.MenuTop-wheel:hover {
+.TopWheel:hover {
     transition: 0.8s ease;
     transform: scale(1.1);
 }
 
-.MenuTop-circle {
+.TopWheel-circle {
     max-width: 10.625rem;
     position: relative;
     animation: spin 15s linear infinite;
 }
 
-.MenuTop-wheel:hover .MenuTop-circle {
+.TopWheel:hover .TopWheel-circle {
     animation: circleSpin 4s linear infinite;
 }
 
-.MenuTop-polo {
+.TopWheel-polo {
     max-width: 4.375rem;
     position: absolute;
     padding: 0 0 .625rem .3125rem;
@@ -584,7 +584,6 @@ body {
 .MenuListen-icon {
     width: .9375rem;
 }
-
 
 
 .InfoBox--menu {
@@ -707,20 +706,22 @@ body {
 .PresaveTop {
     width: 100%;
     /* background-color: red; */
+    padding:0 0 0 2rem;
 }
 
 .PresaveBack {
-    width: 2.5rem;
-    min-height: 2.5rem;
-
+    max-width: 3rem;
     background-color: transparent;
-    border: 1px solid rgb(0, 0, 0);
+    border: 1.5px solid white;
     border-radius: 50%;
+    rotate: calc(270deg);
 
     display: flex;
     flex-flow: row;
     justify-content: center;
     align-items: center;
+
+    padding: .5rem;
 
     font-size: 1rem;
     color: white;
@@ -730,17 +731,8 @@ body {
 }
 
 .PresaveBack:hover {
+    background-color: rgba(43, 43, 43, 0.419);
     border: 1px solid rgba(255, 255, 255, 0);
-    background-color: rgba(255, 255, 255, 0.459);
-}
-
-.PresaveBack-img {
-    width: 1.5rem;
-    cursor: pointer;
-    opacity: 0.7;
-    transition: opacity 0.3s ease;
-
-    transform: rotate(270deg);
 }
 
 .PresaveLayout {
@@ -772,19 +764,19 @@ body {
 
 /* P1 - "Escucha el álbum" */
 .PresaveText p:nth-child(1) {
-    font-size: 1.7rem;
+    font-size: 2rem;
     font-weight: 400;
 }
 
 /* P2 - "Spanish Leather" */
 .PresaveText p:nth-child(2) {
-    font-size: 2.7rem;
+    font-size: 3rem;
     font-weight: 600;
 }
 
 /* P3 - "AL COMPLETO" */
 .PresaveText p:nth-child(3) {
-    font-size: 2.4rem;
+    font-size: 2.7rem;
     text-transform: uppercase;
     font-weight: 300;
     line-height: 0.18;
@@ -792,7 +784,7 @@ body {
 
 /* P4 - "antes de su salida" */
 .PresaveText p:nth-child(4) {
-    font-size: 1.7rem;
+    font-size: 2rem;
     font-weight: 600;
     line-height: 2;
 }
@@ -819,7 +811,7 @@ body {
     border-bottom: 1px solid rgb(255, 255, 255);
 
     font-family: 'Euclid Circular A', sans-serif;
-    font-size: 1rem;
+    font-size: 1.3rem;
 }
 
 .PresaveForm input::placeholder {
@@ -838,6 +830,15 @@ body {
     font-size: 1.3rem;
     font-weight: 600;
     color: white;
+}
+
+
+.PresaveSubmit:hover {
+   
+  background-color: rgba(43, 43, 43, 0.419);
+  border: 1px solid transparent;
+    font-size: 1.3rem;
+    font-weight: 700;
 }
 
 
@@ -893,7 +894,7 @@ body {
     flex-flow: column;
     justify-content: center;
     align-items: center;
-    
+
     position: relative;
 }
 
@@ -910,7 +911,7 @@ body {
 }
 
 .TourImg {
-    max-width: 120px;
+    width: 9vw;
 }
 
 .TourList {
@@ -1011,6 +1012,9 @@ body {
     background-color: rgba(255, 255, 255, 0.242);
 }
 
+
+
+/* ***** INFO ***** */
 .InfoBox {
     width: 100%;
     max-height: 4.375rem;
@@ -1040,6 +1044,125 @@ body {
 .InfoBtn:hover {
     background-color: rgba(255, 255, 255, 0.242);
     color: rgba(255, 255, 255, 0.819);
+}
+
+/* SECTION */
+.Info {
+    width: 100%;
+    background-color: black;
+
+    display: none;
+}
+
+.Info.isVisible {
+    display: flex;
+    flex-flow: row;
+    justify-content: center;
+    align-items: start;
+
+    position: fixed;
+    inset: 0;
+    z-index: 10;
+}
+
+.Info.isHidden {
+    display: none;
+}
+
+.InfoLayout {
+    width: 80%;
+    min-height: 80vh;
+    /* background-color: red; */
+    margin: 4rem 0 0 0;
+
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.InfoTop {
+    width: 100%;
+
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: start;
+
+}
+
+.InfoCenter {
+    width: 100%;
+
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-around;
+    align-items: center;
+
+    margin: 1.5rem 0 1.5rem 0;
+}
+
+.InfoTitle {
+    width: 50%;
+}
+
+.InfoStar {
+    width: 2.5rem;
+}
+
+.InfoLinks {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15%;
+}
+
+.InfoCol {
+    width: 100%;
+
+    font-weight: 300;
+    color: white;
+    line-height: 1.5rem;
+}
+
+.InfoBack {
+    width: 100%;
+    /* background-color: red; */
+
+    display: flex;
+    flex-flow: row;
+    justify-content: start;
+    align-items: start;
+
+    padding: 6rem  0 0 4rem;
+
+    position: absolute;
+}
+
+.InfoBack-btn {
+    max-width: 3rem;
+    background-color: transparent;
+    border: 1.5px solid white;
+    border-radius: 50%;
+    rotate: calc(270deg);
+
+    display: flex;
+    flex-flow: row;
+    justify-content: center;
+    align-items: center;
+
+    padding: .5rem;
+
+    font-size: 1rem;
+    color: white;
+
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.InfoBack-btn:hover {
+    border: 1px solid rgba(255, 255, 255, 0);
+    background-color: rgba(255, 255, 255, 0.242);
 }
 
 
