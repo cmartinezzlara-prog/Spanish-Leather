@@ -376,6 +376,8 @@ body {
     padding: 0 0 0 2rem;
     letter-spacing: 0.08rem;
     transition: 0.4s ease;
+
+    font-size: clamp(0.9rem, 2.5vw, 1.1rem);
 }
 
 .MainHeader-texto:hover {
@@ -393,6 +395,7 @@ body {
     align-items: center;
 
     gap: 1.875rem;
+    font-size: clamp(0.9rem, 2.5vw, 1.1rem);
 }
 
 .MainHeader-link {
@@ -406,7 +409,6 @@ body {
 }
 
 .MainHeader-star {
-    max-height: 1.25rem;
     width: 1.875rem;
 }
 
@@ -420,6 +422,10 @@ body {
 .MenuLayout {
     width: 100%;
     min-height: 90vh;
+<<<<<<< HEAD
+=======
+    /* background-color: rgb(107, 167, 120); */
+>>>>>>> a5cdbbd86e2389818b6b19e7d2cb1d20c4d673fd
 
     display: flex;
     flex-flow: column;
@@ -430,10 +436,47 @@ body {
     position: relative;
 }
 
+.InfoBox {
+    width: 100%;
+    max-height: 5rem;
+    /* background-color: red; */
+
+    display: flex;
+    flex-flow: row;
+    justify-content: end;
+    align-items: end;
+
+    margin: 0 10rem 3rem 0;
+
+    position:fixed;
+    bottom: 1.8rem;
+    z-index: 8;
+
+    pointer-events: none;
+}
+
+.InfoBtn {
+    width: 5rem;
+    min-height: 5rem;
+    background-color: rgba(226, 193, 193, 0.097);
+    border-radius: 50%;
+
+    font-size: 50px;
+    color: rgba(255, 255, 255, 0.618);
+    transition: 0.2s ease;
+
+    pointer-events: auto;
+}
+
+.InfoBtn:hover {
+    background-color: rgba(255, 255, 255, 0.242);
+    color: rgba(255, 255, 255, 0.819);
+}
+
 
 /* TOP MENU */
 .MenuTop {
-    width: 100%;
+    width: 80%;
     min-height: 30vh;
     /* background-color: darkred; */
 
@@ -586,6 +629,7 @@ body {
 }
 
 
+<<<<<<< HEAD
 .InfoBox--menu {
     width: 100%;
     max-height: 4.375rem;
@@ -603,6 +647,8 @@ body {
     z-index: 8;
 }
 
+=======
+>>>>>>> a5cdbbd86e2389818b6b19e7d2cb1d20c4d673fd
 
 /* ETIQUETA LATERAL PRESAVE */
 .FixedPresave {
@@ -857,7 +903,7 @@ body {
     justify-content: start;
     align-items: center;
 
-    position: fixed;
+    position: relative;
     inset: 0;
     z-index: 8;
 }
@@ -873,14 +919,17 @@ body {
 
 .TourLayout {
     width: 100%;
-    height: 100vh;
+    height: 90vh;
     /* background-color: rgb(193, 182, 88); */
 
     display: flex;
     flex-flow: column;
     justify-content: start;
     align-items: center;
+
+    padding: 4rem 0 0 0;
     margin: 4rem 0 0 0;
+<<<<<<< HEAD
 
     position: relative;
     top: 0;
@@ -896,6 +945,8 @@ body {
     align-items: center;
 
     position: relative;
+=======
+>>>>>>> a5cdbbd86e2389818b6b19e7d2cb1d20c4d673fd
 }
 
 .TourSeal {
@@ -907,15 +958,33 @@ body {
     justify-content: start;
     align-items: start;
 
-    padding: 1rem;
+    margin: 0 0 4rem 0;
+
 }
 
 .TourImg {
+<<<<<<< HEAD
     width: 9vw;
+=======
+    max-width: 180px;
+>>>>>>> a5cdbbd86e2389818b6b19e7d2cb1d20c4d673fd
 }
 
-.TourList {
+.TourWrapper {
     width: 100%;
+    /* background-color: rgb(201, 165, 165); */
+
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+
+    position: relative;
+}
+
+
+.TourList {
+    width: 70%;
     /* background-color: yellow; */
 
     display: flex;
@@ -968,7 +1037,7 @@ body {
 
     color: white;
     font-weight: 300;
-    font-size: 15px;
+    font-size: clamp(0.9rem, 2.5vw, 1.1rem);
 }
 
 .TourArrows {
@@ -1012,6 +1081,7 @@ body {
     background-color: rgba(255, 255, 255, 0.242);
 }
 
+<<<<<<< HEAD
 
 
 /* ***** INFO ***** */
@@ -1166,6 +1236,8 @@ body {
 }
 
 
+=======
+>>>>>>> a5cdbbd86e2389818b6b19e7d2cb1d20c4d673fd
 
 /* TRANSITION */
 .Transition {
@@ -1214,7 +1286,7 @@ body {
     transition: opacity 0.6s linear;
 }
 
-.PlayerHeader {
+.MainHeader-player {
     /* background-color: aqua; */
     width: auto;
     min-height: 3.125rem;
