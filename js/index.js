@@ -576,21 +576,20 @@ const tourDates = [
     { ciudad: "Santiago de Chile", local: "Lollapalooza Chile", fecha: "14 marzo 2026", estado: "SOLD-OUT" },
     { ciudad: "Sao Paolo", local: "Fabrique", fecha: "19 marzo 2026", estado: "SOLD-OUT" },
     { ciudad: "Bogotá", local: "Estéreo Picnic", fecha: "21 marzo 2026", estado: "SOLD-OUT" },
-    { ciudad: "Lima", local: "CC. Leguía", fecha: "25 marzo 2026", estado: "SOLD-OUT" },
+    { ciudad: "Lima", local: "CC. Leguía", fecha: "25 marzo 2026", estado: "TICKETS" },
     { ciudad: "Monterrey", local: "Tecate Pal Norte", fecha: "27 marzo 2026", estado: "SOLD-OUT" },
-   
-    { ciudad: "Benicassim", local: "SanSan", fecha: "03 abril 2026", estado: "ENTRADAS" },
-    { ciudad: "Milan", local: "Fabrique", fecha: "10 abril 2026", estado: "ENTRADAS" },
-    { ciudad: "Berlín", local: "Metropol", fecha: "11 abril 2026", estado: "ENTRADAS" },
-    { ciudad: "Murcia", local: "Warm Up", fecha: "01 mayo 2026", estado: "ENTRADAS" },
-   { ciudad: "Barcelona", local: "Primavera Sound", fecha: "03 junio 2026", estado: "ENTRADAS" },
-    { ciudad: "Vilanova i la Geltrú", local: "Vida Festival", fecha: "03 julio 2026", estado: "ENTRADAS" },
-    { ciudad: "Málaga", local: "Plaza de toros de Málaga", fecha: "11 julio 2026", estado: "ENTRADAS" },
-    { ciudad: "Santander", local: "Santander Music", fecha: "31 julio 2026", estado: "ENTRADAS" },
-    { ciudad: "Chiclana de la F.", local: "Concert Music Festival", fecha: "09 agosto 2026", estado: "ENTRADAS" },
-    { ciudad: "Zaragoza", local: "Vive Latino", fecha: "05 septiembre 2026", estado: "ENTRADAS" },
-    { ciudad: "Madrid", local: "Movistar Arena", fecha: "02 octubre 2026", estado: "ENTRADAS" }
-    
+    { ciudad: "Benicassim", local: "SanSan", fecha: "03 abril 2026", estado: "SOLD-OUT" },
+    { ciudad: "Milan", local: "Fabrique", fecha: "10 abril 2026", estado: "TICKETS" },
+    { ciudad: "Berlín", local: "Metropol", fecha: "11 abril 2026", estado: "TICKETS" },
+    { ciudad: "Murcia", local: "Warm Up", fecha: "01 mayo 2026", estado: "SOLD-OUT" },
+    { ciudad: "Barcelona", local: "Primavera Sound", fecha: "03 junio 2026", estado: "TICKETS" },
+    { ciudad: "Vilanova i la Geltrú", local: "Vida Festival", fecha: "03 julio 2026", estado: "TICKETS" },
+    { ciudad: "Málaga", local: "Plaza de toros de Málaga", fecha: "11 julio 2026", estado: "TICKETS" },
+    { ciudad: "Santander", local: "Santander Music", fecha: "31 julio 2026", estado: "SOLD-OUT" },
+    { ciudad: "Chiclana de la F.", local: "Concert Music Festival", fecha: "09 agosto 2026", estado: "TICKETS" },
+    { ciudad: "Zaragoza", local: "Vive Latino", fecha: "05 septiembre 2026", estado: "SOLD-OUT" },
+    { ciudad: "Madrid", local: "Movistar Arena", fecha: "02 octubre 2026", estado: "TICKETS" }
+
 ]
 
 const tourUl = document.querySelector('.TourUl')
@@ -667,16 +666,51 @@ const infoBtns = document.querySelectorAll('.InfoBtn')
 const infoBack = document.querySelector('.InfoBack')
 const infoSection = document.querySelector('.Info')
 
-infoBtns.forEach(btn =>{
-    btn.addEventListener('click', ()=>{
+infoBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
         infoSection.classList.add('isVisible')
         infoSection.classList.remove('isHidden')
     })
 })
 
-infoBack.addEventListener('click', ()=>{
+infoBack.addEventListener('click', () => {
     infoSection.classList.remove('isVisible')
 })
+
+
+// ESTADOS ENTRADAS TOUR
+function loadDates() {
+    tourUl.innerHTML = ""
+
+    tourDates.forEach(date => {
+        const li = document.createElement('li')
+        li.classList.add('TourItem')
+
+        // para que coja el estado y se pongan los nuevos estilos
+        // vale pero el texto tiene que ser entradas pq es lo que hay escrito
+        // NewState no esxiste en js tiene que ser toLowerCase
+
+        const estado = date.estado.toLowerCase()
+
+        if (estado.includes("tickets")) {
+            li.classList.add("TourItem--tickets")
+        } 
+        
+        if (estado.includes("sold")) {
+            li.classList.add("TourItem--soldout")
+        }
+
+        li.innerHTML = `
+        <span>${date.ciudad}</span>
+        <span>${date.local}</span> 
+        <span>${date.fecha}</span>
+        <span>${date.estado}</span> `
+
+        tourUl.appendChild(li)
+    })
+}
+
+
 
 //13/03 ME HE CARGADO LA REPRODUCCION DEL PLAYER EN EL ORDENADOR :((((((
 //16/03 VOY A LIMPIAR BIEN EL JS PARA ELIMINAR REPETICION DE ACCIONES QUE GENERAN FALLOS GRANDES
@@ -728,4 +762,8 @@ infoBack.addEventListener('click', ()=>{
 //29/03 EN LUGAR DE HACER DIVS CON LA INFO DE CADA CONCIERTO...
 // VOY A HACER UN ARRAY EN JS
 
-//04/04 INFO BTN Y SECTION 
+//04/04 INFO BTN Y SECTION
+
+//05/04 QUE LAS FILAS DE LAS FECHAS CAMBIEN DE ESTILO SEGUN EL ESTADO
+// 1- HACER LA COLUMNA DE ENTRADAS TENGA SU PROPIO ESTILO
+// 2- CLASES JS SEGÚN EL ESTADO / AÑADIR ESTILOS CSS

@@ -1015,6 +1015,11 @@ body {
     font-size: clamp(0.9rem, 2.5vw, 1.1rem);
 }
 
+.TourItem-t{
+    color: white;
+    font-weight: 300;
+}
+
 .TourArrows {
     min-height: 500px;
     /* background-color: red; */
@@ -1213,6 +1218,24 @@ body {
     background-color: rgba(255, 255, 255, 0.242);
 }
 
+
+/* ESTILOS ESTADO TOUR */
+/* DISPONIBLES */
+.TourItem--tickets{
+    background-color: #ffff8285;
+}
+
+.TourItem--tickets span:last-child{
+    color: #fcfc54;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.TourItem--soldout span:last-child{
+    color: grey;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
 
 
 /* TRANSITION */
