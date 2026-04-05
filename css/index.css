@@ -354,8 +354,9 @@ body {
 }
 
 .MainHeader {
-    /* background-color: aqua; */
-    min-height: 3.125rem;
+    background-color: black;
+    min-height: 65px;
+    width: 100%;
 
     display: flex;
     flex-flow: row nowrap;
@@ -366,9 +367,6 @@ body {
     color: white;
 
     position: absolute;
-    top: .625rem;
-    left: .625rem;
-    right: .625rem;
 }
 
 .MainHeader-texto {
@@ -702,7 +700,8 @@ body {
 /* CAPA PRESAVE */
 .Presave {
     width: 100%;
-    background-color:black;
+    min-height: 100vh;
+    background-color: rgb(192, 183, 64);
 
     display: none;
     flex-flow: row nowrap;
@@ -714,9 +713,6 @@ body {
     z-index: 8;
 }
 
-.MainHeader-presave {
-    background-color: black;
-}
 
 .Presave.isVisible {
     display: flex;
@@ -728,11 +724,11 @@ body {
 
 .PresaveContent {
     width: 100%;
-    min-height: 100vh;
+    min-height: 90vh;
     background-color: rgb(192, 183, 64);
 
     display: flex;
-    flex-flow: column;
+    flex-flow: column nowrap;
     justify-content: center;
     align-items: center;
 
@@ -744,10 +740,10 @@ body {
 
 .PresaveTop {
     width: 100%;
-    background-color: red;
-   margin: 6rem 0 0 0;
-   padding: 0 0 0 4rem;
-    
+    /* background-color: red; */
+    margin: 6rem 0 0 0;
+    padding: 0 0 0 4rem;
+
     position: absolute;
 }
 
@@ -759,7 +755,7 @@ body {
     rotate: calc(270deg);
 
     display: flex;
-    flex-flow: row;
+    flex-flow: row nowrap;
     justify-content: center;
     align-items: center;
 
@@ -795,7 +791,7 @@ body {
     /* background-color: red; */
 
     display: flex;
-    flex-flow: column;
+    flex-flow: column nowrap;
     justify-content: center;
     align-items: center;
     gap: 2rem;
@@ -884,6 +880,8 @@ body {
 }
 
 
+
+
 /* ***** TOUR ***** */
 .Tour {
     display: none;
@@ -908,11 +906,6 @@ body {
     display: none;
 }
 
-.MainHeader-tour {
-    min-height: 3.125rem;
-    background-color: transparent;
-}
-
 .TourLayout {
     width: 100%;
     height: 90vh;
@@ -926,7 +919,7 @@ body {
     margin: 4rem 0 0 0;
 }
 
-.TourWrapper{
+.TourWrapper {
     width: 80%;
     min-height: 600px;
     /* background-color: lightblue; */
@@ -938,7 +931,7 @@ body {
     gap: 1rem;
 }
 
-.TourGallery{
+.TourGallery {
     width: 100%;
     /* background-color: rgb(201, 165, 165); */
 
@@ -961,7 +954,7 @@ body {
 }
 
 .TourImg {
-    width:120px ;
+    width: 120px;
 }
 
 
@@ -1113,11 +1106,15 @@ body {
 
     position: fixed;
     inset: 0;
-    z-index: 10;
+    z-index: 9;
 }
 
 .Info.isHidden {
     display: none;
+}
+
+.MainHeader-info {
+    z-index: 9;
 }
 
 .InfoLayout {
