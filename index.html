@@ -54,8 +54,19 @@
 
             <div class="CoverCont-top">
                 <!-- IMG CALIGRÁFICA -->
-                <img src="assets/content/textop.svg" class="CoverTop-script" loading="lazy"
-                    alt="Texto decorativo superior">
+                <!-- <div class="CoverTop-script">
+                    <img src="assets/content/textop.svg" class="CoverTop-img" loading="lazy" alt="Texto decorativo superior">
+                </div> -->
+
+                <!-- FECHA + LABEL -->
+                <div class="CoverTop-release">
+                    <img src="assets/content/label.svg" class="CoverTop-label" loading="lazy" alt="Sello discográfico">
+
+                    <div class="CoverTop-date">
+                        <p class="CoverTop-num">16</p>
+                        <p class="CoverTop-mth">may</p>
+                    </div>
+                </div>
             </div>
 
             <!-- GRID DEL MEDIO / TITULO + FECHA + AUTOR-->
@@ -71,21 +82,17 @@
 
             <!-- AUTOR Y SCRIPT COMO EL PRIMERO -->
             <div class="CoverBottom">
-                <!-- FECHA + LABEL -->
-                <div class="CoverBottom-release">
-                    <img src="assets/content/label.svg" class="CoverBottom-label" loading="lazy"
-                        alt="Sello discográfico">
-
-                    <div class="CoverBottom-date">
-                        <p class="CoverBottom-num">16</p>
-                        <p class="CoverBottom-mth">may</p>
-                    </div>
+                <!-- SCROLL -->
+                <div class="CoverBottom-scroll">
+                    <button class="CoverBottom-arrow" title="atrás">
+                        <img src="assets/content/arrow.svg" alt="">
+                    </button>
+                    <p class="CoverBottom-p">scroll</p>
                 </div>
-
                 <!-- IMG CALIGRÁFICA -->
-                <div class="CoverBottom-script">
+                <!-- <div class="CoverBottom-script">
                     <img src="assets/content/textbottom.svg" class="CoverBottom-img" alt="Texto decorativo inferior">
-                </div>
+                </div> -->
             </div>
         </article>
     </section>
@@ -96,24 +103,40 @@
     <section class="Menu" id="menu">
         <h2 class="h-hidden">Menú principal</h2>
         <!-- HEADER -->
-        <header class="MainHeader MainHeader-menu" aria-label="Navegación principal">
+        <header class="Header Header-menu" aria-label="Navegación principal">
 
             <!-- IZQUIERDA -->
-            <div class="MainHeader-texto">
-                <a href="/" class="MainHeader-author">guitarricadelafuente</a>
+            <div class="HeaderTexto">
+                <a href="/" class="HeaderAuthor">guitarricadelafuente</a>
             </div>
 
-            <!-- DERECHA -->
-            <nav class="MainHeader-nav">
-                <img src="assets/content/iregularstar.svg" class="MainHeader-star" loading="lazy" alt="Icono">
 
-                <a href="#" class="MainHeader-link" data-goto="tour" title="Ver fechas del tour">Tour</a>
+            <!-- DERECHA DESKTOP -->
+            <nav class="HeaderNav HeaderNav--desktop">
+                <ul class="NavList">
+                    <li><img src="assets/content/iregularstar.svg" class="Header-star" loading="lazy" alt="Icono"></li>
 
-                <a href="#" class="MainHeader-link" data-goto="menu" title="Ir al menu principal">Menu</a>
+                    <li><a href="#" class="NavList-link" data-goto="tour" title="Ver fechas del tour">Tour</a></li>
 
-                <a href="#" class="MainHeader-link" data-goto="presave" title="Hacer presave del album">Presave</a>
+                    <li><a href="#" class="NavList-link" data-goto="menu" title="Ir al menu principal">Menu</a></li>
+
+                    <li><a href="#" class="NavList-link" data-goto="presave" title="Hacer presave del album">Presave</a>
+                    </li>
+                </ul>
             </nav>
+
+            <!-- DERECHA MÓVIL -->
+            <div class="HeaderMobile">
+                <img src="assets/content/iregularstar.svg" class="HeaderMobile-star" loading="lazy" alt="Icono">
+
+                <button class="HeaderHam" aria-label="Abrir menú">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
         </header>
+
 
         <div class="MenuLayout">
             <!-- DISEÑO SUPERIOR -->
@@ -179,22 +202,22 @@
     <section class="Tour">
         <h2 class="h-hidden">Fechas del Tour</h2>
 
-        <header class="MainHeader MainHeader-tour" aria-label="Navegación principal">
+        <header class="Header Header-tour" aria-label="Navegación principal">
 
             <!-- IZQUIERDA -->
-            <div class="MainHeader-texto">
-                <a href="/" class="MainHeader-author">guitarricadelafuente</a>
+            <div class="Header-texto">
+                <a href="/" class="Header-author">guitarricadelafuente</a>
             </div>
 
             <!-- DERECHA -->
-            <nav class="MainHeader-nav">
+            <nav class="Header-nav">
                 <img src="assets/content/iregularstar.svg" class="MainHeader-star" loading="lazy" alt="Icono">
 
-                <a href="#" class="MainHeader-link" data-goto="tour" title="Ver fechas del tour">Tour</a>
+                <a href="#" class="Header-link" data-goto="tour" title="Ver fechas del tour">Tour</a>
 
-                <a href="#" class="MainHeader-link" data-goto="menu" title="Ir al menu principal">Menu</a>
+                <a href="#" class="Header-link" data-goto="menu" title="Ir al menu principal">Menu</a>
 
-                <a href="#" class="MainHeader-link" data-goto="presave" title="Hacer presave del album">Presave</a>
+                <a href="#" class="Header-link" data-goto="presave" title="Hacer presave del album">Presave</a>
             </nav>
         </header>
 
@@ -348,22 +371,22 @@
             <!-- CONTENT -->
             <div class="PlayerContent">
 
-                <header class="MainHeader MainHeader-player" aria-label="Navegación principal">
+                <header class="Header Header-player" aria-label="Navegación principal">
 
                     <!-- IZQUIERDA -->
-                    <div class="MainHeader-texto">
-                        <a href="/" class="MainHeader-author">guitarricadelafuente</a>
+                    <div class="Header-texto">
+                        <a href="/" class="Header-author">guitarricadelafuente</a>
                     </div>
 
                     <!-- DERECHA -->
-                    <nav class="MainHeader-nav">
+                    <nav class="Header-nav">
                         <img src="assets/content/iregularstar.svg" class="MainHeader-star" loading="lazy" alt="Icono">
 
-                        <a href="#" class="MainHeader-link" data-goto="tour" title="Ver fechas del tour">Tour</a>
+                        <a href="#" class="Header-link" data-goto="tour" title="Ver fechas del tour">Tour</a>
 
-                        <a href="#" class="MainHeader-link" data-goto="menu" title="Ir al menu principal">Menu</a>
+                        <a href="#" class="Header-link" data-goto="menu" title="Ir al menu principal">Menu</a>
                         <!-- 
-                        <a href="#" class="MainHeader-link" data-goto="presave"
+                        <a href="#" class="Header-link" data-goto="presave"
                             title="Hacer presave del album">Presave</a> -->
                     </nav>
                 </header>
@@ -429,20 +452,20 @@
 
 
     <section class="Presave">
-        <header class="MainHeader MainHeader-presave" aria-label="Navegación principal">
+        <header class="Header Header-presave" aria-label="Navegación principal">
 
             <!-- IZQUIERDA -->
-            <div class="MainHeader-texto">
-                <a href="/" class="MainHeader-author">guitarricadelafuente</a>
+            <div class="Header-texto">
+                <a href="/" class="Header-author">guitarricadelafuente</a>
             </div>
 
             <!-- DERECHA -->
-            <nav class="MainHeader-nav">
-                <img src="assets/content/iregularstar.svg" class="MainHeader-star" loading="lazy" alt="Icono">
+            <nav class="Header-nav">
+                <img src="assets/content/iregularstar.svg" class="Header-star" loading="lazy" alt="Icono">
 
-                <a href="#" class="MainHeader-link" data-goto="tour" title="Ver fechas del tour">Tour</a>
+                <a href="#" class="Header-link" data-goto="tour" title="Ver fechas del tour">Tour</a>
 
-                <a href="#" class="MainHeader-link" data-goto="menu" title="Ir al menu principal">Menu</a>
+                <a href="#" class="Header-link" data-goto="menu" title="Ir al menu principal">Menu</a>
             </nav>
         </header>
 
@@ -484,22 +507,22 @@
     <section class="Info">
         <h2 class="h-hidden">Información</h2>
 
-        <header class="MainHeader MainHeader-info" aria-label="Navegación principal">
+        <header class="Header Header-info" aria-label="Navegación principal">
 
             <!-- IZQUIERDA -->
-            <div class="MainHeader-texto">
-                <a href="/" class="MainHeader-author">guitarricadelafuente</a>
+            <div class="Header-texto">
+                <a href="/" class="Header-author">guitarricadelafuente</a>
             </div>
 
             <!-- DERECHA -->
-            <nav class="MainHeader-nav">
-                <img src="assets/content/iregularstar.svg" class="MainHeader-star" loading="lazy" alt="Icono">
+            <nav class="Header-nav">
+                <img src="assets/content/iregularstar.svg" class="Header-star" loading="lazy" alt="Icono">
 
-                <a href="#" class="MainHeader-link" data-goto="tour" title="Ver fechas del tour">Tour</a>
+                <a href="#" class="Header-link" data-goto="tour" title="Ver fechas del tour">Tour</a>
 
-                <a href="#" class="MainHeader-link" data-goto="menu" title="Ir al menu principal">Menu</a>
+                <a href="#" class="Header-link" data-goto="menu" title="Ir al menu principal">Menu</a>
 
-                <a href="#" class="MainHeader-link" data-goto="presave" title="Hacer presave del album">Presave</a>
+                <a href="#" class="Header-link" data-goto="presave" title="Hacer presave del album">Presave</a>
             </nav>
         </header>
 
@@ -557,6 +580,21 @@
             </button>
         </div>
     </section>
+
+    <!-- NAV MÓVIL -->
+    <nav class="MobileMenu">
+        <div class="MobileMenu-inner">
+            <ul class="MobileMenu-list">
+                <li><a href="" data-goto="menu">Menu</a></li>
+                <li><a href="" data-goto="menu">Tour</a></li>
+                <li><a href="" data-goto="menu">Presave</a></li>
+            </ul>
+        </div>
+
+    </nav>
+
+    <!-- OVERLAY PARA CLIKAR FUERA DEL DESPLEGABLE -->
+    <div class="MobileOverlay"></div>
 
 </body>
 

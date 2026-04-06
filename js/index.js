@@ -678,6 +678,7 @@ infoBack.addEventListener('click', () => {
 })
 
 
+
 // ESTADOS ENTRADAS TOUR
 function loadDates() {
     tourUl.innerHTML = ""
@@ -694,8 +695,8 @@ function loadDates() {
 
         if (estado.includes("tickets")) {
             li.classList.add("TourItem--tickets")
-        } 
-        
+        }
+
         if (estado.includes("sold")) {
             li.classList.add("TourItem--soldout")
         }
@@ -710,6 +711,52 @@ function loadDates() {
     })
 }
 
+
+
+// **** MENÚ HAMBURGUESA MÓVIL ****
+// VARIABLES
+const headerHam = document.querySelector('.HeaderHam')
+const mobileMenu = document.querySelector('.MobileMenu')
+const mobileOverlay = document.querySelector('.MobileOverlay')
+const mobileLinks = document.querySelectorAll('.MobileMenu a')
+
+// ABRIR MENÚ MÓVIL
+function openMobileMenu() {
+    mobileMenu.classList.add('isOpen')
+    mobileOverlay.classList.add('isOpen')
+    headerHam.classList.add('isOpen')
+}
+
+// CERRAR MENÚ MÓVIL
+function closeMobileMenu() {
+    mobileMenu.classList.remove('isOpen')
+    mobileOverlay.classList.remove('isOpen')
+    headerHam.classList.remove('isOpen')
+}
+
+
+// ACCIÓN CLICK EN HAMBURGUESA
+headerHam.addEventListener('click', () => {
+    const open = mobileMenu.classList.contains('isOpen')
+
+    if (open) {
+        closeMobileMenu()
+    } else {
+        openMobileMenu()
+    }
+})
+
+// OVERLAY
+mobileOverlay.addEventListener('click', () => {
+    closeMobileMenu()
+})
+
+// ENLACES
+mobileLinks.forEach(link =>{
+    link.addEventListener('click', ()=> {
+        closeMobileMenu()
+    })
+})
 
 
 //13/03 ME HE CARGADO LA REPRODUCCION DEL PLAYER EN EL ORDENADOR :((((((
