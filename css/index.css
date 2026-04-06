@@ -70,7 +70,8 @@ body {
     font-family: 'Euclid Circular A', sans-serif;
     background-color: #000000;
     position: relative;
-    overflow: hidden;
+    overflow-x: hidden;
+    overflow-y: auto;
 }
 
 /* SPLASH */
@@ -111,6 +112,8 @@ body {
     position: fixed;
     inset: 0;
     z-index: 6;
+    touch-action: none;
+    pointer-events: auto;
 
     opacity: 0;
     transform: translateY(0);
@@ -230,9 +233,9 @@ body {
     align-items: center;
 }
 
-.CoverTop-script {
-    /* background-color: rgb(174, 244, 34); */
-}
+/* .CoverTop-script {
+    background-color:red;
+} */
 
 .CoverTop-release {
     width: 100%;
