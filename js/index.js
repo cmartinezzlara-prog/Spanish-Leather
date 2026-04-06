@@ -90,6 +90,56 @@ window.addEventListener('wheel', () => {
 })
 
 
+// -- SWIPE PARA IPAD Y MÓVIL - QUITAR COVER / PASAR DE VÍDEO --
+// Hay que detectar el swipe desde que se detecta el toque con el el dedo >toqueInicial  
+// hasta donde deja de tocar la pantalla para considerarlo un deslizamiento >toqueFinal
+// lo consideramos evento >(e)= touchStart / touchEnd
+
+// TOUCHSTART
+// - GUARDO POSICION INICIAL
+// TOUCHEND
+// - BUSCA DONDE TERMINA
+// - - SI SUBE -> ACCIÓN ARRIBA (correcto)
+// - - SI BAJA -> ACCIÓN ABAJO (incorrecta)
+
+//FUNCIÓN
+function addVerticalSwipe(elemento, actionSwipeUp, actionSwipeDown) {
+    let startY = 0;
+
+    // DETECTA TOQUE
+    elemento.addEventListener("touchstart", (e) => {
+        // GUARDAR POSICIÓN VERTICAL(Y) startY = e.touches[0].clientY
+        startY = e.touches[0].clientY
+    })
+
+    // DEJA DETECTAR TOQUE
+    elemento.addEventListener("touchend", (e) => {
+        // Constante (diferenciaY) que determina que:
+        const diferenciaY = startY - e.changedTouches[0].clientY
+        console.log("TOUCHEND detectado. diferenciaY =", diferenciaY)
+
+        // 1.SI el toque es PEQUEÑO (menos 50px) NO se considera SWIPE (umbral de movimiento)
+        if (Math.abs(diferenciaY) < 30) return
+
+        // 2.SI fue hacia ARRIBA el resultado es POSITIVO
+        if (diferenciaY > 0) actionSwipeUp()
+        else actionSwipeDown()
+    })
+}
+
+
+// AHORA LLAMAMOS A LOS ELEMENTOS
+addVerticalSwipe(cover, () => {
+
+    if (!coverActivo) return
+    cover.classList.add("isHidden")
+    menu.classList.add("isVisible")
+
+    document.body.style.overflow = "auto"
+    coverActivo = false
+})
+
+
 
 
 
@@ -398,62 +448,16 @@ const btnVolver = document.querySelector('.PlayerBack-btn')
 btnVolver.addEventListener('click', () => {
     console.log("volver a menu")
     showSection("menu")
-
-
 })
 
 
 
 
 
-// -- SWIPE PARA IPAD Y MÓVIL - QUITAR COVER / PASAR DE VÍDEO --
-// Hay que detectar el swipe desde que se detecta el toque con el el dedo >toqueInicial  
-// hasta donde deja de tocar la pantalla para considerarlo un deslizamiento >toqueFinal
-// lo consideramos evento >(e)= touchStart / touchEnd
-
-// TOUCHSTART
-// - GUARDO POSICION INICIAL
-// TOUCHEND
-// - BUSCA DONDE TERMINA
-// - - SI SUBE -> ACCIÓN ARRIBA (correcto)
-// - - SI BAJA -> ACCIÓN ABAJO (incorrecta)
-
-//FUNCIÓN
-function addVerticalSwipe(elemento, actionSwipeUp, actionSwipeDown) {
-    let startY = 0;
-
-    // DETECTA TOQUE
-    elemento.addEventListener("touchstart", (e) => {
-        // GUARDAR POSICIÓN VERTICAL(Y) startY = e.touches[0].clientY
-        startY = e.touches[0].clientY
-    })
-
-    // DEJA DETECTAR TOQUE
-    elemento.addEventListener("touchend", (e) => {
-        // Constante (diferenciaY) que determina que:
-        const diferenciaY = startY - e.changedTouches[0].clientY
-        console.log("TOUCHEND detectado. diferenciaY =", diferenciaY)
-
-        // 1.SI el toque es PEQUEÑO (menos 50px) NO se considera SWIPE (umbral de movimiento)
-        if (Math.abs(diferenciaY) < 30) return
-
-        // 2.SI fue hacia ARRIBA el resultado es POSITIVO
-        if (diferenciaY > 0) actionSwipeUp()
-        else actionSwipeDown()
-    })
-}
 
 
-// AHORA LLAMAMOS A LOS ELEMENTOS
-addVerticalSwipe(cover, () => {
 
-    if (!coverActivo) return
-    cover.classList.add("isHidden")
-    menu.classList.add("isVisible")
 
-    document.body.style.overflow = "auto"
-    coverActivo = false
-})
 
 // Para pasar las canciones del reproductor hay que hacer una variable 
 // por la que busque el div llamado .PlayerScreen, donde quiero DETECTAR SWIPE
@@ -597,7 +601,7 @@ const visibleRows = 7
 // Marco el indice inicial 
 let startIndex = 0
 
-
+// ESTADOS ENTRADAS TOUR
 function loadDates() {
     //limpiar 
     tourUl.innerHTML = ""
@@ -605,6 +609,18 @@ function loadDates() {
     tourDates.forEach(date => {
         const li = document.createElement('li')
         li.classList.add('TourItem')
+
+// para que coja el estado y se pongan los nuevos estilos
+        // vale pero el texto tiene que ser entradas pq es lo que hay escrito
+        // NewState no esxiste en js tiene que ser toLowerCase
+        const estado = date.estado.toLowerCase()
+        if (estado.includes("tickets")) {
+            li.classList.add("TourItem--tickets")
+        }
+
+        if (estado.includes("sold")) {
+            li.classList.add("TourItem--soldout")
+        }
 
         li.innerHTML = `
         <span>${date.ciudad}</span>
@@ -615,6 +631,7 @@ function loadDates() {
         tourUl.appendChild(li)
     })
 }
+
 
 function updateVisibleRows() {
     const items = document.querySelectorAll('.TourItem')
@@ -679,37 +696,9 @@ infoBack.addEventListener('click', () => {
 
 
 
-// ESTADOS ENTRADAS TOUR
-function loadDates() {
-    tourUl.innerHTML = ""
 
-    tourDates.forEach(date => {
-        const li = document.createElement('li')
-        li.classList.add('TourItem')
 
-        // para que coja el estado y se pongan los nuevos estilos
-        // vale pero el texto tiene que ser entradas pq es lo que hay escrito
-        // NewState no esxiste en js tiene que ser toLowerCase
 
-        const estado = date.estado.toLowerCase()
-
-        if (estado.includes("tickets")) {
-            li.classList.add("TourItem--tickets")
-        }
-
-        if (estado.includes("sold")) {
-            li.classList.add("TourItem--soldout")
-        }
-
-        li.innerHTML = `
-        <span>${date.ciudad}</span>
-        <span>${date.local}</span> 
-        <span>${date.fecha}</span>
-        <span>${date.estado}</span> `
-
-        tourUl.appendChild(li)
-    })
-}
 
 
 
@@ -752,8 +741,8 @@ mobileOverlay.addEventListener('click', () => {
 })
 
 // ENLACES
-mobileLinks.forEach(link =>{
-    link.addEventListener('click', ()=> {
+mobileLinks.forEach(link => {
+    link.addEventListener('click', () => {
         closeMobileMenu()
     })
 })
