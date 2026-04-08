@@ -137,8 +137,9 @@ function addVerticalSwipe(elemento, actionSwipeUp, actionSwipeDown) {
 
         // Constante (diferenciaY) que determina que:
         if (!e.changedTouches || e.changedTouches.length === 0) return
-        const diferenciaY = startY - e.changedTouches[0].clientY
-        console.log("TOUCHEND detectado. diferenciaY =", diferenciaY)
+        const endY = e.changedTouches[0].clientY
+        const diferenciaY = startY - endY
+        console.log("SWIPE detectado. diferenciaY =", diferenciaY)
 
         // 1.SI el toque es PEQUEÑO (menos 50px) NO se considera SWIPE (umbral de movimiento)
         if (Math.abs(diferenciaY) < 30) return
