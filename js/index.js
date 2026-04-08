@@ -498,16 +498,15 @@ btnVolver.addEventListener('click', () => {
 const pantallaPlayer = document.querySelector(".PlayerScreen")
 
 // SWIPE EN PANTALLA
-addVerticalSwipe(pantallaPlayer,
-    () => {
-        startIfNeeded()
-        showVideo(index + 1)
-    },
-    () => {
-        startIfNeeded()
-        showVideo(index - 1)
-    }
-)
+addVerticalSwipe(pantallaPlayer, () => {
+    if (!player.classListc.contains('isListening')) return
+    startIfNeeded()
+    showVideo(index + 1)
+}, () => {
+    if (!player.classList.contains('isListening')) return
+    startIfNeeded()
+    showVideo(index - 1)
+})
 
 
 
