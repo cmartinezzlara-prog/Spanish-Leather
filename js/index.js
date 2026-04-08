@@ -121,9 +121,12 @@ function addVerticalSwipe(elemento, actionSwipeUp, actionSwipeDown) {
         // 1.SI el toque es PEQUEÑO (menos 50px) NO se considera SWIPE (umbral de movimiento)
         if (Math.abs(diferenciaY) < 30) return
 
-        // 2.SI fue hacia ARRIBA el resultado es POSITIVO
-        if (diferenciaY > 0) actionSwipeUp()
-        else actionSwipeDown()
+        // 2.Hago callbacks opcionales
+        if (diferenciaY > 0) {
+            if (typeof actionSwipeUp === "function") actionSwipeUp()
+        } else {
+            if (typeof actionSwipeDown === "function") actionSwipeDown()
+        }
     })
 }
 
@@ -610,7 +613,7 @@ function loadDates() {
         const li = document.createElement('li')
         li.classList.add('TourItem')
 
-// para que coja el estado y se pongan los nuevos estilos
+        // para que coja el estado y se pongan los nuevos estilos
         // vale pero el texto tiene que ser entradas pq es lo que hay escrito
         // NewState no esxiste en js tiene que ser toLowerCase
         const estado = date.estado.toLowerCase()
