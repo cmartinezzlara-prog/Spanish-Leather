@@ -110,16 +110,33 @@ window.addEventListener('wheel', () => {
 //FUNCIÓN
 function addVerticalSwipe(elemento, actionSwipeUp, actionSwipeDown) {
     let startY = 0;
+    let isSwiping = false
 
     // DETECTA TOQUE
     elemento.addEventListener("touchstart", (e) => {
+        if (!e.touches || e.touches.length === 0) return
+
+
         // GUARDAR POSICIÓN VERTICAL(Y) startY = e.touches[0].clientY
         startY = e.touches[0].clientY
-    })
+
+        isSwiping = true
+    }, { passive: true })
+
+
+    elemento.addEventListener("touchmove", () => {
+        if (!isSwiping) return
+
+    }, { passive: false })
+
 
     // DEJA DETECTAR TOQUE
     elemento.addEventListener("touchend", (e) => {
+        if (!isSwiping) return
+        isSwiping = false
+
         // Constante (diferenciaY) que determina que:
+        if (!e.changedTouches || e.changedTouches.length === 0) return
         const diferenciaY = startY - e.changedTouches[0].clientY
         console.log("TOUCHEND detectado. diferenciaY =", diferenciaY)
 
@@ -132,7 +149,7 @@ function addVerticalSwipe(elemento, actionSwipeUp, actionSwipeDown) {
         } else {
             if (typeof actionSwipeDown === "function") actionSwipeDown()
         }
-    })
+    }, { passive: true })
 }
 
 
@@ -809,3 +826,8 @@ mobileLinks.forEach(link => {
 //05/04 QUE LAS FILAS DE LAS FECHAS CAMBIEN DE ESTILO SEGUN EL ESTADO
 // 1- HACER LA COLUMNA DE ENTRADAS TENGA SU PROPIO ESTILO
 // 2- CLASES JS SEGÚN EL ESTADO / AÑADIR ESTILOS CSS
+
+
+//08/04 HE VISTO UNA FORMA DE HACER EL SWIPE MUCHO MAS FORZADO CON TOCUHMOVE TAMBIEN PERO CON
+// PASSIVE: FALSE/TRUE
+// VOY A PROBAR ADAPTANDO LAS LINEAS DEL EJEMPLO A MI CODIGO, NO PIERDO NADA SI TOTAL NO VA..
