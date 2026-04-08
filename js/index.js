@@ -78,15 +78,20 @@ flash.addEventListener('animationend', () => {
 // ESTADO
 let coverActivo = true
 
-// EVENTO
-// Cuando cover isHidden -> menu isVisible
-window.addEventListener('wheel', () => {
+function hideCover(){
     if (!coverActivo) return
+
     cover.classList.add("isHidden")
     menu.classList.add("isVisible")
 
-    document.body.style.overflow = "auto"
+    document.body.style.overflow ="auto"
     coverActivo = false
+}
+
+// EVENTO
+// Cuando cover isHidden -> menu isVisible
+window.addEventListener('wheel', () => {
+    hideCover()
 })
 
 
