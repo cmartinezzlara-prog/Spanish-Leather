@@ -140,7 +140,10 @@ addVerticalSwipe(cover, () => {
 
     document.body.style.overflow = "auto"
     coverActivo = false
-})
+}, () => { 
+    //le meto una funciona vacia para probar
+}
+)
 
 
 
