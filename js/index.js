@@ -72,6 +72,7 @@ flash.addEventListener('animationend', () => {
     // Splash display none
     splash.addEventListener('transitionend', () => {
         splash.style.display = 'none'
+        coverActivo= true
     })
 })
 
