@@ -108,6 +108,15 @@ window.addEventListener('wheel', () => {
 // - - SI SUBE -> ACCIÓN ARRIBA (correcto)
 // - - SI BAJA -> ACCIÓN ABAJO (incorrecta)
 
+
+
+//  *************** NUEVO ****************
+// TOQUE EN MOVIL QUITA EL COVER
+cover.addEventListener("touchstart", ()=> {
+    hideCover()
+}, {passive: true})
+
+
 //FUNCIÓN
 function addVerticalSwipe(elemento, actionSwipeUp, actionSwipeDown) {
     let startY = 0;
