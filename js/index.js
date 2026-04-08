@@ -78,13 +78,13 @@ flash.addEventListener('animationend', () => {
 // ESTADO
 let coverActivo = true
 
-function hideCover(){
+function hideCover() {
     if (!coverActivo) return
 
     cover.classList.add("isHidden")
     menu.classList.add("isVisible")
 
-    document.body.style.overflow ="auto"
+    document.body.style.overflow = "auto"
     coverActivo = false
 }
 
@@ -137,15 +137,13 @@ function addVerticalSwipe(elemento, actionSwipeUp, actionSwipeDown) {
 
 
 // AHORA LLAMAMOS A LOS ELEMENTOS
-// addVerticalSwipe(cover, () => {
+addVerticalSwipe(cover, () => {
 
-//     if (!coverActivo) return
-//     cover.classList.add("isHidden")
-//     menu.classList.add("isVisible")
+    hideCover()
+}, () => {
 
-//     document.body.style.overflow = "auto"
-//     coverActivo = false
-// })
+}
+)
 
 
 
