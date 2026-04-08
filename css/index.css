@@ -112,7 +112,7 @@ body {
     position: fixed;
     inset: 0;
     z-index: 6;
-    touch-action: pan-y;
+    touch-action:pan-y;
     pointer-events: auto;
 
     opacity: 0;
@@ -543,8 +543,8 @@ body {
     transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
-.HeaderHam.isOpen span:nth-child(1) {
-    transform: translateY(7px) rotate(55deg);
+.HeaderHam.isOpen span:nth-child(1){
+transform: translateY(7px) rotate(55deg);
 }
 
 .HeaderHam.isOpen span:nth-child(2) {

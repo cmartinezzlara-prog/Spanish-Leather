@@ -117,7 +117,12 @@ cover.addEventListener("touchstart", () => {
 }, { passive: true })
 
 
-document.querySelector('.CoverBottom-arrow').addEventListener('click', ()=>{
+splash.addEventListener("touchstart", () => {
+    hideCover()
+}, { passive: true })
+
+
+document.querySelector('.CoverBottom-arrow').addEventListener('click', () => {
     hideCover()
 })
 
