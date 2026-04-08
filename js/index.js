@@ -132,18 +132,15 @@ function addVerticalSwipe(elemento, actionSwipeUp, actionSwipeDown) {
 
 
 // AHORA LLAMAMOS A LOS ELEMENTOS
-addVerticalSwipe(cover, () => {
+// addVerticalSwipe(cover, () => {
 
-    if (!coverActivo) return
-    cover.classList.add("isHidden")
-    menu.classList.add("isVisible")
+//     if (!coverActivo) return
+//     cover.classList.add("isHidden")
+//     menu.classList.add("isVisible")
 
-    document.body.style.overflow = "auto"
-    coverActivo = false
-}, () => { 
-    //le meto una funciona vacia para probar
-}
-)
+//     document.body.style.overflow = "auto"
+//     coverActivo = false
+// })
 
 
 
