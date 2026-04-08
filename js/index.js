@@ -72,7 +72,7 @@ flash.addEventListener('animationend', () => {
     // Splash display none
     splash.addEventListener('transitionend', () => {
         splash.style.display = 'none'
-        coverActivo= true
+        coverActivo = true
     })
 })
 
@@ -93,85 +93,80 @@ function hideCover() {
 // Cuando cover isHidden -> menu isVisible
 window.addEventListener('wheel', () => {
     hideCover()
-}, {passive: true})
+}, { passive: true })
 
 
-// // -- SWIPE PARA IPAD Y MÓVIL - QUITAR COVER / PASAR DE VÍDEO --
-// // Hay que detectar el swipe desde que se detecta el toque con el el dedo >toqueInicial  
-// // hasta donde deja de tocar la pantalla para considerarlo un deslizamiento >toqueFinal
-// // lo consideramos evento >(e)= touchStart / touchEnd
+// -- SWIPE PARA IPAD Y MÓVIL - QUITAR COVER / PASAR DE VÍDEO --
+// Hay que detectar el swipe desde que se detecta el toque con el el dedo >toqueInicial  
+// hasta donde deja de tocar la pantalla para considerarlo un deslizamiento >toqueFinal
+// lo consideramos evento >(e)= touchStart / touchEnd
 
-// // TOUCHSTART
-// // - GUARDO POSICION INICIAL
-// // TOUCHEND
-// // - BUSCA DONDE TERMINA
-// // - - SI SUBE -> ACCIÓN ARRIBA (correcto)
-// // - - SI BAJA -> ACCIÓN ABAJO (incorrecta)
-
-
-
-// //  *************** NUEVO ****************
-// // TOQUE EN MOVIL QUITA EL COVER
-// cover.addEventListener("touchstart", ()=> {
-//     hideCover()
-// }, {passive: true})
+// TOUCHSTART
+// - GUARDO POSICION INICIAL
+// TOUCHEND
+// - BUSCA DONDE TERMINA
+// - - SI SUBE -> ACCIÓN ARRIBA (correcto)
+// - - SI BAJA -> ACCIÓN ABAJO (incorrecta)
 
 
-// //FUNCIÓN
-// function addVerticalSwipe(elemento, actionSwipeUp, actionSwipeDown) {
-//     let startY = 0;
-//     let isSwiping = false
 
-//     // DETECTA TOQUE
-//     elemento.addEventListener("touchstart", (e) => {
-//         if (!e.touches || e.touches.length === 0) return
+//  *************** NUEVO ****************
+// TOQUE EN MOVIL QUITA EL COVER
+cover.addEventListener("touchstart", () => {
+    hideCover()
+}, { passive: true })
 
 
-//         // GUARDAR POSICIÓN VERTICAL(Y) startY = e.touches[0].clientY
-//         startY = e.touches[0].clientY
+document.querySelector('.CoverBottom-arrow').addEventListener('click', ()=>{
+    hideCover()
+})
 
-//         isSwiping = true
-//     }, { passive: true })
+//FUNCIÓN
+function addVerticalSwipe(elemento, actionSwipeUp, actionSwipeDown) {
+    let startY = 0;
+    let isSwiping = false
 
-
-//     elemento.addEventListener("touchmove", () => {
-//         if (!isSwiping) return
-
-//     }, { passive: false })
-
-
-//     // DEJA DETECTAR TOQUE
-//     elemento.addEventListener("touchend", (e) => {
-//         if (!isSwiping) return
-//         isSwiping = false
-
-//         // Constante (diferenciaY) que determina que:
-//         if (!e.changedTouches || e.changedTouches.length === 0) return
-//         const endY = e.changedTouches[0].clientY
-//         const diferenciaY = startY - endY
-//         console.log("SWIPE detectado. diferenciaY =", diferenciaY)
-
-//         // 1.SI el toque es PEQUEÑO (menos 50px) NO se considera SWIPE (umbral de movimiento)
-//         if (Math.abs(diferenciaY) < 30) return
-
-//         // 2.Hago callbacks opcionales
-//         if (diferenciaY > 0) {
-//             if (typeof actionSwipeUp === "function") actionSwipeUp()
-//         } else {
-//             if (typeof actionSwipeDown === "function") actionSwipeDown()
-//         }
-//     }, { passive: true })
-// }
+    // DETECTA TOQUE
+    elemento.addEventListener("touchstart", (e) => {
+        if (!e.touches || e.touches.length === 0) return
 
 
-// // AHORA LLAMAMOS A LOS ELEMENTOS
-// addVerticalSwipe(cover, () => {
+        // GUARDAR POSICIÓN VERTICAL(Y) startY = e.touches[0].clientY
+        startY = e.touches[0].clientY
 
-//     hideCover()
-// }, () => {
+        isSwiping = true
+    }, { passive: true })
 
-// }
-// )
+
+    elemento.addEventListener("touchmove", () => {
+        if (!isSwiping) return
+
+    }, { passive: true })
+
+
+    // DEJA DETECTAR TOQUE
+    elemento.addEventListener("touchend", (e) => {
+        if (!isSwiping) return
+        isSwiping = false
+
+        // Constante (diferenciaY) que determina que:
+        if (!e.changedTouches || e.changedTouches.length === 0) return
+        const endY = e.changedTouches[0].clientY
+        const diferenciaY = startY - endY
+        console.log("SWIPE detectado. diferenciaY =", diferenciaY)
+
+        // 1.SI el toque es PEQUEÑO (menos 50px) NO se considera SWIPE (umbral de movimiento)
+        if (Math.abs(diferenciaY) < 40) return
+
+        // 2.Hago callbacks opcionales
+        if (diferenciaY > 0) {
+            if (typeof actionSwipeUp === "function") actionSwipeUp()
+        } else {
+            if (typeof actionSwipeDown === "function") actionSwipeDown()
+        }
+    }, { passive: true })
+}
+
 
 
 
