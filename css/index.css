@@ -1975,12 +1975,11 @@ body {
     }
 
     .TopWheel {
-        width: 7rem;
-        min-height: 7rem;
+        width: 30%;
     }
 
     .TopWheel-polo {
-        width: 3rem;
+        width:10%;
     }
 
     .MenuTitles-ps {
