@@ -112,7 +112,7 @@ body {
     position: fixed;
     inset: 0;
     z-index: 6;
-    touch-action:none;
+    touch-action: none;
     pointer-events: auto;
 
     opacity: 0;
@@ -213,7 +213,7 @@ body {
 .CoverLayout {
     width: 100%;
     min-height: 100vh;
-    background-color: black;
+    background-color: rgb(0, 0, 0);
 
     display: flex;
     flex-flow: column nowrap;
@@ -228,8 +228,8 @@ body {
     /* background-color: red; */
 
     display: flex;
-    flex-flow: row nowrap;
-    justify-content: center;
+    flex-flow: column nowrap;
+    justify-content: start;
     align-items: center;
 }
 
@@ -543,8 +543,8 @@ body {
     transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
-.HeaderHam.isOpen span:nth-child(1){
-transform: translateY(7px) rotate(55deg);
+.HeaderHam.isOpen span:nth-child(1) {
+    transform: translateY(7px) rotate(55deg);
 }
 
 .HeaderHam.isOpen span:nth-child(2) {
@@ -766,7 +766,7 @@ transform: translateY(7px) rotate(55deg);
 
 .MenuTitles-ps {
     max-width: 37rem;
-    /* background-color: black; */
+    /* background-color: rgb(202, 151, 151); */
 
     display: flex;
     flex-flow: row wrap;
@@ -1946,6 +1946,54 @@ transform: translateY(7px) rotate(55deg);
 /* BREACKPOINT */
 /* MÓVIL */
 @media (max-width:950px) {
+
+    /* COVER */
+    .CoverMiddle-img {
+        width: 60%;
+    }
+
+    /*  no vale solo con esto */
+    .CoverStar-lateral .CoverStar-bottom {
+        display: none;
+    }
+
+    .CoverLayout {
+        justify-content: space-around;
+    }
+
+    /* MENU */
+    .MenuTop {
+        padding: 0;
+        justify-content: center;
+        gap: 0.5rem;
+    }
+
+    .MenuTop-text {
+        width:23%;
+        font-size: 13px;
+         padding: 0;
+    }
+
+    .TopWheel {
+        width: 7rem;
+        min-height: 7rem;
+    }
+
+    .TopWheel-polo {
+        width: 3rem;
+    }
+
+    .MenuTitles-ps {
+        width: 80%;
+        font-size: 0.8rem;
+        line-height: 2.4rem;
+    }
+
+    .MenuListen-btn {
+        font-size: 18px;
+        padding: 0.8rem 2.5rem;
+    }
+
     .HeaderNav--desktop {
         display: none;
     }
