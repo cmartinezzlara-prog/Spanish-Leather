@@ -1194,8 +1194,8 @@ body {
     border-bottom: 1px solid white;
 
     display: grid;
-    grid-template-columns: 1.5fr 1.5fr 1fr 0.5fr;
-    padding: 0 1.5rem 1rem 1.5rem;
+    grid-template-columns: 1.5fr 2fr 1fr 0.5fr;;
+    padding: 0 1rem 1rem 1rem;
 
     text-transform: uppercase;
     font-weight: 500;
@@ -1222,12 +1222,12 @@ body {
 
 .TourItem {
     width: 100%;
-    /* background-color: red; */
+    background-color: red;
     border-bottom: 1px solid white;
 
     display: grid;
-    grid-template-columns: 1.5fr 1.5fr 1fr 0.5fr;
-    padding: 0 1.5rem 0 1.5rem;
+    grid-template-columns: 1.5fr 2fr 1fr 0.5fr;
+    padding: 0 1rem 0 1rem;
     align-items: center;
 
     color: white;
