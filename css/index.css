@@ -1010,6 +1010,7 @@ body {
     justify-content: center;
     align-items: center;
     gap: 2rem;
+
     text-align: center;
     color: white;
     line-height: 1;
@@ -1017,19 +1018,19 @@ body {
 
 /* P1 - "Escucha el álbum" */
 .PresaveText p:nth-child(1) {
-    font-size: 2rem;
+    font-size: clamp(1.2rem, 4vw, 2rem);
     font-weight: 400;
 }
 
 /* P2 - "Spanish Leather" */
 .PresaveText p:nth-child(2) {
-    font-size: 3rem;
+    font-size: clamp(1.8rem, 6vw, 3rem);
     font-weight: 600;
 }
 
 /* P3 - "AL COMPLETO" */
 .PresaveText p:nth-child(3) {
-    font-size: 2.7rem;
+    font-size: clamp(1.6rem, 5.5vw, 2.7rem);
     text-transform: uppercase;
     font-weight: 300;
     line-height: 0.18;
@@ -1037,7 +1038,7 @@ body {
 
 /* P4 - "antes de su salida" */
 .PresaveText p:nth-child(4) {
-    font-size: 2rem;
+    font-size: clamp(1.2rem, 4vw, 2rem);
     font-weight: 600;
     line-height: 2;
 }
@@ -2057,6 +2058,70 @@ body {
 
     .TourFechaCorta {
         display: block;
+    }
+
+    .PresaveLayout {
+        /* background-color:greenyellow; */
+        flex-flow: column nowrap;
+        gap: 1.5rem;
+    }
+
+    .PresaveText {
+        width: 100%;
+        /* background-color: red; */
+
+        display: flex;
+        flex-flow: column nowrap;
+        justify-content: center;
+        align-items: center;
+        gap: 1.3rem;
+
+        text-align: center;
+        color: white;
+        line-height: 1;
+    }
+
+    /* --------------- */
+    .PresaveForm {
+        width: 100%;
+        /* background-color: yellow; */
+
+        display: flex;
+        flex-flow: column;
+        justify-content: start;
+        align-items: center;
+
+        gap: 0.5rem;
+    }
+
+    .PresaveForm input {
+        width: 100%;
+        max-width: 500px;
+        /* background-color: red; */
+
+        padding: 1rem 0 1rem 1rem;
+        border-bottom: 1px solid rgb(255, 255, 255);
+
+        font-family: 'Euclid Circular A', sans-serif;
+        font-size: 1rem;
+    }
+
+    .PresaveForm input::placeholder {
+        color: rgba(255, 255, 255, 0.736);
+    }
+
+    .PresaveSubmit {
+        background-color: transparent;
+        padding: 0.8rem 4rem;
+
+        border: 1px solid white;
+        border-radius: 50px;
+        margin: 20px 0 0 0;
+
+        font-family: 'Euclid Circular A', sans-serif;
+        font-size: 1.3rem;
+        font-weight: 600;
+        color: white;
     }
 
     .InfoBox {
