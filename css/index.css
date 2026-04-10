@@ -914,7 +914,7 @@ body {
 .Presave {
     width: 100%;
     min-height: 100vh;
-    background-color: rgb(192, 183, 64);
+    background-color: #d0d07f;
 
     display: none;
     flex-flow: row nowrap;
@@ -938,7 +938,7 @@ body {
 .PresaveContent {
     width: 100%;
     min-height: 90vh;
-    background-color: rgb(192, 183, 64);
+    background-color: rgb(215, 207, 90);
 
     display: flex;
     flex-flow: column nowrap;
@@ -2126,15 +2126,15 @@ body {
         width: 100%;
         /* background-color: red; */
         margin: 5rem 0 0 0;
-        padding: 0 0 0 2rem;
+        padding: 0 0 0 1rem;
 
         position: absolute;
     }
 
     .PresaveBack {
-        max-width: 2.5rem;
+        max-width: 2.3rem;
         background-color: transparent;
-        border: 1.5px solid white;
+        border: 1.2px solid white;
         border-radius: 50%;
         rotate: calc(270deg);
 
@@ -2143,13 +2143,6 @@ body {
         justify-content: center;
         align-items: center;
 
-        padding: .5rem;
-
-        font-size: 1rem;
-        color: white;
-
-        cursor: pointer;
-        transition: 0.2s ease;
     }
 
     .InfoBox {
