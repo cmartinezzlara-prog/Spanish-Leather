@@ -1181,7 +1181,7 @@ body {
 
 .TourList {
     width: 90%;
-  
+
     display: flex;
     flex-flow: column;
     justify-content: center;
@@ -1194,7 +1194,7 @@ body {
     border-bottom: 1px solid white;
 
     display: grid;
-    grid-template-columns:1.5fr 1.5fr 0.8fr 0.7fr;
+    grid-template-columns: 1.5fr 1.5fr 0.8fr 0.7fr;
     padding: 0 1rem 1rem 1rem;
 
     text-transform: uppercase;
@@ -1244,10 +1244,26 @@ body {
     display: none;
 }
 
+.TourItem--tickets span:last-child {
+    color: #fcfc54;
+    font-weight: 600;
+}
+
+.TourItem--soldout span:last-child {
+    color: grey;
+    font-weight: 600;
+}
+
 .TourItem--tickets span:last-child,
 .TourItem--soldout span:last-child {
     font-size: clamp(0.6rem, 2.1vw, 1.1rem);
     white-space: nowrap;
+}
+
+/* ESTILOS ESTADO TOUR */
+/* DISPONIBLES */
+.TourItem--tickets {
+    background-color: #ffff8285;
 }
 
 .TourFechaCorta {
@@ -1453,23 +1469,7 @@ body {
 }
 
 
-/* ESTILOS ESTADO TOUR */
-/* DISPONIBLES */
-.TourItem--tickets {
-    background-color: #ffff8285;
-}
 
-.TourItem--tickets span:last-child {
-    color: #fcfc54;
-    font-weight: 600;
-    font-size: 0.9rem;
-}
-
-.TourItem--soldout span:last-child {
-    color: grey;
-    font-weight: 600;
-    font-size: 0.9rem;
-}
 
 
 /* TRANSITION */
@@ -2011,7 +2011,7 @@ body {
         width: 90%;
     }
 
-    .TourImg{
+    .TourImg {
         width: 15vw;
     }
 
@@ -2019,7 +2019,7 @@ body {
         width: 95%;
     }
 
-    .TourList-Header{
+    .TourList-Header {
         font-size: clamp(0.6rem, 1.5vw, 0.75rem);
     }
 
