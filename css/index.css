@@ -595,7 +595,7 @@ body {
 .InfoBox {
     width: 100%;
     max-height: 5rem;
-    background-color: red;
+    /* background-color: red; */
 
     display: flex;
     flex-flow: row;
@@ -680,6 +680,8 @@ body {
     align-items: center;
     margin: 4rem 0 0 0;
 
+    gap: 2rem;
+
     position: relative;
 }
 
@@ -713,7 +715,7 @@ body {
 }
 
 .TopWheel {
-    width: 15vw;
+    width: 12vw;
     /* background-color: white; */
 
     display: flex;
@@ -739,7 +741,7 @@ body {
 }
 
 .TopWheel-polo {
-    width: 6vw;
+    width: 5vw;
     position: absolute;
     padding: 0 0 0.5rem 0.2rem;
 }
@@ -2059,7 +2061,7 @@ body {
 
     .InfoBox {
         width: 100%;
-        background-color: red;
+        /* background-color: red; */
 
         display: flex;
         flex-flow: row;
