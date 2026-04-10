@@ -595,7 +595,7 @@ body {
 .InfoBox {
     width: 100%;
     max-height: 5rem;
-    /* background-color: red; */
+    background-color: red;
 
     display: flex;
     flex-flow: row;
@@ -739,7 +739,7 @@ body {
 }
 
 .TopWheel-polo {
-    max-width: 6vw;
+    width: 6vw;
     position: absolute;
     padding: 0 0 0.5rem 0.2rem;
 }
@@ -1980,17 +1980,19 @@ body {
 
     .TopWheel {
         width: 20vw;
+        min-height: 20vh;
         padding: 0;
     }
 
     .TopWheel-circle {
         width: 20vw;
+        min-height: 20vh;
     }
 
     .TopWheel-polo {
-        
-        width: 20vw;
-        padding: 0;
+        width: 8vw;
+        min-height: 8vh;
+        padding: 0 0 0.3rem 0.3rem;
     }
 
     .MenuTitles-ps {
@@ -2010,6 +2012,15 @@ body {
 
     .HeaderMobile {
         display: flex;
+    }
+
+    .FixedPresave {
+        margin: 80px 0 0 0;
+    }
+
+    .FixedPresave-btn {
+        width: 3.125rem;
+        min-height: 8.6rem;
     }
 
     .TourWrapper {
@@ -2046,7 +2057,36 @@ body {
         display: block;
     }
 
+    .InfoBox {
+        width: 100%;
+        background-color: red;
 
+        display: flex;
+        flex-flow: row;
+        justify-content: end;
+        align-items: end;
+
+        margin: 0 5rem 3rem 0;
+
+        position: fixed;
+        bottom: 1.8rem;
+        z-index: 8;
+
+        pointer-events: none;
+    }
+
+    .InfoBtn {
+        width: 3rem;
+        min-height: 3rem;
+        background-color: rgba(226, 193, 193, 0.097);
+        border-radius: 50%;
+
+        font-size: 40px;
+        color: rgba(255, 255, 255, 0.618);
+        transition: 0.2s ease;
+
+        pointer-events: auto;
+    }
 }
 
 
