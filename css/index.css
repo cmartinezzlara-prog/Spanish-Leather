@@ -2010,12 +2010,20 @@ body {
         width: 90%;
     }
 
+    .TourImg{
+        width: 15vw;
+    }
+
     .TourList {
         width: 95%;
     }
 
+    .TourList-Header{
+        font-size: clamp(0.6rem, 1.5vw, 0.75rem);
+    }
+
     .TourItem {
-        font-size: clamp(0.7rem, 2vw, 0.9rem);
+        font-size: clamp(0.5rem, 2vw, 0.9rem);
     }
 
     .TourItem--tickets span:last-child,
