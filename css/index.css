@@ -1181,8 +1181,7 @@ body {
 
 .TourList {
     width: 90%;
-    /* background-color: yellow; */
-
+  
     display: flex;
     flex-flow: column;
     justify-content: center;
@@ -1239,6 +1238,15 @@ body {
 .TourItem-t {
     color: white;
     font-weight: 300;
+}
+
+.TourList-Header span:last-child {
+    display: none;
+}
+
+.TourItem--tickets span:last-child,
+.TourItem--soldout span:last-child {
+    font-size: clamp(0.7rem, 2.1vw, 1.1rem);
 }
 
 .TourFechaCorta {
@@ -1998,12 +2006,21 @@ body {
         display: flex;
     }
 
-    .TourList{
-        width: 100%;
+    .TourWrapper {
+        width: 90%;
     }
 
-    .TourList-Header span:last-child {
-        display: none;
+    .TourList {
+        width: 95%;
+    }
+
+    .TourItem {
+        font-size: clamp(0.7rem, 2vw, 0.9rem);
+    }
+
+    .TourItem--tickets span:last-child,
+    .TourItem--soldout span:last-child {
+        font-size: clamp(0.65rem, 1.8vw, 0.75rem);
     }
 
     .TourFecha {
@@ -2014,10 +2031,7 @@ body {
         display: block;
     }
 
-    .TourItem--tickets span:last-child,
-    .TourItem--soldout span:last-child {
-        font-size: 0.75rem;
-    }
+
 }
 
 
