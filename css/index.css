@@ -707,7 +707,7 @@ body {
     /* background-color: red; */
     padding: .625rem;
     letter-spacing: 0.08rem;
-    font-size: 16px;
+    font-size: clamp(1rem, 1.2vw, 0.5rem);
 }
 
 .MenuTop-p {
@@ -718,8 +718,8 @@ body {
 }
 
 .TopWheel {
-    width: 10.625rem;
-    min-height: 10.625rem;
+    width: 16vw;
+    min-height: 16vh;
     /* background-color: white; */
 
     display: flex;
@@ -736,7 +736,8 @@ body {
 }
 
 .TopWheel-circle {
-    max-width: 10.625rem;
+    max-width: 16vw;
+    ;
     position: relative;
     animation: spin 15s linear infinite;
 }
@@ -746,9 +747,9 @@ body {
 }
 
 .TopWheel-polo {
-    max-width: 4.375rem;
+    max-width: 6vw;
     position: absolute;
-    padding: 0 0 .625rem .3125rem;
+    padding: 0 0 0.5rem 0.2rem;
 }
 
 /* MENU TITLES */
@@ -864,7 +865,7 @@ body {
 /* ETIQUETA LATERAL PRESAVE */
 .FixedPresave {
     width: 100%;
-    min-height: 200px;
+    min-height: 30vh;
     /* background-color:red; */
 
     display: flex;
@@ -1238,6 +1239,10 @@ body {
 .TourItem-t {
     color: white;
     font-weight: 300;
+}
+
+.TourFechaCorta {
+    display: none;
 }
 
 .TourArrows {
@@ -1969,17 +1974,9 @@ body {
     }
 
     .MenuTop-text {
-        width:23%;
+        width: 23%;
         font-size: 13px;
-         padding: 0;
-    }
-
-    .TopWheel {
-        width: 30%;
-    }
-
-    .TopWheel-polo {
-        width:10%;
+        padding: 0;
     }
 
     .MenuTitles-ps {
@@ -2001,6 +1998,23 @@ body {
         display: flex;
     }
 
+    .TourList-Header span:last-child {
+        display: none;
+    }
+
+    .TourFecha {
+        display: none;
+    }
+
+    .TourFechaCorta {
+        display: block;
+    }
+
+    .TourItem--tickets span:last-child,
+    .TourItem--soldout span:last-child {
+        font-size: 0.75rem;
+    }
+}
 }
 
 @media (min-width:951px) {

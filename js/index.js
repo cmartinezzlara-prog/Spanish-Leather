@@ -499,7 +499,7 @@ const pantallaPlayer = document.querySelector(".PlayerScreen")
 
 // SWIPE EN PANTALLA
 addVerticalSwipe(pantallaPlayer, () => {
-    if (!player.classListc.contains('isListening')) return
+    if (!player.classList.contains('isListening')) return
     startIfNeeded()
     showVideo(index + 1)
 }, () => {
@@ -609,24 +609,23 @@ document.querySelectorAll('[data-goto]').forEach(link => {
 // ---- CONCIERTOS TOUR ----
 // ARRAY ( le voy a pedir a cht gpt que me rellene los cmapos de la base de mi array con la lista de conciertos)
 const tourDates = [
-    { ciudad: "Argentina", local: "Lollapalooza Argentina", fecha: "13 marzo 2026", estado: "SOLD-OUT" },
-    { ciudad: "Santiago de Chile", local: "Lollapalooza Chile", fecha: "14 marzo 2026", estado: "SOLD-OUT" },
-    { ciudad: "Sao Paolo", local: "Fabrique", fecha: "19 marzo 2026", estado: "SOLD-OUT" },
-    { ciudad: "Bogotá", local: "Estéreo Picnic", fecha: "21 marzo 2026", estado: "SOLD-OUT" },
-    { ciudad: "Lima", local: "CC. Leguía", fecha: "25 marzo 2026", estado: "TICKETS" },
-    { ciudad: "Monterrey", local: "Tecate Pal Norte", fecha: "27 marzo 2026", estado: "SOLD-OUT" },
-    { ciudad: "Benicassim", local: "SanSan", fecha: "03 abril 2026", estado: "SOLD-OUT" },
-    { ciudad: "Milan", local: "Fabrique", fecha: "10 abril 2026", estado: "TICKETS" },
-    { ciudad: "Berlín", local: "Metropol", fecha: "11 abril 2026", estado: "TICKETS" },
-    { ciudad: "Murcia", local: "Warm Up", fecha: "01 mayo 2026", estado: "SOLD-OUT" },
-    { ciudad: "Barcelona", local: "Primavera Sound", fecha: "03 junio 2026", estado: "TICKETS" },
-    { ciudad: "Vilanova i la Geltrú", local: "Vida Festival", fecha: "03 julio 2026", estado: "TICKETS" },
-    { ciudad: "Málaga", local: "Plaza de toros de Málaga", fecha: "11 julio 2026", estado: "TICKETS" },
-    { ciudad: "Santander", local: "Santander Music", fecha: "31 julio 2026", estado: "SOLD-OUT" },
-    { ciudad: "Chiclana de la F.", local: "Concert Music Festival", fecha: "09 agosto 2026", estado: "TICKETS" },
-    { ciudad: "Zaragoza", local: "Vive Latino", fecha: "05 septiembre 2026", estado: "SOLD-OUT" },
-    { ciudad: "Madrid", local: "Movistar Arena", fecha: "02 octubre 2026", estado: "TICKETS" }
-
+    { ciudad: "Argentina", local: "Lollapalooza Argentina", fecha: "13 marzo 2026", fechaCorta: "13/03/26", estado: "SOLD-OUT" },
+    { ciudad: "Santiago de Chile", local: "Lollapalooza Chile", fecha: "14 marzo 2026", fechaCorta: "14/03/26", estado: "SOLD-OUT" },
+    { ciudad: "Sao Paolo", local: "Fabrique", fecha: "19 marzo 2026", fechaCorta: "19/03/26", estado: "SOLD-OUT" },
+    { ciudad: "Bogotá", local: "Estéreo Picnic", fecha: "21 marzo 2026", fechaCorta: "21/03/26", estado: "SOLD-OUT" },
+    { ciudad: "Lima", local: "CC. Leguía", fecha: "25 marzo 2026", fechaCorta: "25/03/26", estado: "TICKETS" },
+    { ciudad: "Monterrey", local: "Tecate Pal Norte", fecha: "27 marzo 2026", fechaCorta: "27/03/26", estado: "SOLD-OUT" },
+    { ciudad: "Benicassim", local: "SanSan", fecha: "03 abril 2026", fechaCorta: "03/04/26", estado: "SOLD-OUT" },
+    { ciudad: "Milan", local: "Fabrique", fecha: "10 abril 2026", fechaCorta: "10/04/26", estado: "TICKETS" },
+    { ciudad: "Berlín", local: "Metropol", fecha: "11 abril 2026", fechaCorta: "11/04/26", estado: "TICKETS" },
+    { ciudad: "Murcia", local: "Warm Up", fecha: "01 mayo 2026", fechaCorta: "01/05/26", estado: "SOLD-OUT" },
+    { ciudad: "Barcelona", local: "Primavera Sound", fecha: "03 junio 2026", fechaCorta: "03/06/26", estado: "TICKETS" },
+    { ciudad: "Vilanova i la Geltrú", local: "Vida Festival", fecha: "03 julio 2026", fechaCorta: "03/07/26", estado: "TICKETS" },
+    { ciudad: "Málaga", local: "Plaza de toros de Málaga", fecha: "11 julio 2026", fechaCorta: "11/07/26", estado: "TICKETS" },
+    { ciudad: "Santander", local: "Santander Music", fecha: "31 julio 2026", fechaCorta: "31/07/26", estado: "SOLD-OUT" },
+    { ciudad: "Chiclana de la F.", local: "Concert Music Festival", fecha: "09 agosto 2026", fechaCorta: "09/08/26", estado: "TICKETS" },
+    { ciudad: "Zaragoza", local: "Vive Latino", fecha: "05 septiembre 2026", fechaCorta: "05/09/26", estado: "SOLD-OUT" },
+    { ciudad: "Madrid", local: "Movistar Arena", fecha: "02 octubre 2026", fechaCorta: "02/10/26", estado: "TICKETS" }
 ]
 
 const tourUl = document.querySelector('.TourUl')
@@ -658,7 +657,8 @@ function loadDates() {
         li.innerHTML = `
         <span>${date.ciudad}</span>
         <span>${date.local}</span>
-        <span>${date.fecha}</span>
+        <span class="TourFecha">${date.fecha}</span>
+        <span class="TourFechaCorta">${date.fechaCorta}</span>
         <span>${date.estado}</span>`
 
         tourUl.appendChild(li)
@@ -737,7 +737,7 @@ infoBack.addEventListener('click', () => {
 
 // **** MENÚ HAMBURGUESA MÓVIL ****
 // VARIABLES
-const headerHam = document.querySelector('.HeaderHam')
+const headerHams = document.querySelectorAll('.HeaderHam')
 const mobileMenu = document.querySelector('.MobileMenu')
 const mobileOverlay = document.querySelector('.MobileOverlay')
 const mobileLinks = document.querySelectorAll('.MobileMenu a')
@@ -746,27 +746,30 @@ const mobileLinks = document.querySelectorAll('.MobileMenu a')
 function openMobileMenu() {
     mobileMenu.classList.add('isOpen')
     mobileOverlay.classList.add('isOpen')
-    headerHam.classList.add('isOpen')
+    headerHams.forEach(ham => ham.classList.add('isOpen'))
 }
 
 // CERRAR MENÚ MÓVIL
 function closeMobileMenu() {
     mobileMenu.classList.remove('isOpen')
     mobileOverlay.classList.remove('isOpen')
-    headerHam.classList.remove('isOpen')
+    headerHams.forEach(ham => ham.classList.remove('isOpen'))
 }
 
 
 // ACCIÓN CLICK EN HAMBURGUESA
-headerHam.addEventListener('click', () => {
-    const open = mobileMenu.classList.contains('isOpen')
+headerHams.forEach(ham => {
+    ham.addEventListener('click', () => {
+        const open = mobileMenu.classList.contains('isOpen')
 
-    if (open) {
-        closeMobileMenu()
-    } else {
-        openMobileMenu()
-    }
+        if (open) {
+            closeMobileMenu()
+        } else {
+            openMobileMenu()
+        }
+    })
 })
+
 
 // OVERLAY
 mobileOverlay.addEventListener('click', () => {
