@@ -375,53 +375,7 @@ body {
     letter-spacing: 0.08rem;
 }
 
-.CoverBottom-script {
-    width: 100%;
-    background-color: red;
-}
 
-.CoverBottom-img {
-    width: 12rem;
-    background-color: yellowgreen;
-}
-
-
-
-/* ************* MENU ************ */
-.Menu {
-    width: 100%;
-    min-height: 100vh;
-    background-color: rgb(0, 0, 0);
-
-    display: flex;
-    flex-flow: column nowrap;
-    justify-content: start;
-    align-items: start;
-
-    color: white;
-
-    position: relative;
-    z-index: 8;
-
-    opacity: 0;
-    transition: opacity 1s ease;
-    pointer-events: none;
-}
-
-.Menu.isVisible {
-    opacity: 1;
-    pointer-events: auto;
-}
-
-.Menu.isListening {
-    opacity: 0;
-    pointer-events: none;
-    transition-delay: 1s;
-}
-
-.Menu.isHidden {
-    display: none;
-}
 
 
 /* ********* HEADER ********* */
@@ -609,7 +563,7 @@ body {
 .MobileMenu-close {
     width: 2.5rem;
     height: 2px;
-    background-color: red;
+    /* background-color: red; */
     cursor: pointer;
 }
 
@@ -636,19 +590,7 @@ body {
 
 
 
-/* --- MENU LAYOUT --- */
-.MenuLayout {
-    width: 100%;
-    min-height: 90vh;
 
-    display: flex;
-    flex-flow: column;
-    justify-content: start;
-    align-items: center;
-    margin: 4rem 0 0 0;
-
-    position: relative;
-}
 
 .InfoBox {
     width: 100%;
@@ -688,6 +630,59 @@ body {
 }
 
 
+
+
+/* ************* MENU ************ */
+.Menu {
+    width: 100%;
+    min-height: 100vh;
+    background-color: rgb(0, 0, 0);
+
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: start;
+    align-items: start;
+
+    color: white;
+
+    position: relative;
+    z-index: 8;
+
+    opacity: 0;
+    transition: opacity 1s ease;
+    pointer-events: none;
+}
+
+.Menu.isVisible {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.Menu.isListening {
+    opacity: 0;
+    pointer-events: none;
+    transition-delay: 1s;
+}
+
+.Menu.isHidden {
+    display: none;
+}
+
+/* --- MENU LAYOUT --- */
+.MenuLayout {
+    width: 100%;
+    min-height: 90vh;
+    /* background-color: red; */
+
+    display: flex;
+    flex-flow: column;
+    justify-content:center;
+    align-items: center;
+    margin: 4rem 0 0 0;
+
+    position: relative;
+}
+
 /* TOP MENU */
 .MenuTop {
     width: 80%;
@@ -719,7 +714,6 @@ body {
 
 .TopWheel {
     width: 16vw;
-    min-height: 16vh;
     /* background-color: white; */
 
     display: flex;
@@ -737,7 +731,6 @@ body {
 
 .TopWheel-circle {
     max-width: 16vw;
-    ;
     position: relative;
     animation: spin 15s linear infinite;
 }
@@ -1981,15 +1974,9 @@ body {
 
     /* MENU */
     .MenuTop {
+        min-height: 25vh;
         padding: 0;
         justify-content: center;
-        gap: 0.5rem;
-    }
-
-    .MenuTop-text {
-        width: 23%;
-        font-size: 13px;
-        padding: 0;
     }
 
     .MenuTitles-ps {
@@ -2014,6 +2001,7 @@ body {
     .TourWrapper {
         width: 90%;
     }
+
 
     .TourImg {
         width: 15vw;
