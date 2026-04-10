@@ -1232,7 +1232,7 @@ body {
 
     color: white;
     font-weight: 300;
-    font-size: clamp(0.9rem, 2.5vw, 1.1rem);
+    font-size: clamp(1rem, 2.5vw, 1.1rem);
 }
 
 .TourItem-t {
@@ -1246,7 +1246,7 @@ body {
 
 .TourItem--tickets span:last-child,
 .TourItem--soldout span:last-child {
-    font-size: clamp(0.7rem, 2.1vw, 1.1rem);
+    font-size: clamp(0.6rem, 2.1vw, 1.1rem);
     white-space: nowrap;
 }
 
