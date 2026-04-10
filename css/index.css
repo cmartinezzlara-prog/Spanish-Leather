@@ -2029,7 +2029,7 @@ body {
 
     .TourItem--tickets span:last-child,
     .TourItem--soldout span:last-child {
-        font-size: clamp(0.65rem, 1.8vw, 0.75rem);
+        font-size: clamp(0.5rem, 1.8vw, 0.65rem);
     }
 
     .TourFecha {
