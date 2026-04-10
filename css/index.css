@@ -2122,6 +2122,36 @@ body {
         color: white;
     }
 
+    .PresaveTop {
+        width: 100%;
+        /* background-color: red; */
+        margin: 5rem 0 0 0;
+        padding: 0 0 0 2rem;
+
+        position: absolute;
+    }
+
+    .PresaveBack {
+        max-width: 2.5rem;
+        background-color: transparent;
+        border: 1.5px solid white;
+        border-radius: 50%;
+        rotate: calc(270deg);
+
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: center;
+        align-items: center;
+
+        padding: .5rem;
+
+        font-size: 1rem;
+        color: white;
+
+        cursor: pointer;
+        transition: 0.2s ease;
+    }
+
     .InfoBox {
         width: 100%;
         /* background-color: red; */
