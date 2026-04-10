@@ -676,7 +676,7 @@ body {
 
     display: flex;
     flex-flow: column;
-    justify-content:center;
+    justify-content: center;
     align-items: center;
     margin: 4rem 0 0 0;
 
@@ -713,7 +713,7 @@ body {
 }
 
 .TopWheel {
-    width: 16vw;
+    width: 15vw;
     /* background-color: white; */
 
     display: flex;
@@ -730,7 +730,6 @@ body {
 }
 
 .TopWheel-circle {
-    max-width: 16vw;
     position: relative;
     animation: spin 15s linear infinite;
 }
@@ -1977,6 +1976,21 @@ body {
         min-height: 25vh;
         padding: 0;
         justify-content: center;
+    }
+
+    .TopWheel {
+        width: 20vw;
+        padding: 0;
+    }
+
+    .TopWheel-circle {
+        width: 20vw;
+    }
+
+    .TopWheel-polo {
+        
+        width: 20vw;
+        padding: 0;
     }
 
     .MenuTitles-ps {
