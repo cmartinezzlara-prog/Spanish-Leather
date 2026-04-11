@@ -2205,11 +2205,12 @@ body {
     }
 
     .InfoLinks {
+        width: 300px;
         display: flex;
-        flex-flow: column wrap;
+        flex-flow: row wrap;
         justify-content: start;
-        align-items: center;
-        gap: 1rem;
+        align-items: start;
+        gap: 3rem;
     }
 
     .InfoCol {
