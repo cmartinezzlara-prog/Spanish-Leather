@@ -2206,21 +2206,21 @@ body {
 
     .InfoLinks {
         width: 300px;
+        max-height: 300px;
+
         display: flex;
-        flex-flow: row wrap;
-        justify-content: start;
+        flex-flow: column wrap;
         align-items: start;
         gap: 3rem;
     }
 
     .InfoCol {
-        width: 25vw;
-        /* background-color: red; */
+        width: 27vw;
 
         font-weight: 300;
         color: white;
         line-height: 1.2rem;
-        font-size: .75rem;
+        font-size: .8rem;
     }
 
     
