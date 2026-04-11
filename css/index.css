@@ -1653,6 +1653,7 @@ body {
 .PlayerContent {
     width: 100%;
     min-height: 100%;
+    /* background-color: red; */
 
     display: flex;
     flex-flow: row;
@@ -1834,7 +1835,6 @@ body {
 
 .PlayerMute {
     width: 100%;
-    background-color: transparent;
 
     display: flex;
     flex-flow: row nowrap;
@@ -1873,13 +1873,6 @@ body {
 .h-hidden {
     display: none;
 }
-
-/* Solo bloquear gestos del navegador dentro del Player
-
-.Player {
-    touch-action: none;
-    overscroll-behavior-y: contain;
-} */
 
 
 /* PERMITIR QUE EL SWIPE LLEGUE AL PLAYERSCREEN */
@@ -2200,7 +2193,7 @@ body {
         display: none;
     }
 
-    .InfoCenter{
+    .InfoCenter {
         margin: 0 0 1.5rem 0;
     }
 
@@ -2223,10 +2216,45 @@ body {
         font-size: .8rem;
     }
 
-    
-
-    .InfoTitle{
+    .InfoTitle {
         width: 40vw;
+    }
+
+    .PlayerTitle {
+        max-width: 300px;
+    }
+
+    .PlayerName {
+        width: 100%;
+
+        font-size: 2rem;
+        transition: 0.4s ease;
+        white-space: normal;
+    }
+
+    .PlayerMute {
+        padding: 0 0 4.5rem 2rem;
+    }
+
+    .PlayerBtn-text {
+        font-size: 0.8rem;
+    }
+
+    .PlayerBack {
+        left: 2rem;
+    }
+
+    .PlayerBack-btn {
+        font-size: 0.8rem;
+    }
+
+    .PlayerContent {
+        padding: 2rem 2rem 1rem 2rem;
+    }
+
+    .PlayerSlider-dot {
+        width: 0.4rem;
+        min-height: 0.4rem;
     }
 }
 
