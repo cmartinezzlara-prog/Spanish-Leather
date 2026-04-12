@@ -2240,10 +2240,7 @@ body {
     }
 
     /* --- TRANSICIÑON --- */
-    .TransitionText {
-        width: 150vw;
-        top: 0;
-    }
+    
 
     @keyframes babiecaCurtain {
         0% {
