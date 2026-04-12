@@ -112,26 +112,52 @@ window.addEventListener('wheel', () => {
 
 //  *************** NUEVO ****************
 // TOQUE EN MOVIL QUITA EL COVER
+// cover.addEventListener("touchstart", () => {
+//     coverActivo = true
+//     hideCover()
+// }, { passive: true })
+
+// splash.addEventListener("touchstart", () => {
+//     coverActivo = true
+//     hideCover()
+// }, { passive: true })
+
+
+// document.querySelector('.CoverBottom-arrow').addEventListener('click', () => {
+//     coverActivo = true
+//     hideCover()
+// })
+
+// LEVANTAR COVER CON UN TOQUE
 cover.addEventListener("touchstart", () => {
-    coverActivo = true
-    hideCover()
-}, { passive: true })
-
-cover.addEventListener('click', ()=>{
-    hideCover()
-})
-
-
-splash.addEventListener("touchstart", () => {
-    coverActivo = true
     hideCover()
 }, { passive: true })
 
 
-document.querySelector('.CoverBottom-arrow').addEventListener('click', () => {
-    coverActivo = true
+cover.addEventListener("click", () => {
     hideCover()
 })
+
+// FELCHA SCROLL FUNCIONA COMO DIRECTO
+document.querySelector('.CoverBottom-arrow').addEventListener('click', function () {
+    hideCover()
+})
+
+flash.addEventListener('animationend', function () {
+    showCover()
+
+    //si no interactuan, quitar automatico con tiempo
+    setTimeout(function () {
+        hideCover()
+    }, 7000)
+
+    splash.addEventListener('transitionend', function() {
+        splash.style.display = 'none'
+        coverActivo= true
+    })
+
+})
+
 
 //FUNCIÓN
 function addVerticalSwipe(elemento, actionSwipeUp, actionSwipeDown) {
