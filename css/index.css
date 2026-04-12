@@ -1934,7 +1934,7 @@ body {
 /* --- MÓVIL --- */
 @media (max-width:950px) {
 
-      /* --- HEADER --- */
+    /* --- HEADER --- */
     .HeaderNav--desktop {
         display: none;
     }
@@ -2237,6 +2237,22 @@ body {
     .PlayerSlider-dot {
         width: 0.6rem;
         min-height: 0.6rem;
+    }
+
+    /* --- TRANSICIÑON --- */
+    .TransitionText {
+        width: 150vw;
+        top: 0;
+    }
+
+    @keyframes babiecaCurtain {
+        0% {
+            transform: translateX(100vw);
+        }
+
+        100% {
+            transform: translateX(-200vw);
+        }
     }
 }
 
