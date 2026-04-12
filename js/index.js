@@ -117,6 +117,10 @@ cover.addEventListener("touchstart", () => {
     hideCover()
 }, { passive: true })
 
+cover.addEventListener('click', ()=>{
+    hideCover()
+})
+
 
 splash.addEventListener("touchstart", () => {
     coverActivo = true
