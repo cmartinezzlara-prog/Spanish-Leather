@@ -686,7 +686,7 @@ body {
 /* TOP MENU */
 .MenuTop {
     width: 80%;
-    min-height: 30vh;
+    min-height: 25vh;
     /* background-color: darkred; */
 
     display: flex;
@@ -1972,7 +1972,7 @@ body {
 
     /* MENU */
     .MenuTop {
-        min-height: 25vh;
+        min-height: 20vh;
         padding: 0;
         justify-content: center;
     }
