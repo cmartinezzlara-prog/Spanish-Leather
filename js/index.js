@@ -113,16 +113,19 @@ window.addEventListener('wheel', () => {
 //  *************** NUEVO ****************
 // TOQUE EN MOVIL QUITA EL COVER
 cover.addEventListener("touchstart", () => {
+    coverActivo = true
     hideCover()
 }, { passive: true })
 
 
 splash.addEventListener("touchstart", () => {
+    coverActivo = true
     hideCover()
 }, { passive: true })
 
 
 document.querySelector('.CoverBottom-arrow').addEventListener('click', () => {
+    coverActivo = true
     hideCover()
 })
 
