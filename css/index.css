@@ -665,7 +665,6 @@ body {
 .MenuLayout {
     width: 100%;
     min-height: 90vh;
-    /* background-color: red; */
 
     display: flex;
     flex-flow: column;
@@ -1958,6 +1957,11 @@ body {
     }
 
     /* --- MENU --- */
+    .MenuLayout {
+        justify-content: start;
+        padding: 5rem 0 0 0;
+    }
+
     .MenuTop {
         min-height: 20vh;
         padding: 0;
@@ -2231,17 +2235,24 @@ body {
     }
 
     .PlayerContent {
-        padding: 2rem 2rem 1rem 2rem;
+        padding: 2rem 2rem 2rem 2rem;
+    }
+
+    .PlayerArrows {
+        padding: 6.5rem 0 5rem 0;
+    }
+
+    .PlayerMute {
+        padding: 0 0 6rem 2rem;
     }
 
     .PlayerSlider-dot {
         width: 0.6rem;
         min-height: 0.6rem;
-        background: red;
     }
 
     /* --- TRANSICIÑON --- */
-    
+
 
     @keyframes babiecaCurtain {
         0% {

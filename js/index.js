@@ -84,7 +84,7 @@ flash.addEventListener('animationend', () => {
 
     setTimeout(() => {
         hideCover()
-    }, 5000)
+    }, 2000)
 })
 
 
@@ -132,11 +132,11 @@ cover.addEventListener("click", () => {
 })
 
 // FELCHA SCROLL FUNCIONA COMO DIRECTO
-const arrowCover = document.querySelector('.CoverBottom-scroll')
+// const arrowCover = document.querySelector('.CoverBottom-scroll')
 
-arrowCover.addEventListener('click', () => {
-    hideCover()
-})
+// arrowCover.addEventListener('click', () => {
+//     hideCover()
+// })
 
 
 
