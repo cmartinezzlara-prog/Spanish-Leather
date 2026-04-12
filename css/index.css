@@ -2273,3 +2273,26 @@ body {
     }
 
 }
+
+@media (max-width: 768px) {
+    .TransitionText{
+        height: 100vh;
+        top: 0;
+    }
+
+    .Transition.Menu.isListening{
+        animation: babiecaCurtainMobile 3.2 linear;
+    }
+
+    @keyframes babiecaCurtainMobile {
+        0% {
+            transform: translateX(100%);
+        }
+        50%{
+            transform: translateX(0%);
+        }
+        100%{
+            transform: translateX(-100%);
+        }
+    }
+}
