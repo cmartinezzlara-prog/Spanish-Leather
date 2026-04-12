@@ -149,7 +149,7 @@ flash.addEventListener('animationend', function () {
     //si no interactuan, quitar automatico con tiempo
     setTimeout(function () {
         hideCover()
-    }, 7000)
+    }, 4000)
 
     splash.addEventListener('transitionend', function() {
         splash.style.display = 'none'
