@@ -2215,7 +2215,7 @@ body {
     }
 
     .PlayerMute {
-        padding: 0 0 5rem 2rem;
+        padding: 0 0 4.5rem 2rem;
     }
 
     .PlayerBtn-text {
@@ -2240,12 +2240,8 @@ body {
         background: red;
     }
 
-    .PlayerArrows {
-        padding: 1rem 0 1rem 0;
-    }
-
     /* --- TRANSICIÑON --- */
-
+    
 
     @keyframes babiecaCurtain {
         0% {
