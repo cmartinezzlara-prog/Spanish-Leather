@@ -122,6 +122,7 @@ body {
 
 .Cover.isVisible {
     opacity: 1;
+    pointer-events: auto;
 }
 
 .Cover.isHidden {
@@ -232,10 +233,6 @@ body {
     justify-content: start;
     align-items: center;
 }
-
-/* .CoverTop-script {
-    background-color:red;
-} */
 
 .CoverTop-release {
     width: 100%;
@@ -587,9 +584,8 @@ body {
 }
 
 
-
-
-
+/* ****** INFO ****** */
+/* ** BOTÓN Y SECCIÓN ** */
 .InfoBox {
     width: 100%;
     max-height: 5rem;
@@ -628,9 +624,8 @@ body {
 }
 
 
-
-
-/* ************* MENU ************ */
+/* ****** MENÚ ****** */
+/* ** SECCIÓN ** */
 .Menu {
     width: 100%;
     min-height: 100vh;
@@ -681,7 +676,7 @@ body {
     position: relative;
 }
 
-/* TOP MENU */
+/* --- TOP MENU ---*/
 .MenuTop {
     width: 80%;
     min-height: 25vh;
@@ -742,7 +737,7 @@ body {
     padding: 0 0 0.5rem 0.2rem;
 }
 
-/* MENU TITLES */
+/* --- MENU TITLES --- */
 .MenuTitles {
     width: 100%;
     /* background-color: red; */
@@ -787,7 +782,7 @@ body {
     content: "";
 }
 
-/* LISTEN BTN */
+/* --- LISTEN BTN --- */
 .MenuListen {
     width: 100%;
     display: flex;
@@ -852,7 +847,7 @@ body {
 }
 
 
-/* ETIQUETA LATERAL PRESAVE */
+/* --- ETIQUETA LATERAL PRESAVE --- */
 .FixedPresave {
     width: 100%;
     min-height: 30vh;
@@ -908,7 +903,8 @@ body {
     box-shadow: 7px 7px 15px #e1db8446, -7px -7px 15px #e1db8446;
 }
 
-/* CAPA PRESAVE */
+/* ****** PRESAVE ****** */
+/* ** SECCIÓN ** */
 .Presave {
     width: 100%;
     min-height: 100vh;
@@ -1039,7 +1035,7 @@ body {
     line-height: 2;
 }
 
-/* -- FORMULARIO -- */
+/* --- FORMULARIO --- */
 .PresaveForm {
     width: 100%;
     /* background-color: yellow; */
@@ -1092,9 +1088,8 @@ body {
 }
 
 
-
-
-/* ***** TOUR ***** */
+/* ****** TOUR ****** */
+/* ** SECCIÓN ** */
 .Tour {
     display: none;
 }
@@ -1168,7 +1163,6 @@ body {
 .TourImg {
     width: 15vh;
 }
-
 
 .TourList {
     width: 90%;
@@ -1251,8 +1245,8 @@ body {
     white-space: nowrap;
 }
 
-/* ESTILOS ESTADO TOUR */
-/* DISPONIBLES */
+/* --- ESTILOS ESTADO TOUR --- */
+/* -- DISPONIBLES -- */
 .TourItem--tickets {
     background-color: #ffff8285;
     display: grid;
@@ -1307,8 +1301,8 @@ body {
 }
 
 
-
-/* ***** INFO ***** */
+/* ****** INFO ****** */
+/* ** BOTÓN ** */
 .InfoBox {
     width: 100%;
     max-height: 4.375rem;
@@ -1340,7 +1334,7 @@ body {
     color: rgba(255, 255, 255, 0.819);
 }
 
-/* SECTION */
+/* ** SECCIÓN ** */
 .Info {
     width: 100%;
     background-color: black;
@@ -1470,9 +1464,7 @@ body {
 
 
 
-
-
-/* TRANSITION */
+/* ****** TRANSICIÓN BABIECA ****** */
 .Transition {
     position: fixed;
     inset: 0;
@@ -1488,9 +1480,7 @@ body {
     animation: babiecaCurtain 2.4s linear;
 }
 
-
 /* entra/ se cruza / sale */
-
 .TransitionText {
     height: 110vh;
     width: auto;
@@ -1504,7 +1494,8 @@ body {
 
 }
 
-/* ********* PLAYER ******** */
+/* ****** PLAYER ****** */
+/* ** SECCIÓN ** */
 .Player {
     width: 100%;
     height: 100vh;
@@ -1523,12 +1514,6 @@ body {
     /* background-color: aqua; */
     width: auto;
     min-height: 3.125rem;
-
-    /* background: rgba(255, 255, 255, 0.097);
-    border-radius: 50px;
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(5px);
-    -webkit-backdrop-filter: blur(5px); */
 
     background: rgba(255, 255, 255, 0.185);
     box-shadow: 0 8px 10px 0 rgba(48, 48, 48, 0.04);
@@ -1647,7 +1632,7 @@ body {
     pointer-events: auto;
 }
 
-/* ************  SOBRE EL VIDEO  ********** */
+/* --- CAPA SUPERIOR AL VIDEO --- */
 .PlayerContent {
     width: 100%;
     min-height: 100%;
@@ -1672,12 +1657,11 @@ body {
 
     display: flex;
     flex-flow: row wrap;
-    /* PERMITE QUE PASE A SUEGUNDA LINEA ********************* */
     justify-content: space-between;
     align-items: center;
 }
 
-/* BOTONES (FLECHAS Y MUTE) */
+/* --- BOTONES (FLECHAS Y MUTE) --- */
 .PlayerArrows {
     min-height: 100vh;
     /* background-color: red; */
@@ -1736,7 +1720,7 @@ body {
     rotate: calc(180deg);
 }
 
-/* TITULO + DURACIÓN */
+/* --- TITULO + DURACIÓN --- */
 .PlayerTitle {
     max-width: 500px;
     /* background-color: black; */
@@ -1766,7 +1750,7 @@ body {
     font-size: 1.2rem;
 }
 
-/* CARRUSEL */
+/* --- CARRUSEL --- */
 .PlayerSlider {
     /* background-color: blue; */
 
@@ -1946,20 +1930,24 @@ body {
 
 
 
-/* MEDIA QUERY*/
-/* TABLET */
-
-
-/* BREACKPOINT */
-/* MÓVIL */
+/*  ******* MEDIA QUERY ******* */
+/* --- MÓVIL --- */
 @media (max-width:950px) {
 
-    /* COVER */
+      /* --- HEADER --- */
+    .HeaderNav--desktop {
+        display: none;
+    }
+
+    .HeaderMobile {
+        display: flex;
+    }
+
+    /* --- COVER --- */
     .CoverMiddle-img {
         width: 60%;
     }
 
-    /*  no vale solo con esto */
     .CoverStar-lateral .CoverStar-bottom {
         display: none;
     }
@@ -1969,7 +1957,7 @@ body {
         gap: 80px;
     }
 
-    /* MENU */
+    /* --- MENU --- */
     .MenuTop {
         min-height: 20vh;
         padding: 0;
@@ -2004,23 +1992,7 @@ body {
         padding: 0.8rem 2.5rem;
     }
 
-    .HeaderNav--desktop {
-        display: none;
-    }
-
-    .HeaderMobile {
-        display: flex;
-    }
-
-    .FixedPresave {
-        margin: 80px 0 0 0;
-    }
-
-    .FixedPresave-btn {
-        width: 3.125rem;
-        min-height: 8.6rem;
-    }
-
+    /* --- TOUR --- */
     .TourWrapper {
         width: 90%;
     }
@@ -2054,6 +2026,17 @@ body {
         display: block;
     }
 
+
+    /* --- PRESAVE --- */
+    .FixedPresave {
+        margin: 80px 0 0 0;
+    }
+
+    .FixedPresave-btn {
+        width: 3.125rem;
+        min-height: 8.6rem;
+    }
+
     .PresaveLayout {
         /* background-color:greenyellow; */
         flex-flow: column nowrap;
@@ -2075,7 +2058,6 @@ body {
         line-height: 1;
     }
 
-    /* --------------- */
     .PresaveForm {
         width: 100%;
         /* background-color: yellow; */
@@ -2132,6 +2114,7 @@ body {
         border: 1px solid white;
     }
 
+    /* --- INFO --- */
     .InfoBack {
         width: 100%;
         /* background-color: red; */
@@ -2219,6 +2202,7 @@ body {
         width: 40vw;
     }
 
+    /* --- PLAYER --- */
     .PlayerTitle {
         max-width: 300px;
     }
