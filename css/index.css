@@ -341,7 +341,6 @@ body {
     flex-flow: column;
     justify-content: center;
     align-items: center;
-    padding: 1rem 0 0 0;
     gap: 5px;
 
     animation: scrollPulse 1.8s ease-in-out infinite;
@@ -350,8 +349,7 @@ body {
 .CoverBottom-arrow {
     max-width: 2.5rem;
     background-color: transparent;
-    border: 1.5px solid white;
-    border-radius: 50%;
+    /* background-color: red; */
     rotate: calc(180deg);
 
     display: flex;
@@ -1967,7 +1965,8 @@ body {
     }
 
     .CoverLayout {
-        justify-content: space-around;
+        justify-content: center;
+        gap: 80px;
     }
 
     /* MENU */

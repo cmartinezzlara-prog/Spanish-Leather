@@ -60,6 +60,7 @@ const showCover = () => {
 
     splash.classList.add("isHidden")
     cover.classList.add("isVisible")
+    coverActivo = true
 }
 
 // EVENTO 
@@ -72,7 +73,6 @@ flash.addEventListener('animationend', () => {
     // Splash display none
     splash.addEventListener('transitionend', () => {
         splash.style.display = 'none'
-        coverActivo = true
     })
 })
 
@@ -139,7 +139,9 @@ cover.addEventListener("click", () => {
 })
 
 // FELCHA SCROLL FUNCIONA COMO DIRECTO
-document.querySelector('.CoverBottom-arrow').addEventListener('click', function () {
+const arrowCover = document.querySelector('.CoverBottom-scroll')
+
+arrowCover.addEventListener('click', () => {
     hideCover()
 })
 
@@ -151,9 +153,9 @@ flash.addEventListener('animationend', function () {
         hideCover()
     }, 4000)
 
-    splash.addEventListener('transitionend', function() {
+    splash.addEventListener('transitionend', function () {
         splash.style.display = 'none'
-        coverActivo= true
+        coverActivo = true
     })
 
 })
