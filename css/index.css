@@ -2274,7 +2274,7 @@ body {
 
     @keyframes babiecaCurtain {
         0% {
-            transform: translateX(0vw);
+            transform: translateX(-100vw);
         }
 
         100% {
