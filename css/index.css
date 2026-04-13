@@ -907,7 +907,7 @@ body {
 .Presave {
     width: 100%;
     min-height: 100vh;
-    background-color: #d0d07f;
+    background-color: rgb(192, 184, 84);
 
     display: none;
     flex-flow: row nowrap;
@@ -2270,11 +2270,12 @@ body {
     .TransitionText {
         width: 800vw;
         bottom: 0;
+        right: 0;
     }
 
     @keyframes babiecaCurtain {
         0% {
-            transform: translateX(-100vw);
+            transform: translateX(100vw);
         }
 
         100% {
