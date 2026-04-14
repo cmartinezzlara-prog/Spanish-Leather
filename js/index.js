@@ -30,10 +30,8 @@
 // VARIABLES 
 // Btn "Escuchar"
 const listenBtn = document.querySelector('.MenuListen-btn')
-
 // Transicion Babieca
 const transition = document.querySelector('.Transition')
-
 // Secciones principales
 const player = document.querySelector('.Player')
 const menu = document.querySelector('.Menu')
@@ -42,14 +40,11 @@ const cover = document.querySelector('.Cover')
 const presave = document.querySelector('.Presave')
 const tour = document.querySelector('.Tour')
 const info = document.querySelector('.Info')
-
 // Splash
 const flash = document.querySelector('.Splash-flash')
 
-
 console.log(listenBtn)
 console.log(transition)
-
 console.log(player)
 console.log(menu)
 console.log(splash)
@@ -131,14 +126,6 @@ cover.addEventListener("click", () => {
     hideCover()
 })
 
-// FELCHA SCROLL FUNCIONA COMO DIRECTO
-// const arrowCover = document.querySelector('.CoverBottom-scroll')
-
-// arrowCover.addEventListener('click', () => {
-//     hideCover()
-// })
-
-
 
 //FUNCIÓN
 function addVerticalSwipe(elemento, actionSwipeUp, actionSwipeDown) {
@@ -198,8 +185,6 @@ const dots = document.querySelectorAll('.PlayerSlider-dot')
 const prevBtn = document.querySelector('.PlayerArrow--prev')
 const nextBtn = document.querySelector('.PlayerArrow--next')
 const transitionText = document.querySelector('.TransitionText')
-
-
 // VARIABLES PARA LA DURACION
 const trackName = document.querySelector('.PlayerName')
 const trackMin = document.querySelector('.PlayerLenght-min')
@@ -222,14 +207,14 @@ const tracks = [
 
 
 // AHORA CAMBIAMOS LOS NOMBRES DE LAS CANCIONES
-//HAY QUE HACER UN TRACK DE LOS DATOS
-// Hay que hacer una funcion mediante la cual los nombres se actualicen  con textContent
+// HAY QUE HACER UN TRACK DE LOS DATOS
+// Hay que hacer una funcion mediante la cual los nombres se actualicen con textContent
 // Y como me da los min y sec junto el ":" tengo que separarlos:
 // segun Copilot sería con (dentro del function):
 // const [min,sec]= track.duration.split(':')
 // trackMin.textContent = min
 // trackSec.textContent = sec
-// Al final de "funtion showVideo" debería añadir "updateTrackInfo(i)""
+// Al final de "funtion showVideo" debería añadir "updateTrackInfo(i)"
 
 // PROBANDO TEORÍA DE COPILOT
 // FUNCIÓN
@@ -603,8 +588,6 @@ function showSection(name) {
     if (name !== 'player') {
         console.log("Reset pq si no peta")
         resetPlayer()
-
-        // vale a ver hacemos el funtion del player
     }
 }
 
